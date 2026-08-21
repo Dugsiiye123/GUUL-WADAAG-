@@ -1,73 +1,516 @@
 <!doctype html>
 <html lang="so">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Guul-Wadaag Management System</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7f5;color:#17221d}
-header{background:#075b3a;color:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:800;font-size:24px}
-nav button{background:transparent;margin-left:7px}.wrap{max-width:1200px;margin:auto;padding:28px 5%}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7f5;color:#17221d}
+header{background:#075b3a;color:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:24px}
+nav button{background:transparent;margin-left:7px}
+.wrap{max-width:1200px;margin:auto;padding:28px 5%}
 button{border:0;border-radius:8px;padding:11px 16px;background:#075b3a;color:#fff;font-weight:bold;cursor:pointer}
 .card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 3px 15px #00000010;margin-bottom:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}.num{font-size:30px;font-weight:800;color:#075b3a}
-input,select{width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ccd6d0;border-radius:8px}
-table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;border-bottom:1px solid #e5e9e7}th{background:#edf4ef}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+.num{font-size:30px;font-weight:800;color:#075b3a}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ccd6d0;border-radius:8px}
+textarea{min-height:90px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #e5e9e7}
+th{background:#edf4ef}
 .badge{padding:5px 9px;border-radius:20px;background:#dff2e7;color:#075b3a;font-size:12px;font-weight:bold}
-.hidden{display:none}.login{max-width:430px;margin:70px auto}.qr{font-size:90px;text-align:center;background:#f1f4f2;padding:15px}
-@media(max-width:700px){table{font-size:13px}th,td{padding:8px}.logo{font-size:19px}}
+.hidden{display:none}
+.login{max-width:430px;margin:70px auto}
+.project{border-left:5px solid #075b3a}
+.project h3{margin-top:0}
+.small{color:#66756d;font-size:14px}
+@media(max-width:700px){
+table{font-size:12px}
+th,td{padding:8px}
+.logo{font-size:19px}
+nav button{padding:8px 7px;font-size:11px}
+}
 </style>
 </head>
+
 <body>
-<header><div class="logo">GUUL-WADAAG</div><nav><button onclick="show('dashboard')">Dashboard</button><button onclick="show('members')">Xubnaha</button><button onclick="show('payments')">Lacag-bixin</button><button onclick="logout()">Ka bax</button></nav></header>
+
+<header>
+<div class="logo">GUUL-WADAAG</div>
+<nav>
+<button onclick="show('dashboard')">Dashboard</button>
+<button onclick="show('members')">Xubnaha</button>
+<button onclick="show('payments')">Lacag-bixin</button>
+<button onclick="show('projects')">Mashaariic</button>
+<button onclick="logout()">Ka bax</button>
+</nav>
+</header>
 
 <div id="login" class="wrap">
-<div class="card login"><h2>🔐 Admin Login</h2><p>Gelitaanka maamulka Guul-Wadaag</p>
-<label>Username</label><input id="user" value="admin">
-<label>Password</label><input id="pass" type="password" value="1234">
-<button onclick="login()">Gal Dashboard</button><p id="err" style="color:#b42318"></p></div>
+<div class="card login">
+<h2>🔐 Admin Login</h2>
+<p>Gelitaanka maamulka Guul-Wadaag</p>
+
+<label>Username</label>
+<input id="user" value="admin">
+
+<label>Password</label>
+<input id="pass" type="password" value="1234">
+
+<button onclick="login()">Gal Dashboard</button>
+<p id="err" style="color:#b42318"></p>
+</div>
 </div>
 
 <main id="app" class="wrap hidden">
+
+<!-- DASHBOARD -->
 <section id="dashboard">
 <h1>Dashboard-ka Guul-Wadaag</h1>
+
 <div class="grid">
-<div class="card"><div class="num" id="membersCount">0</div><p>Xubnaha</p></div>
-<div class="card"><div class="num" id="paidCount">0</div><p>Bixiyey bishan</p></div>
-<div class="card"><div class="num" id="totalPaid">$0</div><p>Lacagta la ururiyey</p></div>
-<div class="card"><div class="num">5</div><p>Mashaariicda</p></div>
+<div class="card">
+<div class="num" id="membersCount">0</div>
+<p>Xubnaha</p>
 </div>
-<div class="card"><h2>Warbixin</h2><p>Nidaamkan prototype-ka ah wuxuu kaydinayaa xogta browser-ka qalabkaaga. Nooca production-ka waxaa lagu xiriirin karaa database iyo payment gateway.</p></div>
+
+<div class="card">
+<div class="num" id="paidCount">0</div>
+<p>Bixiyey bishan</p>
+</div>
+
+<div class="card">
+<div class="num" id="totalPaid">$0</div>
+<p>Lacagta la ururiyey</p>
+</div>
+
+<div class="card">
+<div class="num" id="projectsCount">5</div>
+<p>Mashaariicda</p>
+</div>
+</div>
+
+<div class="card">
+<h2>Warbixin</h2>
+<p>
+Nidaamka Guul-Wadaag wuxuu maamulaa xubnaha,
+lacag-bixinta ZAAD iyo eDahab, iyo mashaariicda ururka.
+</p>
+</div>
 </section>
 
+
+<!-- MEMBERS -->
 <section id="members" class="hidden">
 <h1>Diiwaanka Xubnaha</h1>
-<div class="card"><h3>Ku dar Xubin</h3>
-<input id="mname" placeholder="Magaca oo buuxa"><input id="mphone" placeholder="Telefoon">
-<select id="mtype"><option>Xubin Caadi ah</option><option>Xubin Firfircoon</option><option>Xubin Taageere</option></select>
-<button onclick="addMember()">+ Diiwaangeli</button></div>
-<div class="card"><table><thead><tr><th>ID</th><th>Magaca</th><th>Telefoon</th><th>Nooca</th><th>QR</th></tr></thead><tbody id="memberTable"></tbody></table></div>
+
+<div class="card">
+<h3>➕ Ku dar Xubin</h3>
+
+<input id="mname" placeholder="Magaca oo buuxa">
+<input id="mphone" placeholder="Telefoon">
+
+<select id="mtype">
+<option>Xubin Caadi ah</option>
+<option>Xubin Firfircoon</option>
+<option>Xubin Taageere</option>
+</select>
+
+<button onclick="addMember()">+ Diiwaangeli</button>
+</div>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Magaca</th>
+<th>Telefoon</th>
+<th>Nooca</th>
+</tr>
+</thead>
+
+<tbody id="memberTable"></tbody>
+</table>
+</div>
 </section>
 
+
+<!-- PAYMENTS -->
 <section id="payments" class="hidden">
-<h1>Lacag-bixinta</h1>
-<div class="card"><h3>Diwaangeli lacag</h3>
-<select id="payer"></select><input id="amount" type="number" value="3" placeholder="Lacagta">
-<input id="month" value="August 2026"><button onclick="addPayment()">Diiwaangeli Lacagta</button></div>
-<div class="card"><table><thead><tr><th>Member ID</th><th>Magaca</th><th>Bisha</th><th>Lacagta</th><th>Xaalad</th></tr></thead><tbody id="paymentTable"></tbody></table></div>
+<h1>💰 Lacag-bixinta</h1>
+
+<div class="card">
+<h3>Diwaangeli Lacag</h3>
+
+<label>Xubinta</label>
+<select id="payer"></select>
+
+<label>Lacagta</label>
+<input id="amount" type="number" value="3" placeholder="Lacagta">
+
+<label>Habka lacag-bixinta</label>
+<select id="method">
+<option value="ZAAD">ZAAD</option>
+<option value="eDahab">eDahab</option>
+</select>
+
+<label>Number-ka lacagta lagu diray</label>
+<input id="paymentNumber" placeholder="Tusaale: 63xxxxxxx">
+
+<label>Bisha</label>
+<input id="month" value="August 2026">
+
+<button onclick="addPayment()">💳 Diiwaangeli Lacagta</button>
+</div>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Magaca</th>
+<th>Bisha</th>
+<th>Lacagta</th>
+<th>Habka</th>
+<th>Number</th>
+<th>Xaalad</th>
+</tr>
+</thead>
+
+<tbody id="paymentTable"></tbody>
+</table>
+</div>
 </section>
+
+
+<!-- PROJECTS -->
+<section id="projects" class="hidden">
+<h1>🏗️ Mashaariicda Guul-Wadaag</h1>
+
+<div class="card">
+<h3>➕ Ku dar Mashruuc Cusub</h3>
+
+<input id="pname" placeholder="Magaca mashruuca">
+
+<textarea id="pdesc" placeholder="Sharaxaadda mashruuca"></textarea>
+
+<input id="pbudget" type="number" placeholder="Miisaaniyadda">
+
+<select id="pstatus">
+<option>Qorshaysan</option>
+<option>Socda</option>
+<option>Dhammaystiran</option>
+</select>
+
+<button onclick="addProject()">+ Ku dar Mashruuc</button>
+</div>
+
+<div id="projectList"></div>
+</section>
+
 </main>
 
+
 <script>
+
 let members=JSON.parse(localStorage.getItem('gw_members')||'[]');
 let payments=JSON.parse(localStorage.getItem('gw_payments')||'[]');
-function login(){if(document.getElementById('user').value==='admin'&&document.getElementById('pass').value==='1234'){document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');render()}else document.getElementById('err').textContent='Username ama password waa khalad.'}
-function logout(){location.reload()}
-function show(id){['dashboard','members','payments'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');render()}
-function addMember(){let n=document.getElementById('mname').value.trim(),p=document.getElementById('mphone').value.trim(),t=document.getElementById('mtype').value;if(!n)return alert('Magaca geli');let id='GW-'+String(members.length+1).padStart(5,'0');members.push({id,name:n,phone:p,type:t});localStorage.setItem('gw_members',JSON.stringify(members));document.getElementById('mname').value='';document.getElementById('mphone').value='';render()}
-function addPayment(){let id=document.getElementById('payer').value,a=Number(document.getElementById('amount').value),m=document.getElementById('month').value;if(!id||!a)return alert('Xogta lacag-bixinta buuxi');let x=members.find(v=>v.id===id);payments.push({id,name:x.name,amount:a,month:m});localStorage.setItem('gw_payments',JSON.stringify(payments));render()}
-function render(){document.getElementById('membersCount').textContent=members.length;document.getElementById('paidCount').textContent=payments.length;document.getElementById('totalPaid').textContent='$'+payments.reduce((s,x)=>s+x.amount,0);
-document.getElementById('memberTable').innerHTML=members.map(x=>`<tr><td>${x.id}</td><td>${x.name}</td><td>${x.phone}</td><td><span class="badge">${x.type}</span></td><td><button onclick="alert('QR Code: ${x.id}')">▦</button></td></tr>`).join('');
-document.getElementById('payer').innerHTML=members.map(x=>`<option value="${x.id}">${x.id} — ${x.name}</option>`).join('');
-document.getElementById('paymentTable').innerHTML=payments.map(x=>`<tr><td>${x.id}</td><td>${x.name}</td><td>${x.month}</td><td>$${x.amount}</td><td><span class="badge">Paid</span></td></tr>`).join('')}
+
+let projects=JSON.parse(localStorage.getItem('gw_projects')||'null');
+
+if(!projects){
+projects=[
+{
+name:"Abaalmarinta Ardayda Qur'aanka Dhammaysay",
+desc:"Taageero iyo abaalmarin loo fidiyo ardayda Qur'aanka dhammaysay.",
+budget:0,
+status:"Qorshaysan"
+},
+{
+name:"Sanduuqa Waxbarashada Ardayda Danyarta ah",
+desc:"Taageerada waxbarashada ardayda u baahan kaalmo.",
+budget:0,
+status:"Qorshaysan"
+},
+{
+name:"Shaqo Abuurka iyo Horumarinta Dhalinyarada",
+desc:"Barnaamijyo lagu taageerayo dhalinyarada iyo fursadaha shaqo.",
+budget:0,
+status:"Qorshaysan"
+},
+{
+name:"Ololaha Bilicaynta iyo Qurxinta Deegaanka",
+desc:"Nadaafadda, bilicda iyo qurxinta deegaanka.",
+budget:0,
+status:"Qorshaysan"
+},
+{
+name:"Tartanka Aqoonta iyo Doodaha Dhalinyarada",
+desc:"Tartamo aqooneed iyo dooddo loogu talagalay dhalinyarada.",
+budget:0,
+status:"Qorshaysan"
+}
+];
+
+localStorage.setItem('gw_projects',JSON.stringify(projects));
+}
+
+
+function login(){
+
+if(
+document.getElementById('user').value==='admin' &&
+document.getElementById('pass').value==='1234'
+){
+
+document.getElementById('login').classList.add('hidden');
+document.getElementById('app').classList.remove('hidden');
+
+render();
+
+}else{
+
+document.getElementById('err').textContent=
+'Username ama password waa khalad.';
+
+}
+
+}
+
+
+function logout(){
+location.reload();
+}
+
+
+function show(id){
+
+['dashboard','members','payments','projects']
+.forEach(x=>document.getElementById(x).classList.add('hidden'));
+
+document.getElementById(id).classList.remove('hidden');
+
+render();
+
+}
+
+
+function addMember(){
+
+let n=document.getElementById('mname').value.trim();
+let p=document.getElementById('mphone').value.trim();
+let t=document.getElementById('mtype').value;
+
+if(!n)return alert('Magaca geli');
+
+let id='GW-'+String(members.length+1).padStart(5,'0');
+
+members.push({
+id,
+name:n,
+phone:p,
+type:t
+});
+
+localStorage.setItem(
+'gw_members',
+JSON.stringify(members)
+);
+
+document.getElementById('mname').value='';
+document.getElementById('mphone').value='';
+
+render();
+
+alert('Xubinta si guul leh ayaa loo diiwaangeliyey.');
+
+}
+
+
+function addPayment(){
+
+let id=document.getElementById('payer').value;
+let a=Number(document.getElementById('amount').value);
+let m=document.getElementById('month').value;
+let method=document.getElementById('method').value;
+let paymentNumber=document.getElementById('paymentNumber').value.trim();
+
+if(!id || !a || !paymentNumber){
+
+return alert(
+'Fadlan buuxi xubinta, lacagta iyo number-ka lacagta.'
+);
+
+}
+
+let x=members.find(v=>v.id===id);
+
+payments.push({
+
+id,
+name:x.name,
+amount:a,
+month:m,
+method,
+paymentNumber,
+date:new Date().toLocaleDateString('en-GB')
+
+});
+
+localStorage.setItem(
+'gw_payments',
+JSON.stringify(payments)
+);
+
+document.getElementById('paymentNumber').value='';
+
+render();
+
+alert('Lacagta si guul leh ayaa loo diiwaangeliyey.');
+
+}
+
+
+function addProject(){
+
+let name=document.getElementById('pname').value.trim();
+let desc=document.getElementById('pdesc').value.trim();
+let budget=Number(document.getElementById('pbudget').value)||0;
+let status=document.getElementById('pstatus').value;
+
+if(!name){
+
+return alert('Magaca mashruuca geli.');
+
+}
+
+projects.push({
+name,
+desc,
+budget,
+status
+});
+
+localStorage.setItem(
+'gw_projects',
+JSON.stringify(projects)
+);
+
+document.getElementById('pname').value='';
+document.getElementById('pdesc').value='';
+document.getElementById('pbudget').value='';
+
+render();
+
+alert('Mashruuca waa lagu daray.');
+
+}
+
+
+function render(){
+
+/* Dashboard */
+
+document.getElementById('membersCount').textContent=
+members.length;
+
+document.getElementById('paidCount').textContent=
+payments.length;
+
+document.getElementById('totalPaid').textContent=
+'$'+payments.reduce((s,x)=>s+x.amount,0);
+
+document.getElementById('projectsCount').textContent=
+projects.length;
+
+
+/* Members */
+
+document.getElementById('memberTable').innerHTML=
+
+members.map(x=>`
+
+<tr>
+<td>${x.id}</td>
+<td>${x.name}</td>
+<td>${x.phone}</td>
+<td>
+<span class="badge">${x.type}</span>
+</td>
+</tr>
+
+`).join('');
+
+
+/* Payment member list */
+
+document.getElementById('payer').innerHTML=
+
+members.map(x=>`
+
+<option value="${x.id}">
+${x.id} — ${x.name}
+</option>
+
+`).join('');
+
+
+/* Payments */
+
+document.getElementById('paymentTable').innerHTML=
+
+payments.map(x=>`
+
+<tr>
+<td>${x.id}</td>
+<td>${x.name}</td>
+<td>${x.month}</td>
+<td>$${x.amount}</td>
+<td>
+<span class="badge">${x.method}</span>
+</td>
+<td>${x.paymentNumber}</td>
+<td>
+<span class="badge">Paid</span>
+</td>
+</tr>
+
+`).join('');
+
+
+/* Projects */
+
+document.getElementById('projectList').innerHTML=
+
+projects.map((x,i)=>`
+
+<div class="card project">
+
+<h3>🏗️ ${x.name}</h3>
+
+<p>${x.desc}</p>
+
+<p>
+<strong>Miisaaniyad:</strong>
+$${x.budget}
+</p>
+
+<p>
+<strong>Xaalad:</strong>
+<span class="badge">${x.status}</span>
+</p>
+
+</div>
+
+`).join('');
+
+}
+
 </script>
-</body></html>
+
+</body>
+</html>
