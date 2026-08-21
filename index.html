@@ -8,11 +8,13 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f7f5;color:#17221d}
-header{background:#075b3a;color:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center}
+header{background:#075b3a;color:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .logo{font-weight:800;font-size:24px}
-nav button{background:transparent;margin-left:7px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav button{background:transparent;margin:0}
 .wrap{max-width:1200px;margin:auto;padding:28px 5%}
 button{border:0;border-radius:8px;padding:11px 16px;background:#075b3a;color:#fff;font-weight:bold;cursor:pointer}
+button:hover{opacity:.9}
 .card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 3px 15px #00000010;margin-bottom:18px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
 .num{font-size:30px;font-weight:800;color:#075b3a}
@@ -27,11 +29,14 @@ th{background:#edf4ef}
 .project{border-left:5px solid #075b3a}
 .project h3{margin-top:0}
 .small{color:#66756d;font-size:14px}
+.notice{padding:12px;border-radius:8px;background:#fff3cd;color:#664d03;margin-bottom:15px}
+.error{padding:12px;border-radius:8px;background:#f8d7da;color:#842029;margin-bottom:15px}
 @media(max-width:700px){
-table{font-size:12px}
-th,td{padding:8px}
+table{font-size:12px;display:block;overflow-x:auto}
+th,td{padding:8px;white-space:nowrap}
 .logo{font-size:19px}
 nav button{padding:8px 7px;font-size:11px}
+.wrap{padding:20px 4%}
 }
 </style>
 </head>
@@ -40,6 +45,7 @@ nav button{padding:8px 7px;font-size:11px}
 
 <header>
 <div class="logo">GUUL-WADAAG</div>
+
 <nav>
 <button onclick="show('dashboard')">Dashboard</button>
 <button onclick="show('members')">Xubnaha</button>
@@ -49,9 +55,13 @@ nav button{padding:8px 7px;font-size:11px}
 </nav>
 </header>
 
+
 <div id="login" class="wrap">
+
 <div class="card login">
+
 <h2>🔐 Admin Login</h2>
+
 <p>Gelitaanka maamulka Guul-Wadaag</p>
 
 <label>Username</label>
@@ -61,17 +71,27 @@ nav button{padding:8px 7px;font-size:11px}
 <input id="pass" type="password" value="1234">
 
 <button onclick="login()">Gal Dashboard</button>
+
 <p id="err" style="color:#b42318"></p>
+
 </div>
+
 </div>
+
 
 <main id="app" class="wrap hidden">
 
+
 <!-- DASHBOARD -->
+
 <section id="dashboard">
+
 <h1>Dashboard-ka Guul-Wadaag</h1>
 
+<div id="connectionMessage"></div>
+
 <div class="grid">
+
 <div class="card">
 <div class="num" id="membersCount">0</div>
 <p>Xubnaha</p>
@@ -88,88 +108,143 @@ nav button{padding:8px 7px;font-size:11px}
 </div>
 
 <div class="card">
-<div class="num" id="projectsCount">5</div>
+<div class="num" id="projectsCount">0</div>
 <p>Mashaariicda</p>
 </div>
+
 </div>
 
 <div class="card">
+
 <h2>Warbixin</h2>
+
 <p>
 Nidaamka Guul-Wadaag wuxuu maamulaa xubnaha,
 lacag-bixinta ZAAD iyo eDahab, iyo mashaariicda ururka.
 </p>
+
 </div>
+
 </section>
 
 
+
 <!-- MEMBERS -->
+
 <section id="members" class="hidden">
+
 <h1>Diiwaanka Xubnaha</h1>
 
 <div class="card">
+
 <h3>➕ Ku dar Xubin</h3>
 
 <input id="mname" placeholder="Magaca oo buuxa">
+
 <input id="mphone" placeholder="Telefoon">
 
 <select id="mtype">
+
 <option>Xubin Caadi ah</option>
 <option>Xubin Firfircoon</option>
 <option>Xubin Taageere</option>
+
 </select>
 
 <button onclick="addMember()">+ Diiwaangeli</button>
+
 </div>
 
+
 <div class="card">
+
 <table>
+
 <thead>
+
 <tr>
 <th>ID</th>
 <th>Magaca</th>
 <th>Telefoon</th>
 <th>Nooca</th>
 </tr>
+
 </thead>
 
 <tbody id="memberTable"></tbody>
+
 </table>
+
 </div>
+
 </section>
 
 
+
 <!-- PAYMENTS -->
+
 <section id="payments" class="hidden">
+
 <h1>💰 Lacag-bixinta</h1>
 
 <div class="card">
-<h3>Diwaangeli Lacag</h3>
+
+<h3>Diiwaangeli Lacag</h3>
 
 <label>Xubinta</label>
+
 <select id="payer"></select>
 
+
 <label>Lacagta</label>
-<input id="amount" type="number" value="3" placeholder="Lacagta">
+
+<input
+id="amount"
+type="number"
+value="3"
+placeholder="Lacagta"
+>
+
 
 <label>Habka lacag-bixinta</label>
+
 <select id="method">
+
 <option value="ZAAD">ZAAD</option>
 <option value="eDahab">eDahab</option>
+
 </select>
 
+
 <label>Number-ka lacagta lagu diray</label>
-<input id="paymentNumber" placeholder="Tusaale: 63xxxxxxx">
+
+<input
+id="paymentNumber"
+placeholder="Tusaale: 63xxxxxxx"
+>
+
 
 <label>Bisha</label>
-<input id="month" value="August 2026">
 
-<button onclick="addPayment()">💳 Diiwaangeli Lacagta</button>
+<input
+id="month"
+value="August 2026"
+>
+
+
+<button onclick="addPayment()">
+💳 Diiwaangeli Lacagta
+</button>
+
 </div>
 
+
 <div class="card">
+
 <table>
+
 <thead>
+
 <tr>
 <th>ID</th>
 <th>Magaca</th>
@@ -179,338 +254,836 @@ lacag-bixinta ZAAD iyo eDahab, iyo mashaariicda ururka.
 <th>Number</th>
 <th>Xaalad</th>
 </tr>
+
 </thead>
 
 <tbody id="paymentTable"></tbody>
+
 </table>
+
 </div>
+
 </section>
 
 
+
 <!-- PROJECTS -->
+
 <section id="projects" class="hidden">
+
 <h1>🏗️ Mashaariicda Guul-Wadaag</h1>
 
 <div class="card">
+
 <h3>➕ Ku dar Mashruuc Cusub</h3>
 
-<input id="pname" placeholder="Magaca mashruuca">
+<input
+id="pname"
+placeholder="Magaca mashruuca"
+>
 
-<textarea id="pdesc" placeholder="Sharaxaadda mashruuca"></textarea>
+<textarea
+id="pdesc"
+placeholder="Sharaxaadda mashruuca"
+></textarea>
 
-<input id="pbudget" type="number" placeholder="Miisaaniyadda">
+<input
+id="pbudget"
+type="number"
+placeholder="Miisaaniyadda"
+>
 
 <select id="pstatus">
+
 <option>Qorshaysan</option>
 <option>Socda</option>
 <option>Dhammaystiran</option>
+
 </select>
 
-<button onclick="addProject()">+ Ku dar Mashruuc</button>
+<button onclick="addProject()">
++ Ku dar Mashruuc
+</button>
+
 </div>
 
 <div id="projectList"></div>
+
 </section>
 
 </main>
 
 
+
 <script>
 
-let members=JSON.parse(localStorage.getItem('gw_members')||'[]');
-let payments=JSON.parse(localStorage.getItem('gw_payments')||'[]');
+/* =========================================
+   SUPABASE
+========================================= */
 
-let projects=JSON.parse(localStorage.getItem('gw_projects')||'null');
+const SUPABASE_URL =
+"https://zbyrtasojwgrylcnqlhb.supabase.co";
 
-if(!projects){
-projects=[
-{
-name:"Abaalmarinta Ardayda Qur'aanka Dhammaysay",
-desc:"Taageero iyo abaalmarin loo fidiyo ardayda Qur'aanka dhammaysay.",
-budget:0,
-status:"Qorshaysan"
-},
-{
-name:"Sanduuqa Waxbarashada Ardayda Danyarta ah",
-desc:"Taageerada waxbarashada ardayda u baahan kaalmo.",
-budget:0,
-status:"Qorshaysan"
-},
-{
-name:"Shaqo Abuurka iyo Horumarinta Dhalinyarada",
-desc:"Barnaamijyo lagu taageerayo dhalinyarada iyo fursadaha shaqo.",
-budget:0,
-status:"Qorshaysan"
-},
-{
-name:"Ololaha Bilicaynta iyo Qurxinta Deegaanka",
-desc:"Nadaafadda, bilicda iyo qurxinta deegaanka.",
-budget:0,
-status:"Qorshaysan"
-},
-{
-name:"Tartanka Aqoonta iyo Doodaha Dhalinyarada",
-desc:"Tartamo aqooneed iyo dooddo loogu talagalay dhalinyarada.",
-budget:0,
-status:"Qorshaysan"
-}
-];
+/*
+  HALKAN KU BEDEL:
+  YOUR_PUBLISHABLE_KEY
 
-localStorage.setItem('gw_projects',JSON.stringify(projects));
-}
+  Ku geli Publishable key-ga Supabase.
+  HA GELIN SECRET KEY.
+*/
 
+const SUPABASE_KEY =
+"sb_publishable_D_PSqKecBwiESZwyLTxFiw_JMMTddAN";
+
+
+const headers = {
+
+"apikey":SUPABASE_KEY,
+
+"Authorization":"Bearer "+SUPABASE_KEY,
+
+"Content-Type":"application/json",
+
+"Prefer":"return=representation"
+
+};
+
+
+
+/* =========================================
+   LOGIN
+========================================= */
 
 function login(){
 
-if(
-document.getElementById('user').value==='admin' &&
-document.getElementById('pass').value==='1234'
-){
+const user =
+document.getElementById("user").value.trim();
 
-document.getElementById('login').classList.add('hidden');
-document.getElementById('app').classList.remove('hidden');
+const pass =
+document.getElementById("pass").value;
+
+
+if(user==="admin" && pass==="1234"){
+
+document
+.getElementById("login")
+.classList.add("hidden");
+
+document
+.getElementById("app")
+.classList.remove("hidden");
 
 render();
 
 }else{
 
-document.getElementById('err').textContent=
-'Username ama password waa khalad.';
+document.getElementById("err").textContent =
+"Username ama password waa khalad.";
 
 }
 
 }
+
 
 
 function logout(){
+
 location.reload();
+
 }
 
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
 
 function show(id){
 
-['dashboard','members','payments','projects']
-.forEach(x=>document.getElementById(x).classList.add('hidden'));
+[
+"dashboard",
+"members",
+"payments",
+"projects"
+].forEach(x=>{
 
-document.getElementById(id).classList.remove('hidden');
+const el=document.getElementById(x);
 
-render();
-
+if(el){
+el.classList.add("hidden");
 }
-
-
-function addMember(){
-
-let n=document.getElementById('mname').value.trim();
-let p=document.getElementById('mphone').value.trim();
-let t=document.getElementById('mtype').value;
-
-if(!n)return alert('Magaca geli');
-
-let id='GW-'+String(members.length+1).padStart(5,'0');
-
-members.push({
-id,
-name:n,
-phone:p,
-type:t
-});
-
-localStorage.setItem(
-'gw_members',
-JSON.stringify(members)
-);
-
-document.getElementById('mname').value='';
-document.getElementById('mphone').value='';
-
-render();
-
-alert('Xubinta si guul leh ayaa loo diiwaangeliyey.');
-
-}
-
-
-function addPayment(){
-
-let id=document.getElementById('payer').value;
-let a=Number(document.getElementById('amount').value);
-let m=document.getElementById('month').value;
-let method=document.getElementById('method').value;
-let paymentNumber=document.getElementById('paymentNumber').value.trim();
-
-if(!id || !a || !paymentNumber){
-
-return alert(
-'Fadlan buuxi xubinta, lacagta iyo number-ka lacagta.'
-);
-
-}
-
-let x=members.find(v=>v.id===id);
-
-payments.push({
-
-id,
-name:x.name,
-amount:a,
-month:m,
-method,
-paymentNumber,
-date:new Date().toLocaleDateString('en-GB')
 
 });
 
-localStorage.setItem(
-'gw_payments',
-JSON.stringify(payments)
-);
 
-document.getElementById('paymentNumber').value='';
+const selected =
+document.getElementById(id);
+
+if(selected){
+selected.classList.remove("hidden");
+}
 
 render();
-
-alert('Lacagta si guul leh ayaa loo diiwaangeliyey.');
 
 }
 
 
-function addProject(){
 
-let name=document.getElementById('pname').value.trim();
-let desc=document.getElementById('pdesc').value.trim();
-let budget=Number(document.getElementById('pbudget').value)||0;
-let status=document.getElementById('pstatus').value;
+/* =========================================
+   SUPABASE GET
+========================================= */
+
+async function getData(table){
+
+try{
+
+const response = await fetch(
+
+SUPABASE_URL+
+"/rest/v1/"+
+table+
+"?select=*",
+
+{
+method:"GET",
+headers:headers
+}
+
+);
+
+
+if(!response.ok){
+
+console.error(
+table,
+await response.text()
+);
+
+return [];
+
+}
+
+
+return await response.json();
+
+
+}catch(error){
+
+console.error(error);
+
+return [];
+
+}
+
+}
+
+
+
+/* =========================================
+   ADD MEMBER
+========================================= */
+
+async function addMember(){
+
+const name =
+document.getElementById("mname")
+.value.trim();
+
+const phone =
+document.getElementById("mphone")
+.value.trim();
+
+const type =
+document.getElementById("mtype")
+.value;
+
 
 if(!name){
 
-return alert('Magaca mashruuca geli.');
+alert("Magaca geli.");
+
+return;
 
 }
 
-projects.push({
-name,
-desc,
-budget,
-status
-});
 
-localStorage.setItem(
-'gw_projects',
-JSON.stringify(projects)
+try{
+
+const response = await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Members",
+
+{
+
+method:"POST",
+
+headers:headers,
+
+body:JSON.stringify({
+
+Name:name,
+
+Phone:phone,
+
+Type:type
+
+})
+
+}
+
 );
 
-document.getElementById('pname').value='';
-document.getElementById('pdesc').value='';
-document.getElementById('pbudget').value='';
+
+if(!response.ok){
+
+const error =
+await response.text();
+
+console.error(error);
+
+alert(
+"Xubinta lama darin.\n\n"+
+"Waxaa laga yaabaa in INSERT policy aan weli la samayn."
+);
+
+return;
+
+}
+
+
+document.getElementById("mname").value="";
+
+document.getElementById("mphone").value="";
+
+
+alert(
+"Xubinta si guul leh ayaa loo diiwaangeliyey. ✅"
+);
+
 
 render();
 
-alert('Mashruuca waa lagu daray.');
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Internet ama Supabase connection ayaa cilad leh."
+);
+
+}
 
 }
 
 
-function render(){
+
+/* =========================================
+   ADD PAYMENT
+========================================= */
+
+async function addPayment(){
+
+const memberName =
+document.getElementById("payer").value;
+
+const amount =
+Number(
+document.getElementById("amount").value
+);
+
+const method =
+document.getElementById("method").value;
+
+const paymentNumber =
+document.getElementById("paymentNumber")
+.value.trim();
+
+const month =
+document.getElementById("month").value;
+
+
+if(
+!memberName ||
+!amount ||
+!paymentNumber
+){
+
+alert(
+"Fadlan buuxi xubinta, lacagta iyo number-ka lacagta."
+);
+
+return;
+
+}
+
+
+try{
+
+const response = await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Payment",
+
+{
+
+method:"POST",
+
+headers:headers,
+
+body:JSON.stringify({
+
+Payment_Number:paymentNumber,
+
+Amount:amount,
+
+Method:method,
+
+Member_Name:memberName,
+
+Month:month
+
+})
+
+}
+
+);
+
+
+if(!response.ok){
+
+const error =
+await response.text();
+
+console.error(error);
+
+alert(
+"Lacagta lama diiwaangelin.\n\n"+
+"Waxaa laga yaabaa in INSERT policy aan weli la samayn."
+);
+
+return;
+
+}
+
+
+document.getElementById(
+"paymentNumber"
+).value="";
+
+
+alert(
+"Lacagta si guul leh ayaa loo diiwaangeliyey. ✅"
+);
+
+
+render();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Internet ama Supabase connection ayaa cilad leh."
+);
+
+}
+
+}
+
+
+
+/* =========================================
+   ADD PROJECT
+========================================= */
+
+async function addProject(){
+
+const name =
+document.getElementById("pname")
+.value.trim();
+
+const description =
+document.getElementById("pdesc")
+.value.trim();
+
+const budget =
+Number(
+document.getElementById("pbudget").value
+)||0;
+
+const status =
+document.getElementById("pstatus")
+.value;
+
+
+if(!name){
+
+alert(
+"Magaca mashruuca geli."
+);
+
+return;
+
+}
+
+
+try{
+
+const response = await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Project",
+
+{
+
+method:"POST",
+
+headers:headers,
+
+body:JSON.stringify({
+
+Name:name,
+
+Description:description,
+
+Budget:budget,
+
+Status:status
+
+})
+
+}
+
+);
+
+
+if(!response.ok){
+
+const error =
+await response.text();
+
+console.error(error);
+
+alert(
+"Mashruuca lama darin.\n\n"+
+"Waxaa laga yaabaa in INSERT policy aan weli la samayn."
+);
+
+return;
+
+}
+
+
+document.getElementById("pname").value="";
+
+document.getElementById("pdesc").value="";
+
+document.getElementById("pbudget").value="";
+
+
+alert(
+"Mashruuca si guul leh ayaa loo daray. ✅"
+);
+
+
+render();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Internet ama Supabase connection ayaa cilad leh."
+);
+
+}
+
+}
+
+
+
+/* =========================================
+   RENDER
+========================================= */
+
+async function render(){
+
+const members =
+await getData("Members");
+
+const payments =
+await getData("Payment");
+
+const projects =
+await getData("Project");
+
 
 /* Dashboard */
 
-document.getElementById('membersCount').textContent=
+const membersCount =
+document.getElementById(
+"membersCount"
+);
+
+if(membersCount){
+
+membersCount.textContent =
 members.length;
 
-document.getElementById('paidCount').textContent=
+}
+
+
+const paidCount =
+document.getElementById(
+"paidCount"
+);
+
+if(paidCount){
+
+paidCount.textContent =
 payments.length;
 
-document.getElementById('totalPaid').textContent=
-'$'+payments.reduce((s,x)=>s+x.amount,0);
+}
 
-document.getElementById('projectsCount').textContent=
+
+const totalPaid =
+document.getElementById(
+"totalPaid"
+);
+
+
+if(totalPaid){
+
+const total =
+payments.reduce(
+
+(sum,x)=>
+sum+
+Number(x.Amount||0),
+
+0
+
+);
+
+totalPaid.textContent =
+"$"+total;
+
+}
+
+
+const projectsCount =
+document.getElementById(
+"projectsCount"
+);
+
+if(projectsCount){
+
+projectsCount.textContent =
 projects.length;
 
+}
 
-/* Members */
 
-document.getElementById('memberTable').innerHTML=
 
+/* =========================================
+   MEMBERS TABLE
+========================================= */
+
+const memberTable =
+document.getElementById(
+"memberTable"
+);
+
+
+if(memberTable){
+
+memberTable.innerHTML =
 members.map(x=>`
 
 <tr>
-<td>${x.id}</td>
-<td>${x.name}</td>
-<td>${x.phone}</td>
+
 <td>
-<span class="badge">${x.type}</span>
+${x.id}
 </td>
+
+<td>
+${x.Name||""}
+</td>
+
+<td>
+${x.Phone||""}
+</td>
+
+<td>
+
+<span class="badge">
+${x.Type||""}
+</span>
+
+</td>
+
 </tr>
 
-`).join('');
+`).join("");
+
+}
 
 
-/* Payment member list */
 
-document.getElementById('payer').innerHTML=
+/* =========================================
+   PAYMENT MEMBER LIST
+========================================= */
 
+const payer =
+document.getElementById(
+"payer"
+);
+
+
+if(payer){
+
+payer.innerHTML =
 members.map(x=>`
 
-<option value="${x.id}">
-${x.id} — ${x.name}
+<option value="${x.Name||""}">
+
+${x.Name||""}
+
 </option>
 
-`).join('');
+`).join("");
+
+}
 
 
-/* Payments */
 
-document.getElementById('paymentTable').innerHTML=
+/* =========================================
+   PAYMENT TABLE
+========================================= */
 
+const paymentTable =
+document.getElementById(
+"paymentTable"
+);
+
+
+if(paymentTable){
+
+paymentTable.innerHTML =
 payments.map(x=>`
 
 <tr>
-<td>${x.id}</td>
-<td>${x.name}</td>
-<td>${x.month}</td>
-<td>$${x.amount}</td>
+
 <td>
-<span class="badge">${x.method}</span>
+${x.id}
 </td>
-<td>${x.paymentNumber}</td>
+
 <td>
-<span class="badge">Paid</span>
+${x.Member_Name||""}
 </td>
+
+<td>
+${x.Month||""}
+</td>
+
+<td>
+$${x.Amount||0}
+</td>
+
+<td>
+
+<span class="badge">
+${x.Method||""}
+</span>
+
+</td>
+
+<td>
+${x.Payment_Number||""}
+</td>
+
+<td>
+
+<span class="badge">
+Paid
+</span>
+
+</td>
+
 </tr>
 
-`).join('');
+`).join("");
+
+}
 
 
-/* Projects */
 
-document.getElementById('projectList').innerHTML=
+/* =========================================
+   PROJECTS
+========================================= */
 
-projects.map((x,i)=>`
+const projectList =
+document.getElementById(
+"projectList"
+);
+
+
+if(projectList){
+
+projectList.innerHTML =
+projects.map(x=>`
 
 <div class="card project">
 
-<h3>🏗️ ${x.name}</h3>
-
-<p>${x.desc}</p>
+<h3>
+🏗️ ${x.Name||""}
+</h3>
 
 <p>
-<strong>Miisaaniyad:</strong>
-$${x.budget}
+${x.Description||""}
 </p>
 
 <p>
-<strong>Xaalad:</strong>
-<span class="badge">${x.status}</span>
+
+<strong>
+Miisaaniyad:
+</strong>
+
+$${x.Budget||0}
+
+</p>
+
+<p>
+
+<strong>
+Xaalad:
+</strong>
+
+<span class="badge">
+${x.Status||""}
+</span>
+
 </p>
 
 </div>
 
-`).join('');
+`).join("");
 
 }
+
+}
+
+
+
+/* =========================================
+   START
+========================================= */
 
 </script>
 
 </body>
-</html>
+  </html>
