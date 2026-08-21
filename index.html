@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="so">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guul-Wadaag Management System</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7f5;color:#17221d}
+header{background:#075b3a;color:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:800;font-size:24px}
+nav button{background:transparent;margin-left:7px}.wrap{max-width:1200px;margin:auto;padding:28px 5%}
+button{border:0;border-radius:8px;padding:11px 16px;background:#075b3a;color:#fff;font-weight:bold;cursor:pointer}
+.card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 3px 15px #00000010;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}.num{font-size:30px;font-weight:800;color:#075b3a}
+input,select{width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ccd6d0;border-radius:8px}
+table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;border-bottom:1px solid #e5e9e7}th{background:#edf4ef}
+.badge{padding:5px 9px;border-radius:20px;background:#dff2e7;color:#075b3a;font-size:12px;font-weight:bold}
+.hidden{display:none}.login{max-width:430px;margin:70px auto}.qr{font-size:90px;text-align:center;background:#f1f4f2;padding:15px}
+@media(max-width:700px){table{font-size:13px}th,td{padding:8px}.logo{font-size:19px}}
+</style>
+</head>
+<body>
+<header><div class="logo">GUUL-WADAAG</div><nav><button onclick="show('dashboard')">Dashboard</button><button onclick="show('members')">Xubnaha</button><button onclick="show('payments')">Lacag-bixin</button><button onclick="logout()">Ka bax</button></nav></header>
+
+<div id="login" class="wrap">
+<div class="card login"><h2>🔐 Admin Login</h2><p>Gelitaanka maamulka Guul-Wadaag</p>
+<label>Username</label><input id="user" value="admin">
+<label>Password</label><input id="pass" type="password" value="1234">
+<button onclick="login()">Gal Dashboard</button><p id="err" style="color:#b42318"></p></div>
+</div>
+
+<main id="app" class="wrap hidden">
+<section id="dashboard">
+<h1>Dashboard-ka Guul-Wadaag</h1>
+<div class="grid">
+<div class="card"><div class="num" id="membersCount">0</div><p>Xubnaha</p></div>
+<div class="card"><div class="num" id="paidCount">0</div><p>Bixiyey bishan</p></div>
+<div class="card"><div class="num" id="totalPaid">$0</div><p>Lacagta la ururiyey</p></div>
+<div class="card"><div class="num">5</div><p>Mashaariicda</p></div>
+</div>
+<div class="card"><h2>Warbixin</h2><p>Nidaamkan prototype-ka ah wuxuu kaydinayaa xogta browser-ka qalabkaaga. Nooca production-ka waxaa lagu xiriirin karaa database iyo payment gateway.</p></div>
+</section>
+
+<section id="members" class="hidden">
+<h1>Diiwaanka Xubnaha</h1>
+<div class="card"><h3>Ku dar Xubin</h3>
+<input id="mname" placeholder="Magaca oo buuxa"><input id="mphone" placeholder="Telefoon">
+<select id="mtype"><option>Xubin Caadi ah</option><option>Xubin Firfircoon</option><option>Xubin Taageere</option></select>
+<button onclick="addMember()">+ Diiwaangeli</button></div>
+<div class="card"><table><thead><tr><th>ID</th><th>Magaca</th><th>Telefoon</th><th>Nooca</th><th>QR</th></tr></thead><tbody id="memberTable"></tbody></table></div>
+</section>
+
+<section id="payments" class="hidden">
+<h1>Lacag-bixinta</h1>
+<div class="card"><h3>Diwaangeli lacag</h3>
+<select id="payer"></select><input id="amount" type="number" value="3" placeholder="Lacagta">
+<input id="month" value="August 2026"><button onclick="addPayment()">Diiwaangeli Lacagta</button></div>
+<div class="card"><table><thead><tr><th>Member ID</th><th>Magaca</th><th>Bisha</th><th>Lacagta</th><th>Xaalad</th></tr></thead><tbody id="paymentTable"></tbody></table></div>
+</section>
+</main>
+
+<script>
+let members=JSON.parse(localStorage.getItem('gw_members')||'[]');
+let payments=JSON.parse(localStorage.getItem('gw_payments')||'[]');
+function login(){if(document.getElementById('user').value==='admin'&&document.getElementById('pass').value==='1234'){document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');render()}else document.getElementById('err').textContent='Username ama password waa khalad.'}
+function logout(){location.reload()}
+function show(id){['dashboard','members','payments'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');render()}
+function addMember(){let n=document.getElementById('mname').value.trim(),p=document.getElementById('mphone').value.trim(),t=document.getElementById('mtype').value;if(!n)return alert('Magaca geli');let id='GW-'+String(members.length+1).padStart(5,'0');members.push({id,name:n,phone:p,type:t});localStorage.setItem('gw_members',JSON.stringify(members));document.getElementById('mname').value='';document.getElementById('mphone').value='';render()}
+function addPayment(){let id=document.getElementById('payer').value,a=Number(document.getElementById('amount').value),m=document.getElementById('month').value;if(!id||!a)return alert('Xogta lacag-bixinta buuxi');let x=members.find(v=>v.id===id);payments.push({id,name:x.name,amount:a,month:m});localStorage.setItem('gw_payments',JSON.stringify(payments));render()}
+function render(){document.getElementById('membersCount').textContent=members.length;document.getElementById('paidCount').textContent=payments.length;document.getElementById('totalPaid').textContent='$'+payments.reduce((s,x)=>s+x.amount,0);
+document.getElementById('memberTable').innerHTML=members.map(x=>`<tr><td>${x.id}</td><td>${x.name}</td><td>${x.phone}</td><td><span class="badge">${x.type}</span></td><td><button onclick="alert('QR Code: ${x.id}')">▦</button></td></tr>`).join('');
+document.getElementById('payer').innerHTML=members.map(x=>`<option value="${x.id}">${x.id} — ${x.name}</option>`).join('');
+document.getElementById('paymentTable').innerHTML=payments.map(x=>`<tr><td>${x.id}</td><td>${x.name}</td><td>${x.month}</td><td>$${x.amount}</td><td><span class="badge">Paid</span></td></tr>`).join('')}
+</script>
+</body></html>
