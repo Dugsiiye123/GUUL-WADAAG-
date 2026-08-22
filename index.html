@@ -70,16 +70,13 @@ box-shadow:0 3px 15px #00000010;
 margin-bottom:18px
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-gap:18px
+.hidden{
+display:none
 }
 
-.num{
-font-size:30px;
-font-weight:800;
-color:#075b3a
+.login{
+max-width:430px;
+margin:70px auto
 }
 
 input,
@@ -89,7 +86,8 @@ width:100%;
 padding:12px;
 margin:6px 0 14px;
 border:1px solid #ccd6d0;
-border-radius:8px
+border-radius:8px;
+font-size:14px
 }
 
 textarea{
@@ -121,23 +119,6 @@ font-size:12px;
 font-weight:bold
 }
 
-.hidden{
-display:none
-}
-
-.login{
-max-width:430px;
-margin:70px auto
-}
-
-.project{
-border-left:5px solid #075b3a
-}
-
-.project h3{
-margin-top:0
-}
-
 .action{
 display:flex;
 gap:6px;
@@ -156,23 +137,208 @@ background:#dc2626
 background:#6b7280
 }
 
-.error{
-padding:12px;
-border-radius:8px;
-background:#f8d7da;
-color:#842029;
+
+/* =========================================
+   PROFESSIONAL DASHBOARD
+========================================= */
+
+.dashboard-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:25px;
+flex-wrap:wrap
+}
+
+.dashboard-title h1{
+margin:0 0 6px;
+font-size:30px;
+color:#075b3a
+}
+
+.dashboard-title p{
+margin:0;
+color:#66756d
+}
+
+.dashboard-date{
+background:#fff;
+padding:12px 16px;
+border-radius:12px;
+box-shadow:0 3px 15px #00000010;
+font-size:14px;
+font-weight:bold;
+color:#075b3a
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-bottom:25px
+}
+
+.stat-card{
+background:#fff;
+border-radius:16px;
+padding:22px;
+box-shadow:0 4px 18px #0000000d;
+position:relative;
+overflow:hidden
+}
+
+.stat-card:before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+bottom:0;
+width:5px;
+background:#075b3a
+}
+
+.stat-icon{
+font-size:28px;
+margin-bottom:12px
+}
+
+.stat-label{
+color:#66756d;
+font-size:14px;
+margin-bottom:6px
+}
+
+.stat-number{
+font-size:30px;
+font-weight:800;
+color:#17221d
+}
+
+.dashboard-grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px
+}
+
+.dashboard-card{
+background:#fff;
+border-radius:16px;
+padding:22px;
+box-shadow:0 4px 18px #0000000d;
+margin-bottom:20px
+}
+
+.dashboard-card h2{
+margin-top:0;
+color:#075b3a
+}
+
+.chart-box{
+height:260px;
+display:flex;
+align-items:flex-end;
+gap:12px;
+padding:20px 10px 10px;
+border-bottom:1px solid #e5e9e7
+}
+
+.chart-bar{
+flex:1;
+background:#075b3a;
+border-radius:8px 8px 0 0;
+min-height:10px;
+position:relative
+}
+
+.chart-bar span{
+position:absolute;
+bottom:-25px;
+left:50%;
+transform:translateX(-50%);
+font-size:11px;
+color:#66756d
+}
+
+.quick-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.quick-actions button{
+width:100%
+}
+
+.dashboard-status{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:13px 0;
+border-bottom:1px solid #edf0ee
+}
+
+.dashboard-status:last-child{
+border-bottom:0
+}
+
+.status-number{
+font-weight:800;
+color:#075b3a
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-box{
 margin-bottom:15px
 }
 
-.success{
-padding:12px;
-border-radius:8px;
-background:#dff2e7;
-color:#075b3a;
-margin-bottom:15px
+.search-box input{
+margin:0
 }
 
-@media(max-width:700px){
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.dashboard-grid{
+grid-template-columns:1fr
+}
+
+}
+
+@media(max-width:600px){
+
+.stats-grid{
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.stat-card{
+padding:16px
+}
+
+.stat-number{
+font-size:23px
+}
+
+.dashboard-title h1{
+font-size:24px
+}
+
+.dashboard-card{
+padding:16px
+}
 
 table{
 font-size:12px;
@@ -210,6 +376,11 @@ font-size:11px
 
 <body>
 
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
 <header>
 
 <div class="logo">
@@ -243,7 +414,9 @@ Ka bax
 </header>
 
 
-<!-- LOGIN -->
+<!-- =========================================
+     LOGIN
+========================================= -->
 
 <div id="login" class="wrap">
 
@@ -282,93 +455,275 @@ Gal Dashboard
 </div>
 
 
-<!-- APP -->
+<!-- =========================================
+     APP
+========================================= -->
 
 <main id="app" class="wrap hidden">
 
 
-<!-- DASHBOARD -->
+<!-- =========================================
+     PROFESSIONAL DASHBOARD
+========================================= -->
 
 <section id="dashboard">
+
+<div class="dashboard-header">
+
+<div class="dashboard-title">
 
 <h1>
 Dashboard-ka Guul-Wadaag
 </h1>
 
-<div class="grid">
-
-<div class="card">
-
-<div class="num" id="membersCount">
-0
-</div>
-
 <p>
-Xubnaha
+Ku soo dhawoow maamulka Ururka Guul-Wadaag 👋
 </p>
 
 </div>
 
+<div class="dashboard-date">
+📅 <span id="dashboardDate"></span>
+</div>
 
-<div class="card">
+</div>
 
-<div class="num" id="paidCount">
+
+<!-- STATISTICS -->
+
+<div class="stats-grid">
+
+
+<div class="stat-card">
+
+<div class="stat-icon">
+👥
+</div>
+
+<div class="stat-label">
+Wadarta Xubnaha
+</div>
+
+<div class="stat-number" id="membersCount">
 0
 </div>
 
-<p>
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon">
+💳
+</div>
+
+<div class="stat-label">
 Lacag-bixinta
-</p>
+</div>
+
+<div class="stat-number" id="paidCount">
+0
+</div>
 
 </div>
 
 
-<div class="card">
+<div class="stat-card">
 
-<div class="num" id="totalPaid">
+<div class="stat-icon">
+💰
+</div>
+
+<div class="stat-label">
+Lacagta La Ururiyey
+</div>
+
+<div class="stat-number" id="totalPaid">
 $0
 </div>
 
-<p>
-Lacagta la ururiyey
-</p>
-
 </div>
 
 
-<div class="card">
+<div class="stat-card">
 
-<div class="num" id="projectsCount">
+<div class="stat-icon">
+🏗️
+</div>
+
+<div class="stat-label">
+Mashaariicda
+</div>
+
+<div class="stat-number" id="projectsCount">
 0
 </div>
 
-<p>
-Mashaariicda
-</p>
-
 </div>
 
 </div>
 
 
-<div class="card">
+<!-- MAIN DASHBOARD -->
+
+<div class="dashboard-grid">
+
+
+<!-- CHART -->
+
+<div class="dashboard-card">
 
 <h2>
-Warbixin
+📊 Guudmarka Lacag-bixinta
 </h2>
 
 <p>
-Nidaamka Guul-Wadaag wuxuu maamulaa xubnaha,
-lacag-bixinta ZAAD iyo eDahab,
-iyo mashaariicda ururka.
+Lacagaha ku jira nidaamka Guul-Wadaag
 </p>
+
+<div class="chart-box">
+
+<div class="chart-bar" style="height:20%">
+<span>Jan</span>
+</div>
+
+<div class="chart-bar" style="height:35%">
+<span>Feb</span>
+</div>
+
+<div class="chart-bar" style="height:45%">
+<span>Mar</span>
+</div>
+
+<div class="chart-bar" style="height:55%">
+<span>Apr</span>
+</div>
+
+<div class="chart-bar" style="height:70%">
+<span>May</span>
+</div>
+
+<div class="chart-bar" style="height:85%">
+<span>Jun</span>
+</div>
+
+<div class="chart-bar" style="height:100%">
+<span>Aug</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUICK ACTIONS -->
+
+<div class="dashboard-card">
+
+<h2>
+⚡ Hawlo Degdeg ah
+</h2>
+
+<div class="quick-actions">
+
+<button onclick="show('members')">
+➕ Xubin
+</button>
+
+<button onclick="show('payments')">
+💳 Lacag
+</button>
+
+<button onclick="show('projects')">
+🏗️ Mashruuc
+</button>
+
+<button onclick="show('members')">
+👥 Xubnaha
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div class="dashboard-card">
+
+<h2>
+📌 Xaaladda Ururka
+</h2>
+
+<div class="dashboard-status">
+
+<span>
+👥 Xubnaha diiwaangashan
+</span>
+
+<span
+class="status-number"
+id="dashboardMembers">
+0
+</span>
+
+</div>
+
+
+<div class="dashboard-status">
+
+<span>
+💳 Lacag-bixin la diiwaangeliyey
+</span>
+
+<span
+class="status-number"
+id="dashboardPayments">
+0
+</span>
+
+</div>
+
+
+<div class="dashboard-status">
+
+<span>
+🏗️ Mashaariicda ururka
+</span>
+
+<span
+class="status-number"
+id="dashboardProjects">
+0
+</span>
+
+</div>
+
+
+<div class="dashboard-status">
+
+<span>
+💰 Wadarta lacagta
+</span>
+
+<span
+class="status-number"
+id="dashboardMoney">
+$0
+</span>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- MEMBERS -->
+<!-- =========================================
+     MEMBERS
+========================================= -->
 
 <section id="members" class="hidden">
 
@@ -409,7 +764,10 @@ Xubin Taageere
 
 </select>
 
-<button id="memberSaveBtn" onclick="addMember()">
+<button
+id="memberSaveBtn"
+onclick="addMember()"
+>
 + Diiwaangeli
 </button>
 
@@ -425,6 +783,17 @@ Jooji
 
 
 <div class="card">
+
+<div class="search-box">
+
+<input
+id="memberSearch"
+placeholder="🔎 Raadi magaca ama telefoonka..."
+oninput="renderMembers()"
+>
+
+</div>
+
 
 <table>
 
@@ -449,7 +818,9 @@ Jooji
 </section>
 
 
-<!-- PAYMENTS -->
+<!-- =========================================
+     PAYMENTS
+========================================= -->
 
 <section id="payments" class="hidden">
 
@@ -520,7 +891,10 @@ value="August 2026"
 >
 
 
-<button id="paymentSaveBtn" onclick="addPayment()">
+<button
+id="paymentSaveBtn"
+onclick="addPayment()"
+>
 💳 Diiwaangeli Lacagta
 </button>
 
@@ -536,6 +910,17 @@ Jooji
 
 
 <div class="card">
+
+<div class="search-box">
+
+<input
+id="paymentSearch"
+placeholder="🔎 Raadi lacag-bixinta..."
+oninput="renderPayments()"
+>
+
+</div>
+
 
 <table>
 
@@ -563,7 +948,9 @@ Jooji
 </section>
 
 
-<!-- PROJECTS -->
+<!-- =========================================
+     PROJECTS
+========================================= -->
 
 <section id="projects" class="hidden">
 
@@ -610,7 +997,10 @@ Dhammaystiran
 
 </select>
 
-<button id="projectSaveBtn" onclick="addProject()">
+<button
+id="projectSaveBtn"
+onclick="addProject()"
+>
 + Ku dar Mashruuc
 </button>
 
@@ -625,7 +1015,21 @@ Jooji
 </div>
 
 
+<div class="card">
+
+<div class="search-box">
+
+<input
+id="projectSearch"
+placeholder="🔎 Raadi mashruuca..."
+oninput="renderProjects()"
+>
+
+</div>
+
 <div id="projectList"></div>
+
+</div>
 
 </section>
 
@@ -662,13 +1066,15 @@ let headers = {
 
 
 /* =========================================
-   EDIT STATES
+   DATA
 ========================================= */
 
+let allMembers = [];
+let allPayments = [];
+let allProjects = [];
+
 let editingMemberId = null;
-
 let editingPaymentId = null;
-
 let editingProjectId = null;
 
 
@@ -755,7 +1161,6 @@ document
 .getElementById("login")
 .classList.add("hidden");
 
-
 document
 .getElementById("app")
 .classList.remove("hidden");
@@ -830,7 +1235,7 @@ render();
 
 
 /* =========================================
-   SUPABASE GET
+   GET DATA
 ========================================= */
 
 async function getData(table){
@@ -903,9 +1308,7 @@ document.getElementById("mtype")
 
 if(!name){
 
-alert(
-"Magaca geli."
-);
+alert("Magaca geli.");
 
 return;
 
@@ -915,6 +1318,7 @@ return;
 try{
 
 let response;
+
 
 if(editingMemberId){
 
@@ -982,40 +1386,16 @@ console.error(
 await response.text()
 );
 
-alert(
-"Xogta xubinta lama kaydin."
-);
+alert("Xogta xubinta lama kaydin.");
 
 return;
 
 }
 
 
-document.getElementById("mname")
-.value="";
+cancelMemberEdit();
 
-document.getElementById("mphone")
-.value="";
-
-
-editingMemberId = null;
-
-document.getElementById("memberFormTitle")
-.textContent =
-"➕ Ku dar Xubin";
-
-document.getElementById("memberSaveBtn")
-.textContent =
-"+ Diiwaangeli";
-
-document.getElementById("memberCancelBtn")
-.classList.add("hidden");
-
-
-alert(
-"Xogta xubinta si guul leh ayaa loo kaydiyey. ✅"
-);
-
+alert("Xogta xubinta waa la kaydiyey. ✅");
 
 await render();
 
@@ -1024,9 +1404,7 @@ await render();
 
 console.error(error);
 
-alert(
-"Waxaa dhacay cilad Internet/Supabase."
-);
+alert("Cilad ayaa dhacday.");
 
 }
 
@@ -1081,14 +1459,8 @@ async function deleteMember(id){
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso xubintan?"
-)){
+)) return;
 
-return;
-
-}
-
-
-try{
 
 const response =
 await fetch(
@@ -1100,7 +1472,6 @@ id,
 {
 
 method:"DELETE",
-
 headers:headers
 
 }
@@ -1110,53 +1481,32 @@ headers:headers
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
-alert(
-"Xubinta lama tirtiri karin."
-);
+alert("Xubinta lama tirtiri karin.");
 
 return;
 
 }
 
 
-alert(
-"Xubinta waa la tirtiray. 🗑️"
-);
-
+alert("Xubinta waa la tirtiray. 🗑️");
 
 await render();
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Waxaa dhacay cilad Internet/Supabase."
-);
-
-}
 
 }
 
 
 /* =========================================
-   CANCEL MEMBER EDIT
+   CANCEL MEMBER
 ========================================= */
 
 function cancelMemberEdit(){
 
 editingMemberId = null;
 
-document.getElementById("mname")
-.value="";
-
-document.getElementById("mphone")
-.value="";
+document.getElementById("mname").value="";
+document.getElementById("mphone").value="";
 
 document.getElementById("memberFormTitle")
 .textContent =
@@ -1179,36 +1529,26 @@ document.getElementById("memberCancelBtn")
 async function addPayment(){
 
 const memberName =
-document.getElementById("payer")
-.value;
+document.getElementById("payer").value;
 
 const amount =
-Number(
-document.getElementById("amount")
-.value
-);
+Number(document.getElementById("amount").value);
 
 const method =
-document.getElementById("method")
-.value;
+document.getElementById("method").value;
 
 const paymentNumber =
 document.getElementById("paymentNumber")
 .value.trim();
 
 const month =
-document.getElementById("month")
-.value;
+document.getElementById("month").value;
 
 
-if(
-!memberName ||
-!amount ||
-!paymentNumber
-){
+if(!memberName || !amount || !paymentNumber){
 
 alert(
-"Fadlan buuxi xubinta, lacagta iyo number-ka lacagta."
+"Fadlan buuxi xubinta, lacagta iyo number-ka."
 );
 
 return;
@@ -1219,6 +1559,7 @@ return;
 try{
 
 let response;
+
 
 if(editingPaymentId){
 
@@ -1232,25 +1573,15 @@ editingPaymentId,
 {
 
 method:"PATCH",
-
 headers:headers,
 
 body:JSON.stringify({
 
-Payment_Number:
-paymentNumber,
-
-Amount:
-amount,
-
-Method:
-method,
-
-Member_Name:
-memberName,
-
-Month:
-month
+Payment_Number:paymentNumber,
+Amount:amount,
+Method:method,
+Member_Name:memberName,
+Month:month
 
 })
 
@@ -1269,25 +1600,15 @@ SUPABASE_URL+
 {
 
 method:"POST",
-
 headers:headers,
 
 body:JSON.stringify({
 
-Payment_Number:
-paymentNumber,
-
-Amount:
-amount,
-
-Method:
-method,
-
-Member_Name:
-memberName,
-
-Month:
-month
+Payment_Number:paymentNumber,
+Amount:amount,
+Method:method,
+Member_Name:memberName,
+Month:month
 
 })
 
@@ -1300,43 +1621,18 @@ month
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
-alert(
-"Lacagta lama kaydin."
-);
+alert("Lacagta lama kaydin.");
 
 return;
 
 }
 
 
-document.getElementById(
-"paymentNumber"
-)
-.value="";
+cancelPaymentEdit();
 
-
-editingPaymentId = null;
-
-document.getElementById("paymentFormTitle")
-.textContent =
-"Diiwaangeli Lacag";
-
-document.getElementById("paymentSaveBtn")
-.textContent =
-"💳 Diiwaangeli Lacagta";
-
-document.getElementById("paymentCancelBtn")
-.classList.add("hidden");
-
-
-alert(
-"Lacagta si guul leh ayaa loo kaydiyey. ✅"
-);
-
+alert("Lacagta waa la kaydiyey. ✅");
 
 await render();
 
@@ -1345,9 +1641,7 @@ await render();
 
 console.error(error);
 
-alert(
-"Waxaa dhacay cilad Internet/Supabase."
-);
+alert("Cilad ayaa dhacday.");
 
 }
 
@@ -1410,14 +1704,8 @@ async function deletePayment(id){
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso lacag-bixintan?"
-)){
+)) return;
 
-return;
-
-}
-
-
-try{
 
 const response =
 await fetch(
@@ -1429,7 +1717,6 @@ id,
 {
 
 method:"DELETE",
-
 headers:headers
 
 }
@@ -1439,51 +1726,32 @@ headers:headers
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
-alert(
-"Lacagta lama tirtiri karin."
-);
+alert("Lacagta lama tirtiri karin.");
 
 return;
 
 }
 
 
-alert(
-"Lacag-bixinta waa la tirtiray. 🗑️"
-);
-
+alert("Lacag-bixinta waa la tirtiray. 🗑️");
 
 await render();
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Waxaa dhacay cilad Internet/Supabase."
-);
-
-}
 
 }
 
 
 /* =========================================
-   CANCEL PAYMENT EDIT
+   CANCEL PAYMENT
 ========================================= */
 
 function cancelPaymentEdit(){
 
 editingPaymentId = null;
 
-document.getElementById(
-"paymentNumber"
-).value="";
+document.getElementById("paymentNumber")
+.value="";
 
 document.getElementById("paymentFormTitle")
 .textContent =
@@ -1514,21 +1782,15 @@ document.getElementById("pdesc")
 .value.trim();
 
 const budget =
-Number(
-document.getElementById("pbudget")
-.value
-)||0;
+Number(document.getElementById("pbudget").value)||0;
 
 const status =
-document.getElementById("pstatus")
-.value;
+document.getElementById("pstatus").value;
 
 
 if(!name){
 
-alert(
-"Magaca mashruuca geli."
-);
+alert("Magaca mashruuca geli.");
 
 return;
 
@@ -1538,6 +1800,7 @@ return;
 try{
 
 let response;
+
 
 if(editingProjectId){
 
@@ -1551,17 +1814,13 @@ editingProjectId,
 {
 
 method:"PATCH",
-
 headers:headers,
 
 body:JSON.stringify({
 
 Name:name,
-
 Description:description,
-
 Budget:budget,
-
 Status:status
 
 })
@@ -1581,17 +1840,13 @@ SUPABASE_URL+
 {
 
 method:"POST",
-
 headers:headers,
 
 body:JSON.stringify({
 
 Name:name,
-
 Description:description,
-
 Budget:budget,
-
 Status:status
 
 })
@@ -1600,53 +1855,23 @@ Status:status
 
 );
 
-
 }
 
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
-alert(
-"Mashruuca lama kaydin."
-);
+alert("Mashruuca lama kaydin.");
 
 return;
 
 }
 
 
-document.getElementById("pname")
-.value="";
+cancelProjectEdit();
 
-document.getElementById("pdesc")
-.value="";
-
-document.getElementById("pbudget")
-.value="";
-
-
-editingProjectId = null;
-
-document.getElementById("projectFormTitle")
-.textContent =
-"➕ Ku dar Mashruuc Cusub";
-
-document.getElementById("projectSaveBtn")
-.textContent =
-"+ Ku dar Mashruuc";
-
-document.getElementById("projectCancelBtn")
-.classList.add("hidden");
-
-
-alert(
-"Mashruuca si guul leh ayaa loo kaydiyey. ✅"
-);
-
+alert("Mashruuca waa la kaydiyey. ✅");
 
 await render();
 
@@ -1655,9 +1880,7 @@ await render();
 
 console.error(error);
 
-alert(
-"Waxaa dhacay cilad Internet/Supabase."
-);
+alert("Cilad ayaa dhacday.");
 
 }
 
@@ -1716,14 +1939,8 @@ async function deleteProject(id){
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso mashruucan?"
-)){
+)) return;
 
-return;
-
-}
-
-
-try{
 
 const response =
 await fetch(
@@ -1735,7 +1952,6 @@ id,
 {
 
 method:"DELETE",
-
 headers:headers
 
 }
@@ -1745,56 +1961,33 @@ headers:headers
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
-alert(
-"Mashruuca lama tirtiri karin."
-);
+alert("Mashruuca lama tirtiri karin.");
 
 return;
 
 }
 
 
-alert(
-"Mashruuca waa la tirtiray. 🗑️"
-);
-
+alert("Mashruuca waa la tirtiray. 🗑️");
 
 await render();
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Waxaa dhacay cilad Internet/Supabase."
-);
-
-}
 
 }
 
 
 /* =========================================
-   CANCEL PROJECT EDIT
+   CANCEL PROJECT
 ========================================= */
 
 function cancelProjectEdit(){
 
 editingProjectId = null;
 
-document.getElementById("pname")
-.value="";
-
-document.getElementById("pdesc")
-.value="";
-
-document.getElementById("pbudget")
-.value="";
+document.getElementById("pname").value="";
+document.getElementById("pdesc").value="";
+document.getElementById("pbudget").value="";
 
 document.getElementById("projectFormTitle")
 .textContent =
@@ -1811,119 +2004,46 @@ document.getElementById("projectCancelBtn")
 
 
 /* =========================================
-   RENDER
+   RENDER MEMBERS
 ========================================= */
 
-async function render(){
+function renderMembers(){
 
-const members =
-await getData("Members");
+const search =
+(document.getElementById("memberSearch")?.value || "")
+.toLowerCase();
 
-const payments =
-await getData("Payment");
+const filtered =
+allMembers.filter(x=>
 
-const projects =
-await getData("Project");
-
-
-/* DASHBOARD */
-
-const membersCount =
-document.getElementById(
-"membersCount"
-);
-
-if(membersCount){
-
-membersCount.textContent =
-members.length;
-
-}
-
-
-const paidCount =
-document.getElementById(
-"paidCount"
-);
-
-if(paidCount){
-
-paidCount.textContent =
-payments.length;
-
-}
-
-
-const totalPaid =
-document.getElementById(
-"totalPaid"
-);
-
-if(totalPaid){
-
-const total =
-payments.reduce(
-
-(sum,x)=>
-sum+
-Number(x.Amount||0),
-
-0
+(String(x.Name||"").toLowerCase().includes(search) ||
+String(x.Phone||"").toLowerCase().includes(search))
 
 );
 
-totalPaid.textContent =
-"$"+total;
 
-}
+const table =
+document.getElementById("memberTable");
 
-
-const projectsCount =
-document.getElementById(
-"projectsCount"
-);
-
-if(projectsCount){
-
-projectsCount.textContent =
-projects.length;
-
-}
+if(!table) return;
 
 
-/* MEMBERS TABLE */
+table.innerHTML =
 
-const memberTable =
-document.getElementById(
-"memberTable"
-);
-
-if(memberTable){
-
-memberTable.innerHTML =
-
-members.map(x=>`
+filtered.map(x=>`
 
 <tr>
 
-<td>
-${x.id||""}
-</td>
+<td>${x.id||""}</td>
+
+<td>${x.Name||""}</td>
+
+<td>${x.Phone||""}</td>
 
 <td>
-${x.Name||""}
-</td>
-
-<td>
-${x.Phone||""}
-</td>
-
-<td>
-
 <span class="badge">
 ${x.Type||""}
 </span>
-
 </td>
 
 <td>
@@ -1955,77 +2075,59 @@ onclick='deleteMember(${x.id})'
 }
 
 
-/* PAYMENT MEMBER LIST */
+/* =========================================
+   RENDER PAYMENTS
+========================================= */
 
-const payer =
-document.getElementById(
-"payer"
+function renderPayments(){
+
+const search =
+(document.getElementById("paymentSearch")?.value || "")
+.toLowerCase();
+
+const filtered =
+allPayments.filter(x=>
+
+String(x.Member_Name||"").toLowerCase().includes(search) ||
+String(x.Month||"").toLowerCase().includes(search) ||
+String(x.Method||"").toLowerCase().includes(search) ||
+String(x.Payment_Number||"").toLowerCase().includes(search)
+
 );
 
-if(payer){
 
-payer.innerHTML =
+const table =
+document.getElementById("paymentTable");
 
-members.map(x=>`
-
-<option value="${x.Name||""}">
-${x.Name||""}
-</option>
-
-`).join("");
-
-}
+if(!table) return;
 
 
-/* PAYMENT TABLE */
+table.innerHTML =
 
-const paymentTable =
-document.getElementById(
-"paymentTable"
-);
-
-if(paymentTable){
-
-paymentTable.innerHTML =
-
-payments.map(x=>`
+filtered.map(x=>`
 
 <tr>
 
-<td>
-${x.id||""}
-</td>
+<td>${x.id||""}</td>
+
+<td>${x.Member_Name||""}</td>
+
+<td>${x.Month||""}</td>
+
+<td>$${x.Amount||0}</td>
 
 <td>
-${x.Member_Name||""}
-</td>
-
-<td>
-${x.Month||""}
-</td>
-
-<td>
-$${x.Amount||0}
-</td>
-
-<td>
-
 <span class="badge">
 ${x.Method||""}
 </span>
-
 </td>
 
-<td>
-${x.Payment_Number||""}
-</td>
+<td>${x.Payment_Number||""}</td>
 
 <td>
-
 <span class="badge">
 Paid
 </span>
-
 </td>
 
 <td>
@@ -2057,20 +2159,37 @@ onclick='deletePayment(${x.id})'
 }
 
 
-/* PROJECTS */
+/* =========================================
+   RENDER PROJECTS
+========================================= */
 
-const projectList =
-document.getElementById(
-"projectList"
+function renderProjects(){
+
+const search =
+(document.getElementById("projectSearch")?.value || "")
+.toLowerCase();
+
+const filtered =
+allProjects.filter(x=>
+
+String(x.Name||"").toLowerCase().includes(search) ||
+String(x.Description||"").toLowerCase().includes(search) ||
+String(x.Status||"").toLowerCase().includes(search)
+
 );
 
-if(projectList){
 
-projectList.innerHTML =
+const list =
+document.getElementById("projectList");
 
-projects.map(x=>`
+if(!list) return;
 
-<div class="card project">
+
+list.innerHTML =
+
+filtered.map(x=>`
+
+<div class="card">
 
 <h3>
 🏗️ ${x.Name||""}
@@ -2125,6 +2244,116 @@ onclick='deleteProject(${x.id})'
 `).join("");
 
 }
+
+
+/* =========================================
+   RENDER EVERYTHING
+========================================= */
+
+async function render(){
+
+allMembers =
+await getData("Members");
+
+allPayments =
+await getData("Payment");
+
+allProjects =
+await getData("Project");
+
+
+/* DASHBOARD */
+
+document.getElementById("membersCount")
+.textContent =
+allMembers.length;
+
+document.getElementById("paidCount")
+.textContent =
+allPayments.length;
+
+const total =
+allPayments.reduce(
+
+(sum,x)=>
+sum + Number(x.Amount||0),
+
+0
+
+);
+
+document.getElementById("totalPaid")
+.textContent =
+"$"+total;
+
+document.getElementById("projectsCount")
+.textContent =
+allProjects.length;
+
+
+/* DATE */
+
+const date =
+document.getElementById("dashboardDate");
+
+if(date){
+
+date.textContent =
+new Date().toLocaleDateString(
+"so-SO",
+{
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+);
+
+}
+
+
+/* STATUS */
+
+document.getElementById("dashboardMembers")
+.textContent =
+allMembers.length;
+
+document.getElementById("dashboardPayments")
+.textContent =
+allPayments.length;
+
+document.getElementById("dashboardProjects")
+.textContent =
+allProjects.length;
+
+document.getElementById("dashboardMoney")
+.textContent =
+"$"+total;
+
+
+/* MEMBER LIST */
+
+const payer =
+document.getElementById("payer");
+
+if(payer){
+
+payer.innerHTML =
+allMembers.map(x=>`
+
+<option value="${x.Name||""}">
+${x.Name||""}
+</option>
+
+`).join("");
+
+}
+
+
+renderMembers();
+
+renderPayments();
+
+renderProjects();
 
 }
 
