@@ -7,12 +7,14 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:#f4f7f5;
 color:#17221d
 }
+
 header{
 background:#075b3a;
 color:#fff;
@@ -23,24 +25,29 @@ align-items:center;
 gap:10px;
 flex-wrap:wrap
 }
+
 .logo{
 font-weight:800;
 font-size:24px
 }
+
 nav{
 display:flex;
 gap:5px;
 flex-wrap:wrap
 }
+
 nav button{
 background:transparent;
 margin:0
 }
+
 .wrap{
 max-width:1200px;
 margin:auto;
 padding:28px 5%
 }
+
 button{
 border:0;
 border-radius:8px;
@@ -50,7 +57,11 @@ color:#fff;
 font-weight:bold;
 cursor:pointer
 }
-button:hover{opacity:.9}
+
+button:hover{
+opacity:.9
+}
+
 .card{
 background:#fff;
 border-radius:14px;
@@ -58,34 +69,49 @@ padding:22px;
 box-shadow:0 3px 15px #00000010;
 margin-bottom:18px
 }
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
 gap:18px
 }
+
 .num{
 font-size:30px;
 font-weight:800;
 color:#075b3a
 }
-input,select,textarea{
+
+input,
+select,
+textarea{
 width:100%;
 padding:12px;
 margin:6px 0 14px;
 border:1px solid #ccd6d0;
 border-radius:8px
 }
-textarea{min-height:90px}
+
+textarea{
+min-height:90px
+}
+
 table{
 width:100%;
 border-collapse:collapse
 }
-th,td{
+
+th,
+td{
 padding:12px;
 text-align:left;
 border-bottom:1px solid #e5e9e7
 }
-th{background:#edf4ef}
+
+th{
+background:#edf4ef
+}
+
 .badge{
 padding:5px 9px;
 border-radius:20px;
@@ -94,15 +120,42 @@ color:#075b3a;
 font-size:12px;
 font-weight:bold
 }
-.hidden{display:none}
+
+.hidden{
+display:none
+}
+
 .login{
 max-width:430px;
 margin:70px auto
 }
+
 .project{
 border-left:5px solid #075b3a
 }
-.project h3{margin-top:0}
+
+.project h3{
+margin-top:0
+}
+
+.action{
+display:flex;
+gap:6px;
+flex-wrap:wrap
+}
+
+.edit-btn{
+background:#2563eb
+}
+
+.delete-btn{
+background:#dc2626
+}
+
+.cancel-btn{
+background:#6b7280
+}
+
 .error{
 padding:12px;
 border-radius:8px;
@@ -110,6 +163,7 @@ background:#f8d7da;
 color:#842029;
 margin-bottom:15px
 }
+
 .success{
 padding:12px;
 border-radius:8px;
@@ -117,22 +171,39 @@ background:#dff2e7;
 color:#075b3a;
 margin-bottom:15px
 }
+
 @media(max-width:700px){
+
 table{
 font-size:12px;
 display:block;
 overflow-x:auto
 }
-th,td{
+
+th,
+td{
 padding:8px;
 white-space:nowrap
 }
-.logo{font-size:19px}
+
+.logo{
+font-size:19px
+}
+
 nav button{
 padding:8px 7px;
 font-size:11px
 }
-.wrap{padding:20px 4%}
+
+.wrap{
+padding:20px 4%
+}
+
+.action button{
+padding:7px 9px;
+font-size:11px
+}
+
 }
 </style>
 </head>
@@ -308,7 +379,7 @@ Diiwaanka Xubnaha
 
 <div class="card">
 
-<h3>
+<h3 id="memberFormTitle">
 ➕ Ku dar Xubin
 </h3>
 
@@ -338,8 +409,16 @@ Xubin Taageere
 
 </select>
 
-<button onclick="addMember()">
+<button id="memberSaveBtn" onclick="addMember()">
 + Diiwaangeli
+</button>
+
+<button
+id="memberCancelBtn"
+class="cancel-btn hidden"
+onclick="cancelMemberEdit()"
+>
+Jooji
 </button>
 
 </div>
@@ -356,6 +435,7 @@ Xubin Taageere
 <th>Magaca</th>
 <th>Telefoon</th>
 <th>Nooca</th>
+<th>Ficil</th>
 </tr>
 
 </thead>
@@ -380,7 +460,7 @@ Xubin Taageere
 
 <div class="card">
 
-<h3>
+<h3 id="paymentFormTitle">
 Diiwaangeli Lacag
 </h3>
 
@@ -440,8 +520,16 @@ value="August 2026"
 >
 
 
-<button onclick="addPayment()">
+<button id="paymentSaveBtn" onclick="addPayment()">
 💳 Diiwaangeli Lacagta
+</button>
+
+<button
+id="paymentCancelBtn"
+class="cancel-btn hidden"
+onclick="cancelPaymentEdit()"
+>
+Jooji
 </button>
 
 </div>
@@ -461,6 +549,7 @@ value="August 2026"
 <th>Habka</th>
 <th>Number</th>
 <th>Xaalad</th>
+<th>Ficil</th>
 </tr>
 
 </thead>
@@ -485,7 +574,7 @@ value="August 2026"
 
 <div class="card">
 
-<h3>
+<h3 id="projectFormTitle">
 ➕ Ku dar Mashruuc Cusub
 </h3>
 
@@ -521,8 +610,16 @@ Dhammaystiran
 
 </select>
 
-<button onclick="addProject()">
+<button id="projectSaveBtn" onclick="addProject()">
 + Ku dar Mashruuc
+</button>
+
+<button
+id="projectCancelBtn"
+class="cancel-btn hidden"
+onclick="cancelProjectEdit()"
+>
+Jooji
 </button>
 
 </div>
@@ -544,14 +641,6 @@ Dhammaystiran
 const SUPABASE_URL =
 "https://zbyrtasojwgrylcnqlhb.supabase.co";
 
-/*
-   HALKAN GALI PUBLISHABLE KEY-GAAGA.
-
-   HA GELIN:
-   sb_secret_...
-
-*/
-
 const SUPABASE_KEY =
 "sb_publishable_D_PSqKecBwiESZwyLTxFiw_JMMTddAN";
 
@@ -570,6 +659,17 @@ let headers = {
 "return=representation"
 
 };
+
+
+/* =========================================
+   EDIT STATES
+========================================= */
+
+let editingMemberId = null;
+
+let editingPaymentId = null;
+
+let editingProjectId = null;
 
 
 /* =========================================
@@ -783,7 +883,7 @@ return [];
 
 
 /* =========================================
-   ADD MEMBER
+   ADD / UPDATE MEMBER
 ========================================= */
 
 async function addMember(){
@@ -814,7 +914,40 @@ return;
 
 try{
 
-const response =
+let response;
+
+if(editingMemberId){
+
+response =
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Members?id=eq."+
+editingMemberId,
+
+{
+
+method:"PATCH",
+
+headers:headers,
+
+body:JSON.stringify({
+
+Name:name,
+
+Phone:phone,
+
+Type:type
+
+})
+
+}
+
+);
+
+}else{
+
+response =
 await fetch(
 
 SUPABASE_URL+
@@ -840,6 +973,8 @@ Type:type
 
 );
 
+}
+
 
 if(!response.ok){
 
@@ -848,7 +983,7 @@ await response.text()
 );
 
 alert(
-"Xubinta lama darin. Hubi INSERT policy-ga Members."
+"Xogta xubinta lama kaydin."
 );
 
 return;
@@ -863,8 +998,22 @@ document.getElementById("mphone")
 .value="";
 
 
+editingMemberId = null;
+
+document.getElementById("memberFormTitle")
+.textContent =
+"➕ Ku dar Xubin";
+
+document.getElementById("memberSaveBtn")
+.textContent =
+"+ Diiwaangeli";
+
+document.getElementById("memberCancelBtn")
+.classList.add("hidden");
+
+
 alert(
-"Xubinta si guul leh ayaa loo diiwaangeliyey. ✅"
+"Xogta xubinta si guul leh ayaa loo kaydiyey. ✅"
 );
 
 
@@ -885,7 +1034,146 @@ alert(
 
 
 /* =========================================
-   ADD PAYMENT
+   EDIT MEMBER
+========================================= */
+
+function editMember(member){
+
+editingMemberId =
+member.id;
+
+document.getElementById("mname")
+.value =
+member.Name || "";
+
+document.getElementById("mphone")
+.value =
+member.Phone || "";
+
+document.getElementById("mtype")
+.value =
+member.Type || "Xubin Caadi ah";
+
+document.getElementById("memberFormTitle")
+.textContent =
+"✏️ Wax ka beddel Xubin";
+
+document.getElementById("memberSaveBtn")
+.textContent =
+"💾 Kaydi Isbeddelka";
+
+document.getElementById("memberCancelBtn")
+.classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================
+   DELETE MEMBER
+========================================= */
+
+async function deleteMember(id){
+
+if(!confirm(
+"Ma hubtaa inaad tirtirayso xubintan?"
+)){
+
+return;
+
+}
+
+
+try{
+
+const response =
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Members?id=eq."+
+id,
+
+{
+
+method:"DELETE",
+
+headers:headers
+
+}
+
+);
+
+
+if(!response.ok){
+
+console.error(
+await response.text()
+);
+
+alert(
+"Xubinta lama tirtiri karin."
+);
+
+return;
+
+}
+
+
+alert(
+"Xubinta waa la tirtiray. 🗑️"
+);
+
+
+await render();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Waxaa dhacay cilad Internet/Supabase."
+);
+
+}
+
+}
+
+
+/* =========================================
+   CANCEL MEMBER EDIT
+========================================= */
+
+function cancelMemberEdit(){
+
+editingMemberId = null;
+
+document.getElementById("mname")
+.value="";
+
+document.getElementById("mphone")
+.value="";
+
+document.getElementById("memberFormTitle")
+.textContent =
+"➕ Ku dar Xubin";
+
+document.getElementById("memberSaveBtn")
+.textContent =
+"+ Diiwaangeli";
+
+document.getElementById("memberCancelBtn")
+.classList.add("hidden");
+
+}
+
+
+/* =========================================
+   ADD / UPDATE PAYMENT
 ========================================= */
 
 async function addPayment(){
@@ -930,7 +1218,49 @@ return;
 
 try{
 
-const response =
+let response;
+
+if(editingPaymentId){
+
+response =
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Payment?id=eq."+
+editingPaymentId,
+
+{
+
+method:"PATCH",
+
+headers:headers,
+
+body:JSON.stringify({
+
+Payment_Number:
+paymentNumber,
+
+Amount:
+amount,
+
+Method:
+method,
+
+Member_Name:
+memberName,
+
+Month:
+month
+
+})
+
+}
+
+);
+
+}else{
+
+response =
 await fetch(
 
 SUPABASE_URL+
@@ -965,6 +1295,8 @@ month
 
 );
 
+}
+
 
 if(!response.ok){
 
@@ -973,7 +1305,7 @@ await response.text()
 );
 
 alert(
-"Lacagta lama diiwaangelin. Hubi INSERT policy-ga Payment."
+"Lacagta lama kaydin."
 );
 
 return;
@@ -987,8 +1319,22 @@ document.getElementById(
 .value="";
 
 
+editingPaymentId = null;
+
+document.getElementById("paymentFormTitle")
+.textContent =
+"Diiwaangeli Lacag";
+
+document.getElementById("paymentSaveBtn")
+.textContent =
+"💳 Diiwaangeli Lacagta";
+
+document.getElementById("paymentCancelBtn")
+.classList.add("hidden");
+
+
 alert(
-"Lacagta si guul leh ayaa loo diiwaangeliyey. ✅"
+"Lacagta si guul leh ayaa loo kaydiyey. ✅"
 );
 
 
@@ -1009,7 +1355,152 @@ alert(
 
 
 /* =========================================
-   ADD PROJECT
+   EDIT PAYMENT
+========================================= */
+
+function editPayment(payment){
+
+editingPaymentId =
+payment.id;
+
+document.getElementById("payer")
+.value =
+payment.Member_Name || "";
+
+document.getElementById("amount")
+.value =
+payment.Amount || 0;
+
+document.getElementById("method")
+.value =
+payment.Method || "ZAAD";
+
+document.getElementById("paymentNumber")
+.value =
+payment.Payment_Number || "";
+
+document.getElementById("month")
+.value =
+payment.Month || "";
+
+document.getElementById("paymentFormTitle")
+.textContent =
+"✏️ Wax ka beddel Lacag-bixin";
+
+document.getElementById("paymentSaveBtn")
+.textContent =
+"💾 Kaydi Isbeddelka";
+
+document.getElementById("paymentCancelBtn")
+.classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================
+   DELETE PAYMENT
+========================================= */
+
+async function deletePayment(id){
+
+if(!confirm(
+"Ma hubtaa inaad tirtirayso lacag-bixintan?"
+)){
+
+return;
+
+}
+
+
+try{
+
+const response =
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Payment?id=eq."+
+id,
+
+{
+
+method:"DELETE",
+
+headers:headers
+
+}
+
+);
+
+
+if(!response.ok){
+
+console.error(
+await response.text()
+);
+
+alert(
+"Lacagta lama tirtiri karin."
+);
+
+return;
+
+}
+
+
+alert(
+"Lacag-bixinta waa la tirtiray. 🗑️"
+);
+
+
+await render();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Waxaa dhacay cilad Internet/Supabase."
+);
+
+}
+
+}
+
+
+/* =========================================
+   CANCEL PAYMENT EDIT
+========================================= */
+
+function cancelPaymentEdit(){
+
+editingPaymentId = null;
+
+document.getElementById(
+"paymentNumber"
+).value="";
+
+document.getElementById("paymentFormTitle")
+.textContent =
+"Diiwaangeli Lacag";
+
+document.getElementById("paymentSaveBtn")
+.textContent =
+"💳 Diiwaangeli Lacagta";
+
+document.getElementById("paymentCancelBtn")
+.classList.add("hidden");
+
+}
+
+
+/* =========================================
+   ADD / UPDATE PROJECT
 ========================================= */
 
 async function addProject(){
@@ -1046,7 +1537,42 @@ return;
 
 try{
 
-const response =
+let response;
+
+if(editingProjectId){
+
+response =
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Project?id=eq."+
+editingProjectId,
+
+{
+
+method:"PATCH",
+
+headers:headers,
+
+body:JSON.stringify({
+
+Name:name,
+
+Description:description,
+
+Budget:budget,
+
+Status:status
+
+})
+
+}
+
+);
+
+}else{
+
+response =
 await fetch(
 
 SUPABASE_URL+
@@ -1075,6 +1601,9 @@ Status:status
 );
 
 
+}
+
+
 if(!response.ok){
 
 console.error(
@@ -1082,7 +1611,7 @@ await response.text()
 );
 
 alert(
-"Mashruuca lama darin. Hubi INSERT policy-ga Project."
+"Mashruuca lama kaydin."
 );
 
 return;
@@ -1100,8 +1629,22 @@ document.getElementById("pbudget")
 .value="";
 
 
+editingProjectId = null;
+
+document.getElementById("projectFormTitle")
+.textContent =
+"➕ Ku dar Mashruuc Cusub";
+
+document.getElementById("projectSaveBtn")
+.textContent =
+"+ Ku dar Mashruuc";
+
+document.getElementById("projectCancelBtn")
+.classList.add("hidden");
+
+
 alert(
-"Mashruuca si guul leh ayaa loo daray. ✅"
+"Mashruuca si guul leh ayaa loo kaydiyey. ✅"
 );
 
 
@@ -1117,6 +1660,152 @@ alert(
 );
 
 }
+
+}
+
+
+/* =========================================
+   EDIT PROJECT
+========================================= */
+
+function editProject(project){
+
+editingProjectId =
+project.id;
+
+document.getElementById("pname")
+.value =
+project.Name || "";
+
+document.getElementById("pdesc")
+.value =
+project.Description || "";
+
+document.getElementById("pbudget")
+.value =
+project.Budget || 0;
+
+document.getElementById("pstatus")
+.value =
+project.Status || "Qorshaysan";
+
+document.getElementById("projectFormTitle")
+.textContent =
+"✏️ Wax ka beddel Mashruuc";
+
+document.getElementById("projectSaveBtn")
+.textContent =
+"💾 Kaydi Isbeddelka";
+
+document.getElementById("projectCancelBtn")
+.classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================
+   DELETE PROJECT
+========================================= */
+
+async function deleteProject(id){
+
+if(!confirm(
+"Ma hubtaa inaad tirtirayso mashruucan?"
+)){
+
+return;
+
+}
+
+
+try{
+
+const response =
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Project?id=eq."+
+id,
+
+{
+
+method:"DELETE",
+
+headers:headers
+
+}
+
+);
+
+
+if(!response.ok){
+
+console.error(
+await response.text()
+);
+
+alert(
+"Mashruuca lama tirtiri karin."
+);
+
+return;
+
+}
+
+
+alert(
+"Mashruuca waa la tirtiray. 🗑️"
+);
+
+
+await render();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Waxaa dhacay cilad Internet/Supabase."
+);
+
+}
+
+}
+
+
+/* =========================================
+   CANCEL PROJECT EDIT
+========================================= */
+
+function cancelProjectEdit(){
+
+editingProjectId = null;
+
+document.getElementById("pname")
+.value="";
+
+document.getElementById("pdesc")
+.value="";
+
+document.getElementById("pbudget")
+.value="";
+
+document.getElementById("projectFormTitle")
+.textContent =
+"➕ Ku dar Mashruuc Cusub";
+
+document.getElementById("projectSaveBtn")
+.textContent =
+"+ Ku dar Mashruuc";
+
+document.getElementById("projectCancelBtn")
+.classList.add("hidden");
 
 }
 
@@ -1170,7 +1859,6 @@ document.getElementById(
 "totalPaid"
 );
 
-
 if(totalPaid){
 
 const total =
@@ -1210,7 +1898,6 @@ document.getElementById(
 "memberTable"
 );
 
-
 if(memberTable){
 
 memberTable.innerHTML =
@@ -1239,6 +1926,28 @@ ${x.Type||""}
 
 </td>
 
+<td>
+
+<div class="action">
+
+<button
+class="edit-btn"
+onclick='editMember(${JSON.stringify(x)})'
+>
+✏️ Edit
+</button>
+
+<button
+class="delete-btn"
+onclick='deleteMember(${x.id})'
+>
+🗑️ Delete
+</button>
+
+</div>
+
+</td>
+
 </tr>
 
 `).join("");
@@ -1253,7 +1962,6 @@ document.getElementById(
 "payer"
 );
 
-
 if(payer){
 
 payer.innerHTML =
@@ -1261,9 +1969,7 @@ payer.innerHTML =
 members.map(x=>`
 
 <option value="${x.Name||""}">
-
 ${x.Name||""}
-
 </option>
 
 `).join("");
@@ -1277,7 +1983,6 @@ const paymentTable =
 document.getElementById(
 "paymentTable"
 );
-
 
 if(paymentTable){
 
@@ -1323,6 +2028,28 @@ Paid
 
 </td>
 
+<td>
+
+<div class="action">
+
+<button
+class="edit-btn"
+onclick='editPayment(${JSON.stringify(x)})'
+>
+✏️ Edit
+</button>
+
+<button
+class="delete-btn"
+onclick='deletePayment(${x.id})'
+>
+🗑️ Delete
+</button>
+
+</div>
+
+</td>
+
 </tr>
 
 `).join("");
@@ -1336,7 +2063,6 @@ const projectList =
 document.getElementById(
 "projectList"
 );
-
 
 if(projectList){
 
@@ -1376,6 +2102,24 @@ ${x.Status||""}
 
 </p>
 
+<div class="action">
+
+<button
+class="edit-btn"
+onclick='editProject(${JSON.stringify(x)})'
+>
+✏️ Edit
+</button>
+
+<button
+class="delete-btn"
+onclick='deleteProject(${x.id})'
+>
+🗑️ Delete
+</button>
+
+</div>
+
 </div>
 
 `).join("");
@@ -1387,4 +2131,4 @@ ${x.Status||""}
 </script>
 
 </body>
-   </html>
+</html>
