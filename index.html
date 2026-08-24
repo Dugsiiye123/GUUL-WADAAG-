@@ -1,433 +1,282 @@
 <!doctype html>
 <html lang="so">
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Guul-Wadaag Management System</title>
+<title>Guul-Wadaag</title>
 
 <style>
-
 *{
-box-sizing:border-box;
+box-sizing:border-box
 }
 
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:#f4f7f5;
-color:#17221d;
+color:#17221d
 }
-
-button{
-border:0;
-border-radius:10px;
-padding:11px 16px;
-background:#075b3a;
-color:white;
-font-weight:bold;
-cursor:pointer;
-transition:.2s;
-}
-
-button:hover{
-transform:translateY(-1px);
-opacity:.92;
-}
-
-.hidden{
-display:none!important;
-}
-
-/* ================= HEADER ================= */
 
 header{
-background:linear-gradient(135deg,#064d32,#07834f);
+background:linear-gradient(135deg,#075b3a,#0b7a4d);
 color:white;
-padding:14px 5%;
+padding:15px 5%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:15px;
+gap:10px;
 flex-wrap:wrap;
-box-shadow:0 4px 20px #0002;
+box-shadow:0 3px 15px #0002
 }
 
 .logo{
-font-size:24px;
-font-weight:900;
-letter-spacing:.5px;
-}
-
-.logo small{
-display:block;
-font-size:10px;
-opacity:.8;
-letter-spacing:2px;
+font-size:23px;
+font-weight:800
 }
 
 nav{
 display:flex;
-gap:6px;
-flex-wrap:wrap;
+gap:5px;
+flex-wrap:wrap
+}
+
+button{
+border:0;
+border-radius:8px;
+padding:11px 15px;
+background:#075b3a;
+color:white;
+font-weight:bold;
+cursor:pointer
+}
+
+button:hover{
+opacity:.9
 }
 
 nav button{
-background:#ffffff18;
-border:1px solid #ffffff22;
+background:transparent
 }
-
-nav button:hover{
-background:#ffffff30;
-}
-
-/* ================= WRAP ================= */
 
 .wrap{
-max-width:1250px;
+max-width:1200px;
 margin:auto;
-padding:25px 5%;
+padding:25px 5%
 }
-
-/* ================= CARD ================= */
 
 .card{
 background:white;
-border-radius:18px;
+border-radius:15px;
 padding:22px;
-margin-bottom:20px;
-box-shadow:0 5px 25px #0000000d;
-border:1px solid #e9eeeb;
+margin-bottom:18px;
+box-shadow:0 3px 15px #00000010
 }
 
-/* ================= LOGIN ================= */
-
-.login-card{
-max-width:440px;
-margin:60px auto;
-}
-
-.login-card h1{
-color:#075b3a;
+.hidden{
+display:none!important
 }
 
 input,
 select,
 textarea{
 width:100%;
-padding:13px;
-margin:6px 0 15px;
+padding:12px;
+margin:6px 0 14px;
 border:1px solid #ccd6d0;
-border-radius:10px;
-font-size:15px;
-outline:none;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-border-color:#07834f;
-box-shadow:0 0 0 3px #07834f18;
+border-radius:8px;
+font-size:15px
 }
 
 textarea{
-min-height:110px;
-resize:vertical;
+min-height:100px
+}
+
+.login-card{
+max-width:430px;
+margin:60px auto
+}
+
+.login-card h1{
+color:#075b3a
 }
 
 .link-btn{
 background:none;
 color:#075b3a;
-padding:5px;
+padding:5px
 }
 
 .error{
-color:#b42318;
+color:#b42318
 }
 
 .success{
-color:#087443;
+color:#087443
 }
-
-/* ================= USER BOX ================= */
-
-.user-box{
-background:linear-gradient(135deg,#075b3a,#0a8a55);
-color:white;
-padding:18px 20px;
-border-radius:18px;
-margin-bottom:22px;
-box-shadow:0 8px 25px #075b3a25;
-}
-
-.user-box small{
-opacity:.8;
-}
-
-.badge{
-display:inline-block;
-padding:6px 10px;
-border-radius:20px;
-background:#dff2e7;
-color:#075b3a;
-font-size:12px;
-font-weight:bold;
-}
-
-.admin-badge{
-background:#fff;
-color:#075b3a;
-margin-left:5px;
-}
-
-/* ================= DASHBOARD HERO ================= */
-
-.dashboard-hero{
-background:
-linear-gradient(135deg,#064d32,#07834f 60%,#10a568);
-color:white;
-border-radius:22px;
-padding:30px;
-margin-bottom:22px;
-box-shadow:0 10px 35px #075b3a25;
-position:relative;
-overflow:hidden;
-}
-
-.dashboard-hero:after{
-content:"";
-position:absolute;
-width:220px;
-height:220px;
-border-radius:50%;
-background:#ffffff12;
-right:-70px;
-top:-80px;
-}
-
-.dashboard-hero h1{
-margin:0 0 8px;
-font-size:30px;
-}
-
-.dashboard-hero p{
-margin:0;
-opacity:.9;
-}
-
-/* ================= STATS ================= */
 
 .stats{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:18px;
-margin-bottom:22px;
+margin-bottom:20px
 }
 
 .stat{
 background:white;
 padding:22px;
-border-radius:18px;
-box-shadow:0 5px 25px #0000000d;
-border:1px solid #e9eeeb;
-position:relative;
-overflow:hidden;
-}
-
-.stat-icon{
-font-size:27px;
-margin-bottom:12px;
+border-radius:15px;
+box-shadow:0 3px 15px #00000010;
+border-top:4px solid #075b3a
 }
 
 .stat-title{
 color:#66756d;
-font-size:14px;
+font-size:14px
 }
 
 .stat-number{
 font-size:30px;
-font-weight:900;
+font-weight:800;
 margin-top:8px;
-color:#075b3a;
+color:#075b3a
 }
-
-.stat-green{
-border-top:4px solid #07834f;
-}
-
-.stat-blue{
-border-top:4px solid #2563eb;
-}
-
-.stat-orange{
-border-top:4px solid #e09b00;
-}
-
-.stat-purple{
-border-top:4px solid #7c3aed;
-}
-
-/* ================= GRID ================= */
 
 .grid{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:20px;
+gap:20px
 }
 
-/* ================= QUICK ACTION ================= */
-
-.quick-btn{
-width:100%;
-margin-bottom:10px;
-text-align:left;
-padding:15px;
-}
-
-.quick-btn span{
-font-size:20px;
-margin-right:8px;
-}
-
-/* ================= PROGRESS ================= */
-
-.progress-item{
-margin-bottom:18px;
-}
-
-.progress-head{
-display:flex;
-justify-content:space-between;
-font-size:14px;
-font-weight:bold;
-margin-bottom:7px;
-}
-
-.progress{
-height:10px;
-background:#e8eeea;
+.badge{
+display:inline-block;
+padding:5px 9px;
 border-radius:20px;
-overflow:hidden;
-}
-
-.progress-bar{
-height:100%;
-border-radius:20px;
-background:linear-gradient(90deg,#075b3a,#11a866);
-}
-
-/* ================= TABLE ================= */
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th,
-td{
-padding:13px;
-text-align:left;
-border-bottom:1px solid #e5e9e7;
-}
-
-th{
-background:#edf4ef;
+background:#dff2e7;
 color:#075b3a;
+font-size:12px;
+font-weight:bold
 }
 
-tr:hover td{
-background:#fafcfb;
+.admin-badge{
+background:#fff0c2;
+color:#8a5a00
 }
 
-/* ================= ACTION ================= */
+.treasurer-badge{
+background:#dceeff;
+color:#075b3a
+}
+
+.edit-btn{
+background:#2563eb
+}
+
+.delete-btn{
+background:#dc2626
+}
+
+.cancel-btn{
+background:#6b7280
+}
 
 .action{
 display:flex;
 gap:6px;
-flex-wrap:wrap;
+flex-wrap:wrap
 }
 
-.edit-btn{
-background:#2563eb;
+table{
+width:100%;
+border-collapse:collapse
 }
 
-.delete-btn{
-background:#dc2626;
+th,
+td{
+padding:11px;
+text-align:left;
+border-bottom:1px solid #e5e9e7
 }
 
-.cancel-btn{
-background:#6b7280;
+th{
+background:#edf4ef
 }
 
-/* ================= PROJECT ================= */
+.search{
+margin-bottom:15px
+}
 
 .project{
 border:1px solid #e5e9e7;
-border-radius:15px;
-padding:18px;
-margin-bottom:13px;
-background:#fff;
-}
-
-.project img{
-width:100%;
-max-height:270px;
-object-fit:cover;
 border-radius:12px;
-margin-bottom:12px;
+padding:18px;
+margin-bottom:12px
 }
 
-/* ================= PRIVATE ================= */
+.user-box{
+background:#e9f5ef;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px
+}
 
 .private{
 background:#fff4e5;
 border-left:5px solid #e09b00;
-padding:16px;
-border-radius:10px;
-margin-bottom:20px;
-}
-
-/* ================= PROFILE ================= */
-
-.profile-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-
-.profile-item{
-background:#f5f8f6;
 padding:15px;
+border-radius:8px;
+margin-bottom:20px
+}
+
+.role-box{
+margin-top:8px
+}
+
+.dashboard-title{
+background:linear-gradient(135deg,#075b3a,#0b7a4d);
+color:white;
+border-radius:18px;
+padding:28px;
+margin-bottom:20px;
+box-shadow:0 5px 20px #075b3a33
+}
+
+.dashboard-title h1{
+margin-top:0
+}
+
+.quick-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px
+}
+
+.quick-btn{
+padding:18px;
 border-radius:12px;
-}
-
-.profile-label{
-font-size:12px;
-color:#68766f;
-margin-bottom:5px;
-}
-
-.profile-value{
+background:#f1f7f3;
+color:#075b3a;
 font-weight:bold;
+cursor:pointer;
+text-align:center
 }
 
-/* ================= SEARCH ================= */
-
-.search{
-margin-bottom:15px;
+.quick-btn:hover{
+background:#dff2e7
 }
 
-/* ================= MOBILE ================= */
-
-@media(max-width:950px){
+@media(max-width:900px){
 
 .stats{
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(2,1fr)
 }
 
 .grid{
-grid-template-columns:1fr;
+grid-template-columns:1fr
+}
+
+.quick-grid{
+grid-template-columns:repeat(2,1fr)
 }
 
 }
@@ -435,84 +284,60 @@ grid-template-columns:1fr;
 @media(max-width:600px){
 
 .wrap{
-padding:18px 4%;
+padding:18px 4%
 }
 
 header{
-padding:12px 4%;
+padding:12px 4%
 }
 
 .logo{
-font-size:19px;
-}
-
-nav{
-width:100%;
+font-size:19px
 }
 
 nav button{
 font-size:11px;
-padding:8px 9px;
+padding:8px 7px
 }
 
 .stats{
 grid-template-columns:1fr 1fr;
-gap:10px;
+gap:10px
 }
 
 .stat{
-padding:15px;
+padding:15px
 }
 
 .stat-number{
-font-size:23px;
-}
-
-.dashboard-hero{
-padding:23px;
-}
-
-.dashboard-hero h1{
-font-size:24px;
+font-size:22px
 }
 
 table{
 display:block;
 overflow-x:auto;
-font-size:12px;
+font-size:12px
 }
 
 th,
 td{
 white-space:nowrap;
-padding:9px;
+padding:8px
 }
 
-.profile-grid{
-grid-template-columns:1fr;
+.quick-grid{
+grid-template-columns:1fr 1fr
 }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- =====================================================
-HEADER
-===================================================== -->
-
 <header id="mainHeader" class="hidden">
 
 <div class="logo">
-
 GUUL-WADAAG
-
-<small>MAAMULKA URURKA</small>
-
 </div>
 
 <nav>
@@ -529,13 +354,10 @@ GUUL-WADAAG
 🏗️ Mashaariic
 </button>
 
-<button
-id="adminPaymentsBtn"
+<button id="adminPaymentsBtn"
 class="hidden"
 onclick="showPage('payments')">
-
 💰 Lacagaha
-
 </button>
 
 <button onclick="logout()">
@@ -543,13 +365,10 @@ Ka bax
 </button>
 
 </nav>
-
 </header>
 
 
-<!-- =====================================================
-LOGIN
-===================================================== -->
+<!-- LOGIN -->
 
 <section id="loginPage">
 
@@ -560,7 +379,7 @@ LOGIN
 <h1>🔐 Guul-Wadaag</h1>
 
 <p>
-Ku soo dhawoow nidaamka maamulka Ururka Guul-Wadaag.
+Ku soo dhawoow nidaamka Ururka Guul-Wadaag.
 </p>
 
 <label>Email</label>
@@ -568,27 +387,24 @@ Ku soo dhawoow nidaamka maamulka Ururka Guul-Wadaag.
 <input
 id="loginEmail"
 type="email"
-placeholder="Email-kaaga">
+placeholder="Email-kaaga"
+>
 
 <label>Password</label>
 
 <input
 id="loginPassword"
 type="password"
-placeholder="Password-kaaga">
+placeholder="Password-kaaga"
+>
 
 <button
 style="width:100%"
 onclick="login()">
-
 Gal
-
 </button>
 
-<p
-id="loginMessage"
-class="error">
-</p>
+<p id="loginMessage" class="error"></p>
 
 <hr>
 
@@ -598,27 +414,19 @@ Account ma lihid?
 <button
 class="link-btn"
 onclick="showSignup()">
-
 Is-diiwaangeli
-
 </button>
 
 </p>
 
 </div>
-
 </div>
-
 </section>
 
 
-<!-- =====================================================
-SIGNUP
-===================================================== -->
+<!-- SIGNUP -->
 
-<section
-id="signupPage"
-class="hidden">
+<section id="signupPage" class="hidden">
 
 <div class="wrap">
 
@@ -634,35 +442,37 @@ Samee account-kaaga Guul-Wadaag.
 
 <input
 id="signupName"
-placeholder="Magacaaga">
+placeholder="Magacaaga"
+>
 
 <label>Email</label>
 
 <input
 id="signupEmail"
 type="email"
-placeholder="Email-kaaga">
+placeholder="Email-kaaga"
+>
 
 <label>Password</label>
 
 <input
 id="signupPassword"
 type="password"
-placeholder="Password-kaaga">
+placeholder="Password-kaaga"
+>
 
 <label>Xaqiiji Password</label>
 
 <input
 id="signupPassword2"
 type="password"
-placeholder="Ku celi password-ka">
+placeholder="Ku celi password-ka"
+>
 
 <button
 style="width:100%"
 onclick="signup()">
-
 Samee Account
-
 </button>
 
 <p id="signupMessage"></p>
@@ -670,41 +480,28 @@ Samee Account
 <hr>
 
 <p>
-
 Account waad leedahay?
 
 <button
 class="link-btn"
 onclick="showLogin()">
-
 Gal
-
 </button>
 
 </p>
 
 </div>
-
 </div>
-
 </section>
 
 
-<!-- =====================================================
-APP
-===================================================== -->
+<!-- APP -->
 
-<main
-id="app"
-class="wrap hidden">
-
-
-<!-- USER -->
+<main id="app" class="wrap hidden">
 
 <div class="user-box">
 
 👤
-
 <strong id="currentUserName">
 Xubin
 </strong>
@@ -713,2435 +510,13 @@ Xubin
 
 <small id="currentUserEmail"></small>
 
-<span
-id="adminBadge"
+<div class="role-box">
+
+<span id="adminBadge"
 class="badge admin-badge hidden">
-
-ADMIN
-
+👑 ADMIN
 </span>
 
-</div>
-
-
-<!-- =====================================================
-DASHBOARD
-===================================================== -->
-
-<section id="dashboard">
-
-
-<div class="dashboard-hero">
-
-<h1>
-Ku soo dhawoow, <span id="welcomeName">Xubin</span> 👋
-</h1>
-
-<p>
-Dashboard-ka maamulka Ururka Guul-Wadaag
-</p>
-
-</div>
-
-
-<!-- STATS -->
-
-<div class="stats">
-
-
-<div class="stat stat-green">
-
-<div class="stat-icon">👥</div>
-
-<div class="stat-title">
-Wadarta Xubnaha
-</div>
-
-<div
-class="stat-number"
-id="membersCount">
-
-0
-
-</div>
-
-</div>
-
-
-<div class="stat stat-blue">
-
-<div class="stat-icon">🏗️</div>
-
-<div class="stat-title">
-Mashaariicda
-</div>
-
-<div
-class="stat-number"
-id="projectsCount">
-
-0
-
-</div>
-
-</div>
-
-
-<div class="stat stat-purple">
-
-<div class="stat-icon">📊</div>
-
-<div class="stat-title">
-Mashaariic Dhammaystiran
-</div>
-
-<div
-class="stat-number"
-id="completedCount">
-
-0
-
-</div>
-
-</div>
-
-
-<div
-class="stat stat-orange hidden"
-id="adminMoneyCard">
-
-<div class="stat-icon">💰</div>
-
-<div class="stat-title">
-Lacagta La Ururiyey
-</div>
-
-<div
-class="stat-number"
-id="totalPaid">
-
-$0
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- MAIN GRID -->
-
-<div class="grid">
-
-
-<div class="card">
-
-<h2>
-🏗️ Mashaariicda Ugu Dambeeyey
-</h2>
-
-<div id="dashboardProjects">
-</div>
-
-</div>
-
-
-<div>
-
-
-<div class="card">
-
-<h2>
-⚡ Hawlo Degdeg ah
-</h2>
-
-<button
-class="quick-btn"
-onclick="showPage('projects')">
-
-<span>🏗️</span>
-Mashaariic
-
-</button>
-
-<button
-class="quick-btn"
-onclick="showPage('members')">
-
-<span>👥</span>
-Xubnaha
-
-</button>
-
-<button
-class="quick-btn"
-id="quickPayments"
-onclick="showPage('payments')">
-
-<span>💰</span>
-Lacagaha
-
-</button>
-
-</div>
-
-
-<div class="card">
-
-<h2>
-📈 Horumarka Mashaariicda
-</h2>
-
-<div id="projectProgress">
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PROFILE -->
-
-<div class="card">
-
-<h2>
-👤 Xogtayda
-</h2>
-
-<div class="profile-grid">
-
-<div class="profile-item">
-
-<div class="profile-label">
-Magac
-</div>
-
-<div
-class="profile-value"
-id="profileName">
-
--
-
-</div>
-
-</div>
-
-
-<div class="profile-item">
-
-<div class="profile-label">
-Email
-</div>
-
-<div
-class="profile-value"
-id="profileEmail">
-
--
-
-</div>
-
-</div>
-
-
-<div class="profile-item">
-
-<div class="profile-label">
-Xilka
-</div>
-
-<div
-class="profile-value"
-id="profileRole">
-
-Xubin Caadi ah
-
-</div>
-
-</div>
-
-
-<div class="profile-item">
-
-<div class="profile-label">
-Xaaladda
-</div>
-
-<div class="profile-value">
-
-<span class="badge">
-Firfircoon
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-MEMBERS
-===================================================== -->
-
-<section
-id="members"
-class="hidden">
-
-<h1>
-👥 Xubnaha Guul-Wadaag
-</h1>
-
-
-<!-- ADMIN FORM -->
-
-<div
-id="memberAdminForm"
-class="card hidden">
-
-<h3 id="memberFormTitle">
-➕ Ku dar Xubin
-</h3>
-
-
-<input
-id="mname"
-placeholder="Magaca oo buuxa">
-
-
-<input
-id="mphone"
-placeholder="Telefoon">
-
-
-<label>
-Xilka / Heerka Xubinta
-</label>
-
-
-<select id="mtype">
-
-<option value="Gudomiye">
-Gudomiye
-</option>
-
-<option value="Gud.kuxigeen">
-Gud.kuxigeen
-</option>
-
-<option value="Xeer-ilaaliye">
-Xeer-ilaaliye
-</option>
-
-<option value="Qasnaji">
-Qasnaji
-</option>
-
-<option value="Xoghaye">
-Xoghaye
-</option>
-
-<option value="Afhayeen">
-Afhayeen
-</option>
-
-<option value="Xubin Gudi">
-Xubin Gudi
-</option>
-
-<option value="Xubin Caadi ah">
-Xubin Caadi ah
-</option>
-
-<option value="Xubin Firfircoon">
-Xubin Firfircoon
-</option>
-
-<option value="Taageere">
-Taageere
-</option>
-
-</select>
-
-
-<button
-id="memberSaveBtn"
-onclick="saveMember()">
-
-Diiwaangeli
-
-</button>
-
-
-<button
-id="memberCancelBtn"
-class="cancel-btn hidden"
-onclick="cancelMemberEdit()">
-
-Jooji
-
-</button>
-
-</div>
-
-
-<div class="card">
-
-<input
-class="search"
-id="memberSearch"
-placeholder="🔎 Raadi xubin..."
-oninput="renderMembers()">
-
-
-<div style="overflow-x:auto">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Magaca</th>
-<th>Telefoon</th>
-<th>Xilka / Heerka</th>
-<th>Ficil</th>
-
-</tr>
-
-</thead>
-
-<tbody id="memberTable"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-PAYMENTS
-===================================================== -->
-
-<section
-id="payments"
-class="hidden">
-
-<h1>
-💰 Lacagaha
-</h1>
-
-<div class="private">
-
-🔒 <strong>Qaybtan waa Admin kaliya.</strong>
-
-<br>
-
-Xubnaha caadiga ah ma arki karaan lacagaha,
-numberrada lacag-bixinta ama hadhaaga.
-
-</div>
-
-
-<div class="card">
-
-<h3 id="paymentFormTitle">
-➕ Diiwaangeli Lacag
-</h3>
-
-<label>Xubinta</label>
-
-<select id="payer"></select>
-
-<label>Lacagta</label>
-
-<input
-id="amount"
-type="number"
-placeholder="3">
-
-
-<label>Habka</label>
-
-<select id="method">
-
-<option value="ZAAD">
-ZAAD
-</option>
-
-<option value="eDahab">
-eDahab
-</option>
-
-</select>
-
-
-<label>Number-ka lacagta</label>
-
-<input
-id="paymentNumber"
-placeholder="63xxxxxxx">
-
-
-<label>Bisha</label>
-
-<input
-id="month"
-placeholder="August 2026">
-
-
-<button
-id="paymentSaveBtn"
-onclick="savePayment()">
-
-💳 Kaydi
-
-</button>
-
-
-<button
-id="paymentCancelBtn"
-class="cancel-btn hidden"
-onclick="cancelPaymentEdit()">
-
-Jooji
-
-</button>
-
-</div>
-
-
-<div class="card">
-
-<input
-id="paymentSearch"
-placeholder="🔎 Raadi..."
-oninput="renderPayments">
-
-
-<div style="overflow-x:auto">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Magaca</th>
-<th>Bisha</th>
-<th>Lacagta</th>
-<th>Habka</th>
-<th>Number</th>
-<th>Ficil</th>
-
-</tr>
-
-</thead>
-
-<tbody id="paymentTable"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-PROJECTS
-===================================================== -->
-
-<section
-id="projects"
-class="hidden">
-
-<h1>
-🏗️ Mashaariicda Guul-Wadaag
-</h1>
-
-
-<div
-id="projectAdminForm"
-class="card hidden">
-
-<h3 id="projectFormTitle">
-➕ Ku dar Mashruuc
-</h3>
-
-
-<input
-id="pname"
-placeholder="Magaca mashruuca">
-
-
-<textarea
-id="pdesc"
-placeholder="Sharaxaadda mashruuca">
-</textarea>
-
-
-<input
-id="pbudget"
-type="number"
-placeholder="Miisaaniyadda">
-
-
-<select id="pstatus">
-
-<option value="Qorshaysan">
-Qorshaysan
-</option>
-
-<option value="Socda">
-Socda
-</option>
-
-<option value="Dhammaystiran">
-Dhammaystiran
-</option>
-
-</select>
-
-
-<input
-id="pimage"
-placeholder="URL-ka sawirka">
-
-
-<button
-id="projectSaveBtn"
-onclick="saveProject()">
-
-➕ Ku dar
-
-</button>
-
-
-<button
-id="projectCancelBtn"
-class="cancel-btn hidden"
-onclick="cancelProjectEdit()">
-
-Jooji
-
-</button>
-
-</div>
-
-
-<div class="card">
-
-<input
-id="projectSearch"
-placeholder="🔎 Raadi mashruuc..."
-oninput="renderProjects()">
-
-
-<div id="projectList"></div>
-
-</div>
-
-</section>
-
-
-</main>
-
-
-<script>
-
-/* =====================================================
-SUPABASE
-===================================================== */
-
-const SUPABASE_URL =
-"https://zbyrtasojwgrylcnqlhb.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_D_PSqKecBwiESZwyLTxFiw_JMMTddAN";
-
-
-/* ADMIN EMAIL */
-
-const ADMIN_EMAIL =
-"Cabdiaadan2022@gmail.com";
-
-
-let accessToken="";
-let currentUser=null;
-
-let allMembers=[];
-let allPayments=[];
-let allProjects=[];
-
-let editingMemberId=null;
-let editingPaymentId=null;
-let editingProjectId=null;
-
-
-/* =====================================================
-HEADERS
-===================================================== */
-
-function apiHeaders(){
-
-return {
-
-"apikey":SUPABASE_KEY,
-
-"Authorization":
-"Bearer "+accessToken,
-
-"Content-Type":
-"application/json",
-
-"Prefer":
-"return=representation"
-
-};
-
-}
-
-
-/* =====================================================
-LOGIN / SIGNUP
-===================================================== */
-
-function showLogin(){
-
-document
-.getElementById("loginPage")
-.classList.remove("hidden");
-
-document
-.getElementById("signupPage")
-.classList.add("hidden");
-
-}
-
-function showSignup(){
-
-document
-.getElementById("loginPage")
-.classList.add("hidden");
-
-document
-.getElementById("signupPage")
-.classList.remove("hidden");
-
-}
-
-
-/* =====================================================
-SIGNUP
-===================================================== */
-
-async function signup(){
-
-const name=
-document.getElementById("signupName").value.trim();
-
-const email=
-document.getElementById("signupEmail").value.trim();
-
-const password=
-document.getElementById("signupPassword").value;
-
-const password2=
-document.getElementById("signupPassword2").value;
-
-const msg=
-document.getElementById("signupMessage");
-
-msg.className="";
-
-
-if(!name||!email||!password){
-
-msg.className="error";
-msg.textContent="Fadlan dhammaan meelaha buuxi.";
-return;
-
-}
-
-if(password.length<6){
-
-msg.className="error";
-msg.textContent="Password-ku waa inuu ka badan yahay 6 xaraf.";
-return;
-
-}
-
-if(password!==password2){
-
-msg.className="error";
-msg.textContent="Labada password isku mid ma aha.";
-return;
-
-}
-
-
-try{
-
-const response=
-await fetch(
-
-SUPABASE_URL+
-"/auth/v1/signup",
-
-{
-
-method:"POST",
-
-headers:{
-"apikey":SUPABASE_KEY,
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-
-email,
-password,
-
-data:{
-full_name:name
-}
-
-})
-
-});
-
-
-const data=await response.json();
-
-
-if(!response.ok){
-
-msg.className="error";
-
-msg.textContent=
-data.msg||
-data.error_description||
-"Is-diiwaangelintu way fashilantay.";
-
-return;
-
-}
-
-
-if(data.session){
-
-accessToken=
-data.session.access_token;
-
-currentUser=
-data.user;
-
-await openApp();
-
-}else{
-
-msg.className="success";
-
-msg.textContent=
-"Account-ka waa la sameeyey. Email-kaaga xaqiiji kadibna gal.";
-
-}
-
-}catch(error){
-
-msg.className="error";
-msg.textContent="Cilad Internet ayaa dhacday.";
-
-}
-
-}
-
-
-/* =====================================================
-LOGIN
-===================================================== */
-
-async function login(){
-
-const email=
-document.getElementById("loginEmail").value.trim();
-
-const password=
-document.getElementById("loginPassword").value;
-
-const msg=
-document.getElementById("loginMessage");
-
-msg.textContent="";
-
-
-if(!email||!password){
-
-msg.textContent=
-"Fadlan geli email iyo password.";
-
-return;
-
-}
-
-
-try{
-
-const response=
-await fetch(
-
-SUPABASE_URL+
-"/auth/v1/token?grant_type=password",
-
-{
-
-method:"POST",
-
-headers:{
-"apikey":SUPABASE_KEY,
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-email,
-password
-})
-
-});
-
-
-const data=
-await response.json();
-
-
-if(!response.ok){
-
-msg.textContent=
-"Email ama password waa khalad.";
-
-return;
-
-}
-
-
-accessToken=
-data.access_token;
-
-currentUser=
-data.user;
-
-await openApp();
-
-}catch(error){
-
-msg.textContent=
-"Cilad ayaa dhacday. Hubi Internet-ka.";
-
-}
-
-}
-
-
-/* =====================================================
-ADMIN
-===================================================== */
-
-function isAdmin(){
-
-if(!currentUser) return false;
-
-return(
-(currentUser.email||"")
-.toLowerCase()
-===
-ADMIN_EMAIL.toLowerCase()
-);
-
-}
-
-
-/* =====================================================
-OPEN APP
-===================================================== */
-
-async function openApp(){
-
-document
-.getElementById("loginPage")
-.classList.add("hidden");
-
-document
-.getElementById("signupPage")
-.classList.add("hidden");
-
-document
-.getElementById("mainHeader")
-.classList.remove("hidden");
-
-document
-.getElementById("app")
-.classList.remove("hidden");
-
-
-const name=
-currentUser?.user_metadata?.full_name||
-currentUser?.email||
-"Xubin";
-
-
-document
-.getElementById("currentUserName")
-.textContent=name;
-
-document
-.getElementById("currentUserEmail")
-.textContent=
-currentUser?.email||"";
-
-
-document
-.getElementById("welcomeName")
-.textContent=name;
-
-
-document
-.getElementById("profileName")
-.textContent=name;
-
-
-document
-.getElementById("profileEmail")
-.textContent=
-currentUser?.email||"";
-
-
-if(isAdmin()){
-
-document
-.getElementById("adminBadge")
-.classList.remove("hidden");
-
-document
-.getElementById("adminPaymentsBtn")
-.classList.remove("hidden");
-
-document
-.getElementById("adminMoneyCard")
-.classList.remove("hidden");
-
-document
-.getElementById("memberAdminForm")
-.classList.remove("hidden");
-
-document
-.getElementById("projectAdminForm")
-.classList.remove("hidden");
-
-}else{
-
-document
-.getElementById("adminBadge")
-.classList.add("hidden");
-
-document
-.getElementById("adminPaymentsBtn")
-.classList.add("hidden");
-
-document
-.getElementById("adminMoneyCard")
-.classList.add("hidden");
-
-document
-.getElementById("memberAdminForm")
-.classList.add("hidden");
-
-document
-.getElementById("projectAdminForm")
-.classList.add("hidden");
-
-document
-.getElementById("profileRole")
-.textContent="Xubin Caadi ah";
-
-}
-
-
-await render();
-
-}
-
-
-/* =====================================================
-LOGOUT
-===================================================== */
-
-async function logout(){
-
-try{
-
-await fetch(
-
-SUPABASE_URL+
-"/auth/v1/logout",
-
-{
-
-method:"POST",
-
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+accessToken
-}
-
-});
-
-}catch(e){}
-
-accessToken="";
-currentUser=null;
-
-location.reload();
-
-}
-
-
-/* =====================================================
-NAVIGATION
-===================================================== */
-
-function showPage(id){
-
-if(id==="payments"&&!isAdmin()){
-
-alert("🔒 Lacagaha Admin kaliya ayuu arki karaa.");
-return;
-
-}
-
-
-[
-"dashboard",
-"members",
-"payments",
-"projects"
-].forEach(page=>{
-
-const el=document.getElementById(page);
-
-if(el){
-el.classList.add("hidden");
-}
-
-});
-
-
-document
-.getElementById(id)
-.classList.remove("hidden");
-
-
-if(id==="members")
-renderMembers();
-
-if(id==="payments")
-renderPayments();
-
-if(id==="projects")
-renderProjects();
-
-}
-
-
-/* =====================================================
-GET DATA
-===================================================== */
-
-async function getData(table){
-
-try{
-
-const response=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/"+
-table+
-"?select=*",
-
-{
-
-headers:apiHeaders()
-
-});
-
-
-if(!response.ok){
-
-console.error(
-table,
-await response.text()
-);
-
-return[];
-
-}
-
-return await response.json();
-
-}catch(error){
-
-console.error(error);
-return[];
-
-}
-
-}
-
-
-/* =====================================================
-MEMBERS
-===================================================== */
-
-async function saveMember(){
-
-if(!isAdmin()){
-
-alert("Admin kaliya.");
-return;
-
-}
-
-
-const name=
-document.getElementById("mname").value.trim();
-
-const phone=
-document.getElementById("mphone").value.trim();
-
-const type=
-document.getElementById("mtype").value;
-
-
-if(!name){
-
-alert("Magaca geli.");
-return;
-
-}
-
-
-let url=
-SUPABASE_URL+
-"/rest/v1/Members";
-
-let method="POST";
-
-
-if(editingMemberId){
-
-url+=
-"?id=eq."+editingMemberId;
-
-method="PATCH";
-
-}
-
-
-const response=
-await fetch(
-
-url,
-
-{
-
-method,
-
-headers:apiHeaders(),
-
-body:JSON.stringify({
-
-Name:name,
-Phone:phone,
-Type:type
-
-})
-
-});
-
-
-if(!response.ok){
-
-console.error(await response.text());
-
-alert("Xogta lama kaydin.");
-return;
-
-}
-
-
-alert("Xubinta waa la kaydiyey. ✅");
-
-cancelMemberEdit();
-
-await render();
-
-}
-
-
-function editMember(member){
-
-if(!isAdmin()) return;
-
-editingMemberId=member.id;
-
-
-document
-.getElementById("mname")
-.value=member.Name||"";
-
-document
-.getElementById("mphone")
-.value=member.Phone||"";
-
-document
-.getElementById("mtype")
-.value=member.Type||"Xubin Caadi ah";
-
-
-document
-.getElementById("memberFormTitle")
-.textContent="✏️ Wax ka beddel Xubin";
-
-document
-.getElementById("memberSaveBtn")
-.textContent="💾 Kaydi";
-
-document
-.getElementById("memberCancelBtn")
-.classList.remove("hidden");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-async function deleteMember(id){
-
-if(!isAdmin()) return;
-
-if(!confirm("Ma hubtaa inaad tirtirayso xubintan?"))
-return;
-
-
-const response=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/Members?id=eq."+id,
-
-{
-
-method:"DELETE",
-headers:apiHeaders()
-
-});
-
-
-if(!response.ok){
-
-alert("Xubinta lama tirtiri karin.");
-return;
-
-}
-
-await render();
-
-}
-
-
-function cancelMemberEdit(){
-
-editingMemberId=null;
-
-document.getElementById("mname").value="";
-document.getElementById("mphone").value="";
-
-document
-.getElementById("mtype")
-.value="Xubin Caadi ah";
-
-document
-.getElementById("memberFormTitle")
-.textContent="➕ Ku dar Xubin";
-
-document
-.getElementById("memberSaveBtn")
-.textContent="Diiwaangeli";
-
-document
-.getElementById("memberCancelBtn")
-.classList.add("hidden");
-
-}
-
-
-function renderMembers(){
-
-const table=
-document.getElementById("memberTable");
-
-if(!table) return;
-
-
-const search=
-(
-document.getElementById("memberSearch")?.value||""
-)
-.toLowerCase();
-
-
-const filtered=
-allMembers.filter(member=>{
-
-return(
-
-String(member.Name||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(member.Phone||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(member.Type||"")
-.toLowerCase()
-.includes(search)
-
-);
-
-});
-
-
-table.innerHTML=
-filtered.map(member=>`
-
-<tr>
-
-<td>
-<strong>
-${escapeHTML(member.Name||"")}
-</strong>
-</td>
-
-<td>
-${escapeHTML(member.Phone||"-")}
-</td>
-
-<td>
-
-<span class="badge">
-${escapeHTML(member.Type||"")}
-</span>
-
-</td>
-
-<td>
-
-${
-isAdmin()
-
-?
-
-`
-
-<div class="action">
-
-<button
-class="edit-btn"
-onclick='editMember(${JSON.stringify(member)})'>
-
-✏️ Edit
-
-</button>
-
-<button
-class="delete-btn"
-onclick="deleteMember(${member.id})">
-
-🗑️ Delete
-
-</button>
-
-</div>
-
-`
-
-:
-
-`<span class="badge">Xubin</span>`
-
-}
-
-</td>
-
-</tr>
-
-`).join("");
-
-}
-
-
-/* =====================================================
-PAYMENTS
-===================================================== */
-
-async function savePayment(){
-
-if(!isAdmin()){
-
-alert("Admin kaliya.");
-return;
-
-}
-
-
-const memberName=
-document.getElementById("payer").value;
-
-const amount=
-Number(document.getElementById("amount").value);
-
-const method=
-document.getElementById("method").value;
-
-const number=
-document.getElementById("paymentNumber").value.trim();
-
-const month=
-document.getElementById("month").value.trim();
-
-
-if(!memberName||!amount||!number){
-
-alert(
-"Buuxi xubinta, lacagta iyo number-ka."
-);
-
-return;
-
-}
-
-
-let url=
-SUPABASE_URL+
-"/rest/v1/Payment";
-
-let requestMethod="POST";
-
-
-if(editingPaymentId){
-
-url+=
-"?id=eq."+editingPaymentId;
-
-requestMethod="PATCH";
-
-}
-
-
-const response=
-await fetch(
-
-url,
-
-{
-
-method:requestMethod,
-
-headers:apiHeaders(),
-
-body:JSON.stringify({
-
-Member_Name:memberName,
-Amount:amount,
-Method:method,
-Payment_Number:number,
-Month:month
-
-})
-
-});
-
-
-if(!response.ok){
-
-console.error(await response.text());
-
-alert("Lacagta lama kaydin.");
-return;
-
-}
-
-
-alert("Lacagta waa la kaydiyey. ✅");
-
-cancelPaymentEdit();
-
-await render();
-
-}
-
-
-function editPayment(payment){
-
-if(!isAdmin()) return;
-
-editingPaymentId=payment.id;
-
-document.getElementById("payer").value=
-payment.Member_Name||"";
-
-document.getElementById("amount").value=
-payment.Amount||"";
-
-document.getElementById("method").value=
-payment.Method||"ZAAD";
-
-document.getElementById("paymentNumber").value=
-payment.Payment_Number||"";
-
-document.getElementById("month").value=
-payment.Month||"";
-
-
-document.getElementById("paymentFormTitle")
-.textContent="✏️ Wax ka beddel Lacag";
-
-document.getElementById("paymentSaveBtn")
-.textContent="💾 Kaydi";
-
-document.getElementById("paymentCancelBtn")
-.classList.remove("hidden");
-
-}
-
-
-async function deletePayment(id){
-
-if(!isAdmin()) return;
-
-if(!confirm("Ma hubtaa inaad tirtirayso lacag-bixintan?"))
-return;
-
-
-const response=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/Payment?id=eq."+id,
-
-{
-
-method:"DELETE",
-headers:apiHeaders()
-
-});
-
-
-if(!response.ok){
-
-alert("Lacagta lama tirtiri karin.");
-return;
-
-}
-
-await render();
-
-}
-
-
-function cancelPaymentEdit(){
-
-editingPaymentId=null;
-
-document.getElementById("amount").value="";
-document.getElementById("paymentNumber").value="";
-document.getElementById("month").value="";
-
-document.getElementById("paymentFormTitle")
-.textContent="➕ Diiwaangeli Lacag";
-
-document.getElementById("paymentSaveBtn")
-.textContent="💳 Kaydi";
-
-document.getElementById("paymentCancelBtn")
-.classList.add("hidden");
-
-}
-
-
-function renderPayments(){
-
-if(!isAdmin()) return;
-
-const table=
-document.getElementById("paymentTable");
-
-if(!table) return;
-
-
-const search=
-(
-document.getElementById("paymentSearch")?.value||""
-)
-.toLowerCase();
-
-
-const filtered=
-allPayments.filter(payment=>{
-
-return(
-
-String(payment.Member_Name||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(payment.Month||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(payment.Method||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(payment.Payment_Number||"")
-.toLowerCase()
-.includes(search)
-
-);
-
-});
-
-
-table.innerHTML=
-filtered.map(payment=>`
-
-<tr>
-
-<td>
-${escapeHTML(payment.Member_Name||"")}
-</td>
-
-<td>
-${escapeHTML(payment.Month||"")}
-</td>
-
-<td>
-<strong>
-$${Number(payment.Amount||0)}
-</strong>
-</td>
-
-<td>
-<span class="badge">
-${escapeHTML(payment.Method||"")}
-</span>
-</td>
-
-<td>
-${escapeHTML(payment.Payment_Number||"")}
-</td>
-
-<td>
-
-<div class="action">
-
-<button
-class="edit-btn"
-onclick='editPayment(${JSON.stringify(payment)})'>
-
-✏️ Edit
-
-</button>
-
-<button
-class="delete-btn"
-onclick="deletePayment(${payment.id})">
-
-🗑️ Delete
-
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`).join("");
-
-}
-
-
-/* =====================================================
-PROJECTS
-===================================================== */
-
-async function saveProject(){
-
-if(!isAdmin()){
-
-alert("Admin kaliya.");
-return;
-
-}
-
-
-const name=
-document.getElementById("pname").value.trim();
-
-const description=
-document.getElementById("pdesc").value.trim();
-
-const budget=
-Number(document.getElementById("pbudget").value)||0;
-
-const status=
-document.getElementById("pstatus").value;
-
-const image=
-document.getElementById("pimage").value.trim();
-
-
-if(!name){
-
-alert("Magaca mashruuca geli.");
-return;
-
-}
-
-
-let url=
-SUPABASE_URL+
-"/rest/v1/Project";
-
-let requestMethod="POST";
-
-
-if(editingProjectId){
-
-url+="?id=eq."+editingProjectId;
-
-requestMethod="PATCH";
-
-}
-
-
-const response=
-await fetch(
-
-url,
-
-{
-
-method:requestMethod,
-
-headers:apiHeaders(),
-
-body:JSON.stringify({
-
-Name:name,
-Description:description,
-Budget:budget,
-Status:status,
-Image:image
-
-})
-
-});
-
-
-if(!response.ok){
-
-console.error(await response.text());
-
-alert("Mashruuca lama kaydin.");
-return;
-
-}
-
-
-alert("Mashruuca waa la kaydiyey. ✅");
-
-cancelProjectEdit();
-
-await render();
-
-}
-
-
-function editProject(project){
-
-if(!isAdmin()) return;
-
-editingProjectId=project.id;
-
-document.getElementById("pname").value=
-project.Name||"";
-
-document.getElementById("pdesc").value=
-project.Description||"";
-
-document.getElementById("pbudget").value=
-project.Budget||0;
-
-document.getElementById("pstatus").value=
-project.Status||"Qorshaysan";
-
-document.getElementById("pimage").value=
-project.Image||"";
-
-
-document.getElementById("projectFormTitle")
-.textContent="✏️ Wax ka beddel Mashruuc";
-
-document.getElementById("projectSaveBtn")
-.textContent="💾 Kaydi";
-
-document.getElementById("projectCancelBtn")
-.classList.remove("hidden");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-async function deleteProject(id){
-
-if(!isAdmin()) return;
-
-if(!confirm("Ma hubtaa inaad tirtirayso mashruucan?"))
-return;
-
-
-const response=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/Project?id=eq."+id,
-
-{
-
-method:"DELETE",
-headers:apiHeaders()
-
-});
-
-
-if(!response.ok){
-
-alert("Mashruuca lama tirtiri karin.");
-return;
-
-}
-
-await render();
-
-}
-
-
-function cancelProjectEdit(){
-
-editingProjectId=null;
-
-document.getElementById("pname").value="";
-document.getElementById("pdesc").value="";
-document.getElementById("pbudget").value="";
-document.getElementById("pimage").value="";
-
-document.getElementById("pstatus").value=
-"Qorshaysan";
-
-document.getElementById("projectFormTitle")
-.textContent="➕ Ku dar Mashruuc";
-
-document.getElementById("projectSaveBtn")
-.textContent="➕ Ku dar";
-
-document.getElementById("projectCancelBtn")
-.classList.add("hidden");
-
-}
-
-
-function renderProjects(){
-
-const list=
-document.getElementById("projectList");
-
-if(!list) return;
-
-
-const search=
-(
-document.getElementById("projectSearch")?.value||""
-)
-.toLowerCase();
-
-
-const filtered=
-allProjects.filter(project=>{
-
-return(
-
-String(project.Name||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(project.Description||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(project.Status||"")
-.toLowerCase()
-.includes(search)
-
-);
-
-});
-
-
-list.innerHTML=
-filtered.map(project=>`
-
-<div class="project">
-
-${
-project.Image
-
-?
-
-`
-
-<img
-src="${escapeHTML(project.Image)}"
-alt="Mashruuc">
-
-`
-
-:
-
-""
-
-}
-
-
-<h3>
-🏗️ ${escapeHTML(project.Name||"")}
-</h3>
-
-
-<p>
-${escapeHTML(project.Description||"")}
-</p>
-
-
-<p>
-
-<strong>Xaalad:</strong>
-
-<span class="badge">
-${escapeHTML(project.Status||"")}
-</span>
-
-</p>
-
-
-${
-isAdmin()
-
-?
-
-`
-
-<p>
-
-<strong>
-Miisaaniyad:
-</strong>
-
-$${Number(project.Budget||0)}
-
-</p>
-
-
-<div class="action">
-
-<button
-class="edit-btn"
-onclick='editProject(${JSON.stringify(project)})'>
-
-✏️ Edit
-
-</button>
-
-<button
-class="delete-btn"
-onclick="deleteProject(${project.id})">
-
-🗑️ Delete
-
-</button>
-
-</div>
-
-`
-
-:
-
-""
-
-}
-
-</div>
-
-`).join("");
-
-}
-
-
-/* =====================================================
-DASHBOARD PROJECTS
-===================================================== */
-
-function renderDashboardProjects(){
-
-const box=
-document.getElementById("dashboardProjects");
-
-if(!box) return;
-
-
-const projects=
-allProjects.slice(0,5);
-
-
-if(!projects.length){
-
-box.innerHTML=
-"<p>Weli mashruuc lama diiwaangelin.</p>";
-
-return;
-
-}
-
-
-box.innerHTML=
-projects.map(project=>`
-
-<div
-style="
-padding:15px 0;
-border-bottom:1px solid #eee">
-
-<strong>
-🏗️ ${escapeHTML(project.Name||"")}
-</strong>
-
-<br>
-
-<small>
-
-<span class="badge">
-${escapeHTML(project.Status||"")}
-</span>
-
-</small>
-
-<p style="margin-bottom:0;color:#66756d">
-
-${escapeHTML(
-(project.Description||"").substring(0,100)
-)}
-
-</p>
-
-</div>
-
-`).join("");
-
-}
-
-
-/* =====================================================
-PROJECT PROGRESS
-===================================================== */
-
-function renderProjectProgress(){
-
-const box=
-document.getElementById("projectProgress");
-
-if(!box) return;
-
-
-const total=allProjects.length;
-
-if(!total){
-
-box.innerHTML=
-"<p>Weli xog mashruuc ma jirto.</p>";
-
-return;
-
-}
-
-
-const planned=
-allProjects.filter(
-x=>x.Status==="Qorshaysan"
-).length;
-
-const ongoing=
-allProjects.filter(
-x=>x.Status==="Socda"
-).length;
-
-const completed=
-allProjects.filter(
-x=>x.Status==="Dhammaystiran"
-).length;
-
-
-const data=[
-
-["Qorshaysan",planned],
-["Socda",ongoing],
-["Dhammaystiran",completed]
-
-];
-
-
-box.innerHTML=
-data.map(item=>{
-
-const percent=
-Math.round((item[1]/total)*100);
-
-return`
-
-<div class="progress-item">
-
-<div class="progress-head">
-
-<span>${item[0]}</span>
-
-<span>${item[1]}</span>
-
-</div>
-
-<div class="progress">
-
-<div
-class="progress-bar"
-style="width:${percent}%">
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-}
-
-
-/* =====================================================
-RENDER ALL
-===================================================== */
-
-async function render(){
-
-allMembers=
-await getData("Members");
-
-allProjects=
-await getData("Project");
-
-
-if(isAdmin()){
-
-allPayments=
-await getData("Payment");
-
-}else{
-
-allPayments=[];
-
-}
-
-
-/* MEMBERS */
-
-document
-.getElementById("membersCount")
-.textContent=
-allMembers.length;
-
-
-/* PROJECTS */
-
-document
-.getElementById("projectsCount")
-.textContent=
-allProjects.length;
-
-
-/* COMPLETED */
-
-const completed=
-allProjects.filter(
-x=>x.Status==="Dhammaystiran"
-).length;
-
-
-document
-.getElementById("completedCount")
-.textContent=
-completed;
-
-
-/* MONEY */
-
-if(isAdmin()){
-
-const total=
-allPayments.reduce(
-
-(sum,payment)=>
-sum+Number(payment.Amount||0),
-
-0
-
-);
-
-
-document
-.getElementById("totalPaid")
-.textContent=
-"$"+total;
-
-}
-
-
-/* PAYER */
-
-const payer=
-document.getElementById("payer");
-
-if(payer&&isAdmin()){
-
-payer.innerHTML=
-allMembers.map(member=>`
-
-<option
-value="${escapeHTML(member.Name||"")}">
-
-${escapeHTML(member.Name||"")}
-
-</option>
-
-`).join("");
-
-}
-
-
-/* PROFILE ROLE */
-
-if(currentUser&&isAdmin()){
-
-document
-.getElementById("profileRole")
-.textContent="Admin / Guddoomiye";
-
-}
-
-
-/* RENDER */
-
-renderMembers();
-renderProjects();
-renderDashboardProjects();
-renderProjectProgress();
-
-if(isAdmin()){
-
-renderPayments();
-
-}
-
-}
-
-
-/* =====================================================
-ESCAPE HTML
-===================================================== */
-
-function escapeHTML(value){
-
-return String(value)
-
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================================
-START
-===================================================== */
-
-showLogin();
-
-</script>
-
-</body>
-    </html>
+<span id="treasurerBadge"
+class="badge treasurer-badge hidden">
+💰 QASNAJI
