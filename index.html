@@ -8,18 +8,18 @@
 
 <style>
 *{
-box-sizing:border-box
+box-sizing:border-box;
 }
 
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:#f4f7f5;
-color:#17221d
+color:#17221d;
 }
 
 header{
-background:linear-gradient(135deg,#075b3a,#0b7a4d);
+background:linear-gradient(135deg,#064e3b,#0b7a4d,#16a36a);
 color:white;
 padding:15px 5%;
 display:flex;
@@ -27,54 +27,57 @@ justify-content:space-between;
 align-items:center;
 gap:10px;
 flex-wrap:wrap;
-box-shadow:0 3px 15px #0002
+box-shadow:0 4px 20px #0002;
 }
 
 .logo{
 font-size:23px;
-font-weight:800
+font-weight:900;
+letter-spacing:.5px;
 }
 
 nav{
 display:flex;
 gap:5px;
-flex-wrap:wrap
+flex-wrap:wrap;
 }
 
 button{
 border:0;
-border-radius:8px;
+border-radius:9px;
 padding:11px 15px;
 background:#075b3a;
 color:white;
 font-weight:bold;
-cursor:pointer
+cursor:pointer;
+transition:.2s;
 }
 
 button:hover{
-opacity:.9
+opacity:.9;
+transform:translateY(-1px);
 }
 
 nav button{
-background:transparent
+background:transparent;
 }
 
 .wrap{
 max-width:1200px;
 margin:auto;
-padding:25px 5%
+padding:25px 5%;
 }
 
 .card{
 background:white;
-border-radius:15px;
+border-radius:16px;
 padding:22px;
 margin-bottom:18px;
-box-shadow:0 3px 15px #00000010
+box-shadow:0 4px 18px #0000000d;
 }
 
 .hidden{
-display:none!important
+display:none!important;
 }
 
 input,
@@ -84,68 +87,77 @@ width:100%;
 padding:12px;
 margin:6px 0 14px;
 border:1px solid #ccd6d0;
-border-radius:8px;
-font-size:15px
+border-radius:9px;
+font-size:15px;
+outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#0b7a4d;
+box-shadow:0 0 0 3px #0b7a4d15;
 }
 
 textarea{
-min-height:100px
+min-height:100px;
+resize:vertical;
 }
 
 .login-card{
 max-width:430px;
-margin:60px auto
+margin:60px auto;
 }
 
 .login-card h1{
-color:#075b3a
+color:#075b3a;
 }
 
 .link-btn{
 background:none;
 color:#075b3a;
-padding:5px
+padding:5px;
 }
 
 .error{
-color:#b42318
+color:#b42318;
 }
 
 .success{
-color:#087443
+color:#087443;
 }
 
 .stats{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:18px;
-margin-bottom:20px
+margin-bottom:20px;
 }
 
 .stat{
 background:white;
 padding:22px;
-border-radius:15px;
-box-shadow:0 3px 15px #00000010;
-border-top:4px solid #075b3a
+border-radius:16px;
+box-shadow:0 4px 18px #00000010;
+border-top:4px solid #075b3a;
 }
 
 .stat-title{
 color:#66756d;
-font-size:14px
+font-size:14px;
 }
 
 .stat-number{
 font-size:30px;
-font-weight:800;
+font-weight:900;
 margin-top:8px;
-color:#075b3a
+color:#075b3a;
 }
 
 .grid{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:20px
+gap:20px;
 }
 
 .badge{
@@ -155,69 +167,78 @@ border-radius:20px;
 background:#dff2e7;
 color:#075b3a;
 font-size:12px;
-font-weight:bold
+font-weight:bold;
 }
 
 .admin-badge{
 background:#fff0c2;
-color:#8a5a00
+color:#8a5a00;
 }
 
 .treasurer-badge{
 background:#dceeff;
-color:#075b3a
+color:#075b3a;
 }
 
 .edit-btn{
-background:#2563eb
+background:#2563eb;
 }
 
 .delete-btn{
-background:#dc2626
+background:#dc2626;
 }
 
 .cancel-btn{
-background:#6b7280
+background:#6b7280;
 }
 
 .action{
 display:flex;
 gap:6px;
-flex-wrap:wrap
+flex-wrap:wrap;
 }
 
 table{
 width:100%;
-border-collapse:collapse
+border-collapse:collapse;
 }
 
 th,
 td{
 padding:11px;
 text-align:left;
-border-bottom:1px solid #e5e9e7
+border-bottom:1px solid #e5e9e7;
 }
 
 th{
-background:#edf4ef
+background:#edf4ef;
 }
 
 .search{
-margin-bottom:15px
+margin-bottom:15px;
 }
 
 .project{
 border:1px solid #e5e9e7;
 border-radius:12px;
 padding:18px;
-margin-bottom:12px
+margin-bottom:12px;
+}
+
+.project img{
+width:100%;
+max-height:280px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:12px;
 }
 
 .user-box{
-background:#e9f5ef;
-padding:15px;
-border-radius:10px;
-margin-bottom:20px
+background:linear-gradient(135deg,#e9f5ef,#f4fbf7);
+padding:16px;
+border-radius:12px;
+margin-bottom:20px;
+border:1px solid #d8eee1;
 }
 
 .private{
@@ -225,298 +246,13 @@ background:#fff4e5;
 border-left:5px solid #e09b00;
 padding:15px;
 border-radius:8px;
-margin-bottom:20px
-}
-
-.role-box{
-margin-top:8px
+margin-bottom:20px;
 }
 
 .dashboard-title{
-background:linear-gradient(135deg,#075b3a,#0b7a4d);
+background:linear-gradient(135deg,#064e3b,#087a4d,#16a36a);
 color:white;
-border-radius:18px;
-padding:28px;
+border-radius:20px;
+padding:30px;
 margin-bottom:20px;
-box-shadow:0 5px 20px #075b3a33
-}
-
-.dashboard-title h1{
-margin-top:0
-}
-
-.quick-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px
-}
-
-.quick-btn{
-padding:18px;
-border-radius:12px;
-background:#f1f7f3;
-color:#075b3a;
-font-weight:bold;
-cursor:pointer;
-text-align:center
-}
-
-.quick-btn:hover{
-background:#dff2e7
-}
-
-@media(max-width:900px){
-
-.stats{
-grid-template-columns:repeat(2,1fr)
-}
-
-.grid{
-grid-template-columns:1fr
-}
-
-.quick-grid{
-grid-template-columns:repeat(2,1fr)
-}
-
-}
-
-@media(max-width:600px){
-
-.wrap{
-padding:18px 4%
-}
-
-header{
-padding:12px 4%
-}
-
-.logo{
-font-size:19px
-}
-
-nav button{
-font-size:11px;
-padding:8px 7px
-}
-
-.stats{
-grid-template-columns:1fr 1fr;
-gap:10px
-}
-
-.stat{
-padding:15px
-}
-
-.stat-number{
-font-size:22px
-}
-
-table{
-display:block;
-overflow-x:auto;
-font-size:12px
-}
-
-th,
-td{
-white-space:nowrap;
-padding:8px
-}
-
-.quick-grid{
-grid-template-columns:1fr 1fr
-}
-}
-</style>
-</head>
-
-<body>
-
-<header id="mainHeader" class="hidden">
-
-<div class="logo">
-GUUL-WADAAG
-</div>
-
-<nav>
-
-<button onclick="showPage('dashboard')">
-🏠 Dashboard
-</button>
-
-<button onclick="showPage('members')">
-👥 Xubnaha
-</button>
-
-<button onclick="showPage('projects')">
-🏗️ Mashaariic
-</button>
-
-<button id="adminPaymentsBtn"
-class="hidden"
-onclick="showPage('payments')">
-💰 Lacagaha
-</button>
-
-<button onclick="logout()">
-Ka bax
-</button>
-
-</nav>
-</header>
-
-
-<!-- LOGIN -->
-
-<section id="loginPage">
-
-<div class="wrap">
-
-<div class="card login-card">
-
-<h1>🔐 Guul-Wadaag</h1>
-
-<p>
-Ku soo dhawoow nidaamka Ururka Guul-Wadaag.
-</p>
-
-<label>Email</label>
-
-<input
-id="loginEmail"
-type="email"
-placeholder="Email-kaaga"
->
-
-<label>Password</label>
-
-<input
-id="loginPassword"
-type="password"
-placeholder="Password-kaaga"
->
-
-<button
-style="width:100%"
-onclick="login()">
-Gal
-</button>
-
-<p id="loginMessage" class="error"></p>
-
-<hr>
-
-<p>
-Account ma lihid?
-
-<button
-class="link-btn"
-onclick="showSignup()">
-Is-diiwaangeli
-</button>
-
-</p>
-
-</div>
-</div>
-</section>
-
-
-<!-- SIGNUP -->
-
-<section id="signupPage" class="hidden">
-
-<div class="wrap">
-
-<div class="card login-card">
-
-<h1>📝 Is-diiwaangeli</h1>
-
-<p>
-Samee account-kaaga Guul-Wadaag.
-</p>
-
-<label>Magaca oo buuxa</label>
-
-<input
-id="signupName"
-placeholder="Magacaaga"
->
-
-<label>Email</label>
-
-<input
-id="signupEmail"
-type="email"
-placeholder="Email-kaaga"
->
-
-<label>Password</label>
-
-<input
-id="signupPassword"
-type="password"
-placeholder="Password-kaaga"
->
-
-<label>Xaqiiji Password</label>
-
-<input
-id="signupPassword2"
-type="password"
-placeholder="Ku celi password-ka"
->
-
-<button
-style="width:100%"
-onclick="signup()">
-Samee Account
-</button>
-
-<p id="signupMessage"></p>
-
-<hr>
-
-<p>
-Account waad leedahay?
-
-<button
-class="link-btn"
-onclick="showLogin()">
-Gal
-</button>
-
-</p>
-
-</div>
-</div>
-</section>
-
-
-<!-- APP -->
-
-<main id="app" class="wrap hidden">
-
-<div class="user-box">
-
-👤
-<strong id="currentUserName">
-Xubin
-</strong>
-
-<br>
-
-<small id="currentUserEmail"></small>
-
-<div class="role-box">
-
-<span id="adminBadge"
-class="badge admin-badge hidden">
-👑 ADMIN
-</span>
-
-<span id="treasurerBadge"
-class="badge treasurer-badge hidden">
-💰 QASNAJI
+box-shadow:0 8
