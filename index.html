@@ -1,11 +1,10 @@
 <!doctype html>
 <html lang="so">
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Guul-Wadaag</title>
+<title>Guul-Wadaag Management System</title>
 
 <style>
 
@@ -146,7 +145,7 @@ color:#075b3a
 
 .grid{
 display:grid;
-grid-template-columns:2fr 1fr;
+grid-template-columns:1fr 1fr;
 gap:20px
 }
 
@@ -293,17 +292,23 @@ border-radius:20px
 }
 
 .money-box{
-background:#eefaf4;
-border:1px solid #cdebd9;
-padding:18px;
+background:#edf8f1;
 border-radius:12px;
-margin-bottom:15px
+padding:18px;
+margin-top:15px
 }
 
-.disbursement-total{
-font-size:28px;
-font-weight:800;
-color:#075b3a
+.disbursement-box{
+background:#fff8e8;
+border-left:5px solid #d99b00;
+padding:18px;
+border-radius:10px;
+margin-bottom:20px
+}
+
+.small-text{
+font-size:13px;
+color:#66756d
 }
 
 @media(max-width:900px){
@@ -373,11 +378,9 @@ grid-template-columns:1fr 1fr
 }
 
 </style>
-
 </head>
 
 <body>
-
 
 <header id="mainHeader" class="hidden">
 
@@ -410,7 +413,7 @@ onclick="showPage('payments')">
 id="disbursementNavBtn"
 class="hidden"
 onclick="showPage('disbursement')">
-💸 Lacag-bixin
+💸 Lacag La Bixiyey
 </button>
 
 <button onclick="logout()">
@@ -422,6 +425,7 @@ onclick="showPage('disbursement')">
 </header>
 
 
+<!-- LOGIN -->
 
 <section id="loginPage">
 
@@ -479,6 +483,7 @@ Is-diiwaangeli
 </section>
 
 
+<!-- SIGNUP -->
 
 <section
 id="signupPage"
@@ -549,11 +554,14 @@ Gal
 </section>
 
 
+<!-- APP -->
 
 <main
 id="app"
 class="wrap hidden">
 
+
+<!-- USER -->
 
 <div class="user-box">
 
@@ -592,6 +600,7 @@ class="badge hidden">
 </div>
 
 
+<!-- DASHBOARD -->
 
 <section id="dashboard">
 
@@ -608,6 +617,7 @@ Dashboard-ka maamulka Ururka Guul-Wadaag
 </div>
 
 
+<!-- STATS -->
 
 <div class="stats">
 
@@ -675,42 +685,60 @@ $0
 </div>
 
 
-
-<div
-id="disbursementDashboardCard"
-class="card hidden">
-
-<div class="money-box">
-
-<div>
-💸 Lacagta Mashaariicda Lagu Bixiyay
-</div>
-
-<div
-id="totalDisbursed"
-class="disbursement-total">
-$0
-</div>
-
-<small>
-Wadarta lacagaha laga bixiyay mashaariicda.
-</small>
-
-</div>
-
-</div>
-
-
+<!-- IMPORTANT:
+     Mashruucyada Dashboard-ka waa laga saaray.
+     Halkan mashruuc list kama muuqdo.
+-->
 
 <div class="grid">
 
 <div class="card">
 
 <h2>
-🏗️ Mashaariicda Ugu Dambeeyey
+📊 Xogta Guud
 </h2>
 
-<div id="dashboardProjects">
+<p>
+Dashboard-kan wuxuu kuu soo bandhigayaa
+xogta guud ee Ururka Guul-Wadaag.
+</p>
+
+<div class="info-box">
+
+<strong>
+🏗️ Mashaariicda
+</strong>
+
+<p class="small-text">
+Si aad u aragto faahfaahinta mashaariicda,
+gal qaybta <strong>Mashaariic</strong>.
+</p>
+
+<button
+onclick="showPage('projects')">
+🏗️ Gal Mashaariicda
+</button>
+
+</div>
+
+<div
+class="money-box"
+id="dashboardMoneyBox">
+
+<strong>
+💰 Lacagaha
+</strong>
+
+<p class="small-text">
+Si aad u aragto diiwaanka lacagaha,
+gal qaybta Lacagaha.
+</p>
+
+<button
+onclick="showPage('payments')">
+💰 Gal Lacagaha
+</button>
+
 </div>
 
 </div>
@@ -755,15 +783,7 @@ id="quickDisbursement"
 onclick="showPage('disbursement')">
 💸
 <br>
-Lacag-bixin
-</div>
-
-<div
-class="quick-btn"
-onclick="showPage('dashboard')">
-📊
-<br>
-Dashboard
+Lacag La Bixiyey
 </div>
 
 </div>
@@ -773,6 +793,7 @@ Dashboard
 </div>
 
 
+<!-- PROGRESS -->
 
 <div class="card">
 
@@ -826,6 +847,7 @@ style="width:0%">
 </div>
 
 
+<!-- PROFILE -->
 
 <div class="card">
 
@@ -852,9 +874,11 @@ Xubin Caadi ah
 
 <p>
 <strong>Xaaladda:</strong>
+
 <span class="badge">
 Firfircoon
 </span>
+
 </p>
 
 </div>
@@ -862,6 +886,7 @@ Firfircoon
 </section>
 
 
+<!-- MEMBERS -->
 
 <section
 id="members"
@@ -952,7 +977,6 @@ Jooji
 </div>
 
 
-
 <div class="card">
 
 <input
@@ -970,11 +994,8 @@ oninput="renderMembers()">
 <tr>
 
 <th>Magaca</th>
-
 <th>Telefoon</th>
-
 <th>Xilka / Heerka</th>
-
 <th>Ficil</th>
 
 </tr>
@@ -992,6 +1013,7 @@ oninput="renderMembers()">
 </section>
 
 
+<!-- PAYMENTS -->
 
 <section
 id="payments"
@@ -1008,10 +1030,10 @@ class="private hidden">
 
 💰 <strong>Qasnajiga</strong>
 
-<br>
+<br><br>
 
-Waxaad awood u leedahay inaad lacag cusub geliso
-oo aad aragto dhammaan lacagaha.
+Waxaad awood u leedahay inaad lacag cusub
+geliso oo aad aragto lacagaha.
 
 <br><br>
 
@@ -1026,13 +1048,12 @@ class="private hidden">
 
 👑 <strong>Admin</strong>
 
-<br>
+<br><br>
 
 Waxaad awood buuxda u leedahay qaybta lacagaha:
 Ku dar, Edit, Delete iyo aragti guud.
 
 </div>
-
 
 
 <div
@@ -1107,7 +1128,6 @@ Jooji
 </div>
 
 
-
 <div class="card">
 
 <h3>
@@ -1151,100 +1171,75 @@ id="paymentTable">
 </section>
 
 
+<!-- DISBURSEMENT -->
 
 <section
 id="disbursement"
 class="hidden">
 
 <h1>
-💸 Lacag-bixinta Mashaariicda
+💸 Lacag La Bixiyey
 </h1>
 
+<div class="disbursement-box">
 
-<div
-id="disbursementTreasurerNotice"
-class="private hidden">
+<strong>
+💰 Diiwaanka Lacagaha Mashaariicda
+</strong>
 
-💰 <strong>Qasnajiga</strong>
-
-<br>
-
-Waxaad awood u leedahay inaad diiwaangeliso
-lacagaha laga bixiyay mashaariicda.
-
-<br><br>
-
-🚫 Edit iyo Delete laguma siin.
+<p>
+Halkan waxaa lagu diiwaangelinayaa lacag kasta
+oo mashruuc laga bixiyo.
+</p>
 
 </div>
 
 
 <div
-id="disbursementAdminNotice"
-class="private hidden">
-
-👑 <strong>Admin</strong>
-
-<br>
-
-Waxaad awood buuxda u leedahay lacag-bixinta
-mashaariicda: Ku dar, Edit, Delete iyo aragti guud.
-
-</div>
-
-
-
-<div
-id="disbursementForm"
+id="disbursementAdminForm"
 class="card">
 
 <h3 id="disbursementFormTitle">
-➕ Diiwaangeli Lacag-bixin
+➕ Diiwaangeli Lacag La Bixiyey
 </h3>
-
 
 <label>
 Mashruuca
 </label>
 
-<select id="disbursementProject">
+<select id="dProject">
 </select>
 
-
 <label>
-Lacagta la bixiyay
+Lacagta
 </label>
 
 <input
-id="disbursementAmount"
+id="dAmount"
 type="number"
-step="0.01"
-placeholder="100">
-
+placeholder="Tusaale: 500000">
 
 <label>
-Qofka / Shirkadda lacagta heshay
+Qofka / Hay'adda Lacagta Qaadatay
 </label>
 
 <input
-id="disbursementRecipient"
-placeholder="Magaca qofka ama shirkadda">
-
+id="dRecipient"
+placeholder="Magaca qaataha">
 
 <label>
-Sababta lacagta
+Sababta Lacagta
 </label>
 
 <textarea
-id="disbursementReason"
-placeholder="Tusaale: Iibka qalabka mashruuca..."></textarea>
-
+id="dReason"
+placeholder="Maxaa lacagta loo bixiyey?"></textarea>
 
 <label>
-Habka lacag-bixinta
+Habka Lacag-bixinta
 </label>
 
-<select id="disbursementMethod">
+<select id="dMethod">
 
 <option value="ZAAD">
 ZAAD
@@ -1264,33 +1259,29 @@ Bank
 
 </select>
 
-
 <label>
-Number-ka lacag-bixinta
+Number-ka Lacagta
 </label>
 
 <input
-id="disbursementPaymentNumber"
-placeholder="63xxxxxxx">
-
+id="dPaymentNumber"
+placeholder="Number-ka lacagta">
 
 <label>
 Taariikhda
 </label>
 
 <input
-id="disbursementDate"
+id="dPaymentDate"
 type="date">
-
 
 <label>
 Waqtiga
 </label>
 
 <input
-id="disbursementTime"
+id="dPaymentTime"
 type="time">
-
 
 <button
 id="disbursementSaveBtn"
@@ -1308,34 +1299,16 @@ Jooji
 </div>
 
 
-
 <div class="card">
 
-<div class="money-box">
-
-<div>
-💰 Wadarta Lacagta La Bixiyay
-</div>
-
-<div
-id="disbursementPageTotal"
-class="disbursement-total">
-$0
-</div>
-
-</div>
-
-
 <h3>
-📋 Diiwaanka Lacag-bixinta
+📋 Diiwaanka Lacagaha La Bixiyey
 </h3>
-
 
 <input
 id="disbursementSearch"
-placeholder="🔎 Raadi mashruuc, qof, sabab..."
+placeholder="🔎 Raadi mashruuc, qaataha ama sabab..."
 oninput="renderDisbursements()">
-
 
 <div style="overflow-x:auto">
 
@@ -1345,9 +1318,9 @@ oninput="renderDisbursements()">
 
 <tr>
 
-<th>Mashruuca</th>
-<th>Lacagta</th>
-<th>Qofka</th>
+<th>Mashruuc</th>
+<th>Lacag</th>
+<th>Qaataha</th>
 <th>Sababta</th>
 <th>Habka</th>
 <th>Number</th>
@@ -1372,6 +1345,7 @@ id="disbursementTable">
 </section>
 
 
+<!-- PROJECTS -->
 
 <section
 id="projects"
@@ -1439,7 +1413,6 @@ Jooji
 </div>
 
 
-
 <div class="card">
 
 <input
@@ -1453,39 +1426,44 @@ oninput="renderProjects()">
 
 </section>
 
-
 </main>
-
 
 
 <script>
 
+/* =========================================
+   SUPABASE
+========================================= */
 
 const SUPABASE_URL =
 "https://zbyrtasojwgrylcnqlhb.supabase.co";
-
 
 const SUPABASE_KEY =
 "sb_publishable_D_PSqKecBwiESZwyLTxFiw_JMMTddAN";
 
 
+/* =========================================
+   USERS
+========================================= */
+
 const ADMIN_EMAIL =
 "Cabdiaadan2022@gmail.com";
-
 
 const TREASURER_EMAIL =
 "wardudihazzan123@icloud.com";
 
 
+/* =========================================
+   STATE
+========================================= */
+
 let accessToken="";
 let currentUser=null;
-
 
 let allMembers=[];
 let allPayments=[];
 let allProjects=[];
 let allDisbursements=[];
-
 
 let editingMemberId=null;
 let editingPaymentId=null;
@@ -1493,6 +1471,9 @@ let editingProjectId=null;
 let editingDisbursementId=null;
 
 
+/* =========================================
+   HEADERS
+========================================= */
 
 function apiHeaders(){
 
@@ -1514,6 +1495,9 @@ return {
 }
 
 
+/* =========================================
+   ROLE CHECK
+========================================= */
 
 function isAdmin(){
 
@@ -1521,11 +1505,11 @@ if(!currentUser)
 return false;
 
 return String(currentUser.email||"")
-.toLowerCase() ===
+.toLowerCase()
+===
 ADMIN_EMAIL.toLowerCase();
 
 }
-
 
 
 function isTreasurer(){
@@ -1534,11 +1518,11 @@ if(!currentUser)
 return false;
 
 return String(currentUser.email||"")
-.toLowerCase() ===
+.toLowerCase()
+===
 TREASURER_EMAIL.toLowerCase();
 
 }
-
 
 
 function canSeePayments(){
@@ -1548,7 +1532,6 @@ return isAdmin() || isTreasurer();
 }
 
 
-
 function canSeeDisbursement(){
 
 return isAdmin() || isTreasurer();
@@ -1556,6 +1539,9 @@ return isAdmin() || isTreasurer();
 }
 
 
+/* =========================================
+   LOGIN / SIGNUP
+========================================= */
 
 function showLogin(){
 
@@ -1570,7 +1556,6 @@ document
 }
 
 
-
 function showSignup(){
 
 document
@@ -1582,7 +1567,6 @@ document
 .classList.remove("hidden");
 
 }
-
 
 
 async function signup(){
@@ -1729,7 +1713,6 @@ msg.textContent=
 }
 
 
-
 async function login(){
 
 const email=
@@ -1819,6 +1802,9 @@ msg.textContent=
 }
 
 
+/* =========================================
+   OPEN APP
+========================================= */
 
 async function openApp(){
 
@@ -1844,7 +1830,6 @@ document
 .textContent=
 currentUser?.email||"";
 
-
 document
 .getElementById("profileEmail")
 .textContent=
@@ -1861,11 +1846,9 @@ document
 .getElementById("currentUserName")
 .textContent=name;
 
-
 document
 .getElementById("dashboardName")
 .textContent=name;
-
 
 document
 .getElementById("profileName")
@@ -1876,11 +1859,9 @@ document
 .getElementById("adminBadge")
 .classList.add("hidden");
 
-
 document
 .getElementById("treasurerBadge")
 .classList.add("hidden");
-
 
 document
 .getElementById("memberBadge")
@@ -1923,7 +1904,6 @@ document
 }
 
 
-
 if(canSeePayments()){
 
 document
@@ -1955,7 +1935,6 @@ document
 }
 
 
-
 if(canSeeDisbursement()){
 
 document
@@ -1964,10 +1943,6 @@ document
 
 document
 .getElementById("quickDisbursement")
-.classList.remove("hidden");
-
-document
-.getElementById("disbursementDashboardCard")
 .classList.remove("hidden");
 
 }else{
@@ -1980,10 +1955,6 @@ document
 .getElementById("quickDisbursement")
 .classList.add("hidden");
 
-document
-.getElementById("disbursementDashboardCard")
-.classList.add("hidden");
-
 }
 
 
@@ -1992,6 +1963,9 @@ await render();
 }
 
 
+/* =========================================
+   LOGOUT
+========================================= */
 
 async function logout(){
 
@@ -2022,7 +1996,6 @@ console.error(e);
 
 }
 
-
 accessToken="";
 currentUser=null;
 
@@ -2031,6 +2004,9 @@ location.reload();
 }
 
 
+/* =========================================
+   NAVIGATION
+========================================= */
 
 function showPage(id){
 
@@ -2060,8 +2036,8 @@ return;
 "dashboard",
 "members",
 "payments",
-"disbursement",
-"projects"
+"projects",
+"disbursement"
 ].forEach(page=>{
 
 const el=
@@ -2073,29 +2049,31 @@ el.classList.add("hidden");
 });
 
 
-document
-.getElementById(id)
-.classList.remove("hidden");
+const target=
+document.getElementById(id);
+
+if(target)
+target.classList.remove("hidden");
 
 
 if(id==="members")
 renderMembers();
 
-
 if(id==="payments")
 renderPayments();
-
-
-if(id==="disbursement")
-renderDisbursements();
-
 
 if(id==="projects")
 renderProjects();
 
+if(id==="disbursement")
+renderDisbursements();
+
 }
 
 
+/* =========================================
+   GET DATA
+========================================= */
 
 async function getData(table){
 
@@ -2143,11 +2121,9 @@ return [];
 }
 
 
-
-/* ================================
+/* =========================================
    MEMBERS
-================================ */
-
+========================================= */
 
 async function saveMember(){
 
@@ -2245,27 +2221,22 @@ await render();
 }
 
 
-
 function editMember(member){
 
 if(!isAdmin())
 return;
 
-
 editingMemberId=member.id;
-
 
 document
 .getElementById("mname")
 .value=
 member.Name||"";
 
-
 document
 .getElementById("mphone")
 .value=
 member.Phone||"";
-
 
 document
 .getElementById("mtype")
@@ -2273,24 +2244,20 @@ document
 member.Type||
 "Xubin Caadi ah";
 
-
 document
 .getElementById("memberFormTitle")
 .textContent=
 "✏️ Wax ka beddel Xubin";
-
 
 document
 .getElementById("memberSaveBtn")
 .textContent=
 "💾 Kaydi";
 
-
 document
 .getElementById("memberCancelBtn")
 .classList
 .remove("hidden");
-
 
 window.scrollTo({
 top:0,
@@ -2300,12 +2267,10 @@ behavior:"smooth"
 }
 
 
-
 async function deleteMember(id){
 
 if(!isAdmin())
 return;
-
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso xubintan?"
@@ -2346,39 +2311,32 @@ await render();
 }
 
 
-
 function cancelMemberEdit(){
 
 editingMemberId=null;
-
 
 document
 .getElementById("mname")
 .value="";
 
-
 document
 .getElementById("mphone")
 .value="";
-
 
 document
 .getElementById("mtype")
 .value=
 "Xubin Caadi ah";
 
-
 document
 .getElementById("memberFormTitle")
 .textContent=
 "➕ Ku dar Xubin";
 
-
 document
 .getElementById("memberSaveBtn")
 .textContent=
 "Diiwaangeli";
-
 
 document
 .getElementById("memberCancelBtn")
@@ -2386,7 +2344,6 @@ document
 .add("hidden");
 
 }
-
 
 
 function renderMembers(){
@@ -2495,11 +2452,9 @@ onclick="deleteMember(${member.id})">
 }
 
 
-
-/* ================================
+/* =========================================
    PAYMENTS
-================================ */
-
+========================================= */
 
 async function savePayment(){
 
@@ -2625,7 +2580,6 @@ await render();
 }
 
 
-
 function editPayment(payment){
 
 if(!isAdmin()){
@@ -2642,42 +2596,35 @@ return;
 editingPaymentId=
 payment.id;
 
-
 document
 .getElementById("payer")
 .value=
 payment.Member_Name||"";
-
 
 document
 .getElementById("amount")
 .value=
 payment.Amount||"";
 
-
 document
 .getElementById("method")
 .value=
 payment.Method||"ZAAD";
-
 
 document
 .getElementById("paymentNumber")
 .value=
 payment.Payment_Number||"";
 
-
 document
 .getElementById("month")
 .value=
 payment.Month||"";
 
-
 document
 .getElementById("paymentSaveBtn")
 .textContent=
 "💾 Kaydi Isbeddelka";
-
 
 document
 .getElementById("paymentCancelBtn")
@@ -2685,7 +2632,6 @@ document
 .remove("hidden");
 
 }
-
 
 
 async function deletePayment(id){
@@ -2740,32 +2686,26 @@ await render();
 }
 
 
-
 function cancelPaymentEdit(){
 
 editingPaymentId=null;
-
 
 document
 .getElementById("amount")
 .value="";
 
-
 document
 .getElementById("paymentNumber")
 .value="";
-
 
 document
 .getElementById("month")
 .value="";
 
-
 document
 .getElementById("paymentSaveBtn")
 .textContent=
 "💳 Kaydi Lacagta";
-
 
 document
 .getElementById("paymentCancelBtn")
@@ -2773,7 +2713,6 @@ document
 .add("hidden");
 
 }
-
 
 
 function renderPayments(){
@@ -2906,59 +2845,16 @@ onclick="deletePayment(${payment.id})">
 }
 
 
+/* =========================================
+   PROJECTS
+========================================= */
 
-/* ================================
-   DISBURSEMENT
-================================ */
+async function saveProject(){
 
-
-function getTodayDate(){
-
-const d=
-new Date();
-
-const year=
-d.getFullYear();
-
-const month=
-String(d.getMonth()+1)
-.padStart(2,"0");
-
-const day=
-String(d.getDate())
-.padStart(2,"0");
-
-return year+"-"+month+"-"+day;
-
-}
-
-
-
-function getCurrentTime(){
-
-const d=
-new Date();
-
-const hours=
-String(d.getHours())
-.padStart(2,"0");
-
-const minutes=
-String(d.getMinutes())
-.padStart(2,"0");
-
-return hours+":"+minutes;
-
-}
-
-
-
-async function saveDisbursement(){
-
-if(!canSeeDisbursement()){
+if(!isAdmin()){
 
 alert(
-"🔒 Kaliya Admin iyo Qasnajiga ayaa lacag-bixin diiwaangelin kara."
+"Admin kaliya."
 );
 
 return;
@@ -2966,72 +2862,31 @@ return;
 }
 
 
-const project=
-document
-.getElementById("disbursementProject")
-.value;
+const name=
+document.getElementById("pname")
+.value.trim();
 
-const amount=
+const description=
+document.getElementById("pdesc")
+.value.trim();
+
+const budget=
 Number(
-document
-.getElementById("disbursementAmount")
-.value
-);
+document.getElementById("pbudget").value
+)||0;
 
-const recipient=
-document
-.getElementById("disbursementRecipient")
-.value
-.trim();
+const status=
+document.getElementById("pstatus").value;
 
-const reason=
-document
-.getElementById("disbursementReason")
-.value
-.trim();
-
-const method=
-document
-.getElementById("disbursementMethod")
-.value;
-
-const paymentNumber=
-document
-.getElementById("disbursementPaymentNumber")
-.value
-.trim();
-
-const paymentDate=
-document
-.getElementById("disbursementDate")
-.value;
-
-const paymentTime=
-document
-.getElementById("disbursementTime")
-.value;
+const image=
+document.getElementById("pimage")
+.value.trim();
 
 
-if(
-!project ||
-!amount ||
-!recipient ||
-!reason
-){
+if(!name){
 
 alert(
-"Fadlan buuxi mashruuca, lacagta, qofka iyo sababta."
-);
-
-return;
-
-}
-
-
-if(isTreasurer() && editingDisbursementId){
-
-alert(
-"🚫 Qasnajigu ma beddeli karo lacag-bixin hore."
+"Magaca mashruuca geli."
 );
 
 return;
@@ -3041,43 +2896,19 @@ return;
 
 let url=
 SUPABASE_URL+
-"/rest/v1/Disbursement";
-
+"/rest/v1/Project";
 
 let requestMethod="POST";
 
 
-if(isAdmin() && editingDisbursementId){
+if(editingProjectId){
 
 url+=
-"?id=eq."+editingDisbursementId;
+"?id=eq."+editingProjectId;
 
 requestMethod="PATCH";
 
 }
-
-
-const body={
-
-Project:project,
-
-Amount:amount,
-
-Recipient:recipient,
-
-Reason:reason,
-
-Method:method,
-
-Payment_Number:paymentNumber,
-
-Payment_Date:
-paymentDate || null,
-
-Payment_Time:
-paymentTime || null
-
-};
 
 
 const response=
@@ -3091,7 +2922,15 @@ method:requestMethod,
 
 headers:apiHeaders(),
 
-body:JSON.stringify(body)
+body:JSON.stringify({
+
+Name:name,
+Description:description,
+Budget:budget,
+Status:status,
+Image:image
+
+})
 
 }
 
@@ -3100,13 +2939,430 @@ body:JSON.stringify(body)
 
 if(!response.ok){
 
-const errorText=
-await response.text();
-
-console.error(errorText);
+console.error(
+await response.text()
+);
 
 alert(
-"Lacag-bixinta lama kaydin. Hubi RLS iyo magaca table-ka Disbursement."
+"Mashruuca lama kaydin."
+);
+
+return;
+
+}
+
+
+alert(
+"Mashruuca waa la kaydiyey. ✅"
+);
+
+cancelProjectEdit();
+
+await render();
+
+}
+
+
+function editProject(project){
+
+if(!isAdmin())
+return;
+
+editingProjectId=
+project.id;
+
+document
+.getElementById("pname")
+.value=
+project.Name||"";
+
+document
+.getElementById("pdesc")
+.value=
+project.Description||"";
+
+document
+.getElementById("pbudget")
+.value=
+project.Budget||0;
+
+document
+.getElementById("pstatus")
+.value=
+project.Status||"Qorshaysan";
+
+document
+.getElementById("pimage")
+.value=
+project.Image||"";
+
+document
+.getElementById("projectFormTitle")
+.textContent=
+"✏️ Wax ka beddel Mashruuc";
+
+document
+.getElementById("projectSaveBtn")
+.textContent=
+"💾 Kaydi";
+
+document
+.getElementById("projectCancelBtn")
+.classList
+.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+async function deleteProject(id){
+
+if(!isAdmin())
+return;
+
+if(!confirm(
+"Ma hubtaa inaad tirtirayso mashruucan?"
+))
+return;
+
+
+const response=
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Project?id=eq."+id,
+
+{
+
+method:"DELETE",
+
+headers:apiHeaders()
+
+}
+
+);
+
+
+if(!response.ok){
+
+alert(
+"Mashruuca lama tirtiri karin."
+);
+
+return;
+
+}
+
+
+await render();
+
+}
+
+
+function cancelProjectEdit(){
+
+editingProjectId=null;
+
+document
+.getElementById("pname")
+.value="";
+
+document
+.getElementById("pdesc")
+.value="";
+
+document
+.getElementById("pbudget")
+.value="";
+
+document
+.getElementById("pimage")
+.value="";
+
+document
+.getElementById("projectFormTitle")
+.textContent=
+"➕ Ku dar Mashruuc";
+
+document
+.getElementById("projectSaveBtn")
+.textContent=
+"➕ Ku dar";
+
+document
+.getElementById("projectCancelBtn")
+.classList
+.add("hidden");
+
+}
+
+
+function renderProjects(){
+
+const list=
+document.getElementById("projectList");
+
+if(!list)
+return;
+
+
+const search=
+(
+document.getElementById("projectSearch")?.value||""
+).toLowerCase();
+
+
+const filtered=
+allProjects.filter(project=>{
+
+return (
+
+String(project.Name||"")
+.toLowerCase()
+.includes(search)
+
+||
+
+String(project.Description||"")
+.toLowerCase()
+.includes(search)
+
+||
+
+String(project.Status||"")
+.toLowerCase()
+.includes(search)
+
+);
+
+});
+
+
+list.innerHTML=
+filtered.map(project=>`
+
+<div class="project">
+
+${
+project.Image
+
+?
+
+`
+
+<img
+src="${escapeHTML(project.Image)}"
+alt="Mashruuc">
+
+`
+
+:
+
+""
+
+}
+
+<h3>
+🏗️ ${escapeHTML(project.Name||"")}
+</h3>
+
+<p>
+${escapeHTML(project.Description||"")}
+</p>
+
+<p>
+
+<strong>
+Xaalad:
+</strong>
+
+<span class="badge">
+${escapeHTML(project.Status||"")}
+</span>
+
+</p>
+
+
+<p>
+
+<strong>
+Miisaaniyadda:
+</strong>
+
+$${Number(project.Budget||0)}
+
+</p>
+
+
+${
+isAdmin()
+
+?
+
+`
+
+<div class="action">
+
+<button
+class="edit-btn"
+onclick='editProject(${JSON.stringify(project)})'>
+✏️ Edit
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteProject(${project.id})">
+🗑️ Delete
+</button>
+
+</div>
+
+`
+
+:
+
+""
+
+}
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =========================================
+   DISBURSEMENT
+========================================= */
+
+async function saveDisbursement(){
+
+if(!canSeeDisbursement()){
+
+alert(
+"🔒 Qaybtan waxaa heli kara Admin iyo Qasnajiga."
+);
+
+return;
+
+}
+
+
+const project=
+document.getElementById("dProject")
+.value;
+
+const amount=
+Number(
+document.getElementById("dAmount")
+.value
+);
+
+const recipient=
+document.getElementById("dRecipient")
+.value.trim();
+
+const reason=
+document.getElementById("dReason")
+.value.trim();
+
+const method=
+document.getElementById("dMethod")
+.value;
+
+const paymentNumber=
+document.getElementById("dPaymentNumber")
+.value.trim();
+
+const paymentDate=
+document.getElementById("dPaymentDate")
+.value;
+
+const paymentTime=
+document.getElementById("dPaymentTime")
+.value;
+
+
+if(!project || !amount || !recipient || !reason){
+
+alert(
+"Fadlan buuxi mashruuca, lacagta, qaataha iyo sababta."
+);
+
+return;
+
+}
+
+
+let url=
+SUPABASE_URL+
+"/rest/v1/Disbursement";
+
+let requestMethod="POST";
+
+
+if(editingDisbursementId){
+
+if(!isAdmin()){
+
+alert(
+"🚫 Qasnajigu ma beddeli karo lacag hore loo bixiyey."
+);
+
+return;
+
+}
+
+url+=
+"?id=eq."+editingDisbursementId;
+
+requestMethod="PATCH";
+
+}
+
+
+const response=
+await fetch(
+
+url,
+
+{
+
+method:requestMethod,
+
+headers:apiHeaders(),
+
+body:JSON.stringify({
+
+Project:project,
+Amount:amount,
+Recipient:recipient,
+Reason:reason,
+Method:method,
+Payment_Number:paymentNumber,
+Payment_Date:paymentDate||null,
+Payment_Time:paymentTime||null
+
+})
+
+}
+
+);
+
+
+if(!response.ok){
+
+console.error(
+await response.text()
+);
+
+alert(
+"Lacag-bixinta lama kaydin. Hubi RLS-ka Supabase."
 );
 
 return;
@@ -3118,7 +3374,6 @@ alert(
 "Lacag-bixinta waa la kaydiyey. ✅"
 );
 
-
 cancelDisbursementEdit();
 
 await render();
@@ -3126,13 +3381,12 @@ await render();
 }
 
 
-
 function editDisbursement(item){
 
 if(!isAdmin()){
 
 alert(
-"🚫 Admin kaliya ayaa Edit samayn kara."
+"🚫 Qasnajigu ma beddeli karo lacagaha la bixiyey."
 );
 
 return;
@@ -3145,70 +3399,59 @@ item.id;
 
 
 document
-.getElementById("disbursementProject")
+.getElementById("dProject")
 .value=
 item.Project||"";
 
-
 document
-.getElementById("disbursementAmount")
+.getElementById("dAmount")
 .value=
 item.Amount||"";
 
-
 document
-.getElementById("disbursementRecipient")
+.getElementById("dRecipient")
 .value=
 item.Recipient||"";
 
-
 document
-.getElementById("disbursementReason")
+.getElementById("dReason")
 .value=
 item.Reason||"";
 
-
 document
-.getElementById("disbursementMethod")
+.getElementById("dMethod")
 .value=
 item.Method||"ZAAD";
 
-
 document
-.getElementById("disbursementPaymentNumber")
+.getElementById("dPaymentNumber")
 .value=
 item.Payment_Number||"";
 
-
 document
-.getElementById("disbursementDate")
+.getElementById("dPaymentDate")
 .value=
 item.Payment_Date||"";
 
-
 document
-.getElementById("disbursementTime")
+.getElementById("dPaymentTime")
 .value=
 item.Payment_Time||"";
-
 
 document
 .getElementById("disbursementFormTitle")
 .textContent=
-"✏️ Wax ka beddel Lacag-bixin";
-
+"✏️ Wax ka beddel Lacag-bixinta";
 
 document
 .getElementById("disbursementSaveBtn")
 .textContent=
 "💾 Kaydi Isbeddelka";
 
-
 document
 .getElementById("disbursementCancelBtn")
 .classList
 .remove("hidden");
-
 
 window.scrollTo({
 top:0,
@@ -3218,13 +3461,12 @@ behavior:"smooth"
 }
 
 
-
 async function deleteDisbursement(id){
 
 if(!isAdmin()){
 
 alert(
-"🚫 Admin kaliya ayaa Delete samayn kara."
+"🚫 Admin kaliya ayaa tirtiri kara."
 );
 
 return;
@@ -3257,10 +3499,6 @@ headers:apiHeaders()
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
-
 alert(
 "Lacag-bixinta lama tirtiri karin."
 );
@@ -3270,65 +3508,48 @@ return;
 }
 
 
-alert(
-"Lacag-bixinta waa la tirtiray. ✅"
-);
-
-
 await render();
 
 }
-
 
 
 function cancelDisbursementEdit(){
 
 editingDisbursementId=null;
 
-
 document
-.getElementById("disbursementAmount")
+.getElementById("dAmount")
 .value="";
 
-
 document
-.getElementById("disbursementRecipient")
+.getElementById("dRecipient")
 .value="";
 
-
 document
-.getElementById("disbursementReason")
+.getElementById("dReason")
 .value="";
 
-
 document
-.getElementById("disbursementPaymentNumber")
+.getElementById("dPaymentNumber")
 .value="";
 
+document
+.getElementById("dPaymentDate")
+.value="";
 
 document
-.getElementById("disbursementDate")
-.value=
-getTodayDate();
-
-
-document
-.getElementById("disbursementTime")
-.value=
-getCurrentTime();
-
+.getElementById("dPaymentTime")
+.value="";
 
 document
 .getElementById("disbursementFormTitle")
 .textContent=
-"➕ Diiwaangeli Lacag-bixin";
-
+"➕ Diiwaangeli Lacag La Bixiyey";
 
 document
 .getElementById("disbursementSaveBtn")
 .textContent=
 "💸 Kaydi Lacag-bixinta";
-
 
 document
 .getElementById("disbursementCancelBtn")
@@ -3338,7 +3559,6 @@ document
 }
 
 
-
 function renderDisbursements(){
 
 if(!canSeeDisbursement())
@@ -3346,8 +3566,9 @@ return;
 
 
 const table=
-document
-.getElementById("disbursementTable");
+document.getElementById(
+"disbursementTable"
+);
 
 if(!table)
 return;
@@ -3358,8 +3579,7 @@ const search=
 document
 .getElementById("disbursementSearch")
 ?.value||""
-)
-.toLowerCase();
+).toLowerCase();
 
 
 const filtered=
@@ -3406,9 +3626,7 @@ filtered.map(item=>`
 <tr>
 
 <td>
-<strong>
 ${escapeHTML(item.Project||"")}
-</strong>
 </td>
 
 <td>
@@ -3490,554 +3708,27 @@ onclick="deleteDisbursement(${item.id})">
 
 `).join("");
 
-
-const total=
-allDisbursements.reduce(
-
-(sum,item)=>
-sum+
-Number(item.Amount||0),
-
-0
-
-);
-
-
-document
-.getElementById("disbursementPageTotal")
-.textContent=
-"$"+total;
-
-
-document
-.getElementById("totalDisbursed")
-.textContent=
-"$"+total;
-
 }
 
 
-
-/* ================================
-   PROJECTS
-================================ */
-
-
-async function saveProject(){
-
-if(!isAdmin()){
-
-alert(
-"Admin kaliya."
-);
-
-return;
-
-}
-
-
-const name=
-document
-.getElementById("pname")
-.value
-.trim();
-
-
-const description=
-document
-.getElementById("pdesc")
-.value
-.trim();
-
-
-const budget=
-Number(
-document
-.getElementById("pbudget")
-.value
-)||0;
-
-
-const status=
-document
-.getElementById("pstatus")
-.value;
-
-
-const image=
-document
-.getElementById("pimage")
-.value
-.trim();
-
-
-if(!name){
-
-alert(
-"Magaca mashruuca geli."
-);
-
-return;
-
-}
-
-
-let url=
-SUPABASE_URL+
-"/rest/v1/Project";
-
-
-let requestMethod="POST";
-
-
-if(editingProjectId){
-
-url+=
-"?id=eq."+editingProjectId;
-
-requestMethod="PATCH";
-
-}
-
-
-const response=
-await fetch(
-
-url,
-
-{
-
-method:requestMethod,
-
-headers:apiHeaders(),
-
-body:JSON.stringify({
-
-Name:name,
-
-Description:description,
-
-Budget:budget,
-
-Status:status,
-
-Image:image
-
-})
-
-}
-
-);
-
-
-if(!response.ok){
-
-console.error(
-await response.text()
-);
-
-alert(
-"Mashruuca lama kaydin."
-);
-
-return;
-
-}
-
-
-alert(
-"Mashruuca waa la kaydiyey. ✅"
-);
-
-cancelProjectEdit();
-
-await render();
-
-}
-
-
-
-function editProject(project){
-
-if(!isAdmin())
-return;
-
-
-editingProjectId=
-project.id;
-
-
-document
-.getElementById("pname")
-.value=
-project.Name||"";
-
-
-document
-.getElementById("pdesc")
-.value=
-project.Description||"";
-
-
-document
-.getElementById("pbudget")
-.value=
-project.Budget||0;
-
-
-document
-.getElementById("pstatus")
-.value=
-project.Status||"Qorshaysan";
-
-
-document
-.getElementById("pimage")
-.value=
-project.Image||"";
-
-
-document
-.getElementById("projectFormTitle")
-.textContent=
-"✏️ Wax ka beddel Mashruuc";
-
-
-document
-.getElementById("projectSaveBtn")
-.textContent=
-"💾 Kaydi";
-
-
-document
-.getElementById("projectCancelBtn")
-.classList
-.remove("hidden");
-
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-
-async function deleteProject(id){
-
-if(!isAdmin())
-return;
-
-
-if(!confirm(
-"Ma hubtaa inaad tirtirayso mashruucan?"
-))
-return;
-
-
-const response=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/Project?id=eq."+id,
-
-{
-
-method:"DELETE",
-
-headers:apiHeaders()
-
-}
-
-);
-
-
-if(!response.ok){
-
-alert(
-"Mashruuca lama tirtiri karin."
-);
-
-return;
-
-}
-
-
-await render();
-
-}
-
-
-
-function cancelProjectEdit(){
-
-editingProjectId=null;
-
-
-document
-.getElementById("pname")
-.value="";
-
-
-document
-.getElementById("pdesc")
-.value="";
-
-
-document
-.getElementById("pbudget")
-.value="";
-
-
-document
-.getElementById("pimage")
-.value="";
-
-
-document
-.getElementById("projectFormTitle")
-.textContent=
-"➕ Ku dar Mashruuc";
-
-
-document
-.getElementById("projectSaveBtn")
-.textContent=
-"➕ Ku dar";
-
-
-document
-.getElementById("projectCancelBtn")
-.classList
-.add("hidden");
-
-}
-
-
-
-function renderProjects(){
-
-const list=
-document
-.getElementById("projectList");
-
-if(!list)
-return;
-
-
-const search=
-(
-document
-.getElementById("projectSearch")
-?.value||""
-)
-.toLowerCase();
-
-
-const filtered=
-allProjects.filter(project=>{
-
-return (
-
-String(project.Name||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(project.Description||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-String(project.Status||"")
-.toLowerCase()
-.includes(search)
-
-);
-
-});
-
-
-list.innerHTML=
-filtered.map(project=>`
-
-<div class="project">
-
-${
-project.Image
-
-?
-
-`
-
-<img
-src="${escapeHTML(project.Image)}"
-alt="Mashruuc">
-
-`
-
-:
-
-""
-
-}
-
-
-<h3>
-🏗️ ${escapeHTML(project.Name||"")}
-</h3>
-
-
-<p>
-${escapeHTML(project.Description||"")}
-</p>
-
-
-<p>
-
-<strong>
-Xaalad:
-</strong>
-
-<span class="badge">
-${escapeHTML(project.Status||"")}
-</span>
-
-</p>
-
-
-
-${
-isAdmin()
-
-?
-
-`
-
-<p>
-
-<strong>
-Miisaaniyad:
-</strong>
-
-$${Number(project.Budget||0)}
-
-</p>
-
-<div class="action">
-
-<button
-class="edit-btn"
-onclick='editProject(${JSON.stringify(project)})'>
-✏️ Edit
-</button>
-
-<button
-class="delete-btn"
-onclick="deleteProject(${project.id})">
-🗑️ Delete
-</button>
-
-</div>
-
-`
-
-:
-
-""
-
-}
-
-</div>
-
-`).join("");
-
-
-renderDashboardProjects();
-
-}
-
-
-
-function renderDashboardProjects(){
-
-const box=
-document
-.getElementById("dashboardProjects");
-
-if(!box)
-return;
-
-
-const projects=
-allProjects.slice(0,5);
-
-
-box.innerHTML=
-projects.length
-
-?
-
-projects.map(project=>`
-
-<div
-style="
-padding:12px 0;
-border-bottom:1px solid #eee">
-
-<strong>
-🏗️ ${escapeHTML(project.Name||"")}
-</strong>
-
-<br>
-
-<small>
-${escapeHTML(project.Description||"")}
-</small>
-
-<br>
-
-<span class="badge">
-${escapeHTML(project.Status||"")}
-</span>
-
-</div>
-
-`).join("")
-
-:
-
-"<p>Weli mashruuc lama diiwaangelin.</p>";
-
-}
-
-
-
-/* ================================
-   PROJECT PROGRESS
-================================ */
-
+/* =========================================
+   DASHBOARD PROGRESS
+========================================= */
 
 function renderProgress(){
 
 const total=
 allProjects.length;
 
-
 const planned=
 allProjects.filter(p=>
 p.Status==="Qorshaysan"
 ).length;
 
-
 const ongoing=
 allProjects.filter(p=>
 p.Status==="Socda"
 ).length;
-
 
 const done=
 allProjects.filter(p=>
@@ -4050,24 +3741,20 @@ document
 .textContent=
 planned;
 
-
 document
 .getElementById("ongoingCount")
 .textContent=
 ongoing;
-
 
 document
 .getElementById("doneCount")
 .textContent=
 done;
 
-
 document
 .getElementById("completedProjects")
 .textContent=
 done;
-
 
 
 function percent(number){
@@ -4087,12 +3774,10 @@ document
 .style.width=
 percent(planned)+"%";
 
-
 document
 .getElementById("ongoingProgress")
 .style.width=
 percent(ongoing)+"%";
-
 
 document
 .getElementById("doneProgress")
@@ -4102,17 +3787,14 @@ percent(done)+"%";
 }
 
 
-
-/* ================================
-   MAIN RENDER
-================================ */
-
+/* =========================================
+   RENDER
+========================================= */
 
 async function render(){
 
 allMembers=
 await getData("Members");
-
 
 allProjects=
 await getData("Project");
@@ -4142,18 +3824,15 @@ allDisbursements=[];
 }
 
 
-
 document
 .getElementById("membersCount")
 .textContent=
 allMembers.length;
 
-
 document
 .getElementById("projectsCount")
 .textContent=
 allProjects.length;
-
 
 
 if(canSeePayments()){
@@ -4169,7 +3848,6 @@ Number(payment.Amount||0),
 
 );
 
-
 document
 .getElementById("totalPaid")
 .textContent=
@@ -4178,40 +3856,8 @@ document
 }
 
 
-
-if(canSeeDisbursement()){
-
-const totalDisbursed=
-allDisbursements.reduce(
-
-(sum,item)=>
-sum+
-Number(item.Amount||0),
-
-0
-
-);
-
-
-document
-.getElementById("totalDisbursed")
-.textContent=
-"$"+totalDisbursed;
-
-
-document
-.getElementById("disbursementPageTotal")
-.textContent=
-"$"+totalDisbursed;
-
-}
-
-
-
 const payer=
-document
-.getElementById("payer");
-
+document.getElementById("payer");
 
 if(
 payer &&
@@ -4233,18 +3879,17 @@ ${escapeHTML(member.Name||"")}
 }
 
 
+/* PROJECT DROPDOWN FOR DISBURSEMENT */
 
-const projectSelect=
-document
-.getElementById("disbursementProject");
-
+const dProject=
+document.getElementById("dProject");
 
 if(
-projectSelect &&
+dProject &&
 canSeeDisbursement()
 ){
 
-projectSelect.innerHTML=
+dProject.innerHTML=
 allProjects.map(project=>`
 
 <option
@@ -4259,6 +3904,7 @@ ${escapeHTML(project.Name||"")}
 }
 
 
+/* ADMIN FORMS */
 
 if(isAdmin()){
 
@@ -4267,49 +3913,30 @@ document
 .classList
 .remove("hidden");
 
-
 document
 .getElementById("projectAdminForm")
 .classList
 .remove("hidden");
-
 
 document
 .getElementById("paymentForm")
 .classList
 .remove("hidden");
 
-
 document
-.getElementById("disbursementForm")
+.getElementById("disbursementAdminForm")
 .classList
 .remove("hidden");
-
 
 document
 .getElementById("adminNotice")
 .classList
 .remove("hidden");
 
-
 document
 .getElementById("treasurerNotice")
 .classList
 .add("hidden");
-
-
-document
-.getElementById("disbursementAdminNotice")
-.classList
-.remove("hidden");
-
-
-document
-.getElementById("disbursementTreasurerNotice")
-.classList
-.add("hidden");
-
-
 
 }else if(isTreasurer()){
 
@@ -4318,49 +3945,30 @@ document
 .classList
 .add("hidden");
 
-
 document
 .getElementById("projectAdminForm")
 .classList
 .add("hidden");
-
 
 document
 .getElementById("paymentForm")
 .classList
 .remove("hidden");
 
-
 document
-.getElementById("disbursementForm")
+.getElementById("disbursementAdminForm")
 .classList
 .remove("hidden");
-
 
 document
 .getElementById("adminNotice")
 .classList
 .add("hidden");
 
-
 document
 .getElementById("treasurerNotice")
 .classList
 .remove("hidden");
-
-
-document
-.getElementById("disbursementAdminNotice")
-.classList
-.add("hidden");
-
-
-document
-.getElementById("disbursementTreasurerNotice")
-.classList
-.remove("hidden");
-
-
 
 }else{
 
@@ -4369,45 +3977,28 @@ document
 .classList
 .add("hidden");
 
-
 document
 .getElementById("projectAdminForm")
 .classList
 .add("hidden");
-
 
 document
 .getElementById("paymentForm")
 .classList
 .add("hidden");
 
-
 document
-.getElementById("disbursementForm")
+.getElementById("disbursementAdminForm")
 .classList
 .add("hidden");
-
 
 document
 .getElementById("adminNotice")
 .classList
 .add("hidden");
 
-
 document
 .getElementById("treasurerNotice")
-.classList
-.add("hidden");
-
-
-document
-.getElementById("disbursementAdminNotice")
-.classList
-.add("hidden");
-
-
-document
-.getElementById("disbursementTreasurerNotice")
 .classList
 .add("hidden");
 
@@ -4429,6 +4020,9 @@ renderDisbursements();
 }
 
 
+/* =========================================
+   SECURITY
+========================================= */
 
 function escapeHTML(value){
 
@@ -4447,41 +4041,13 @@ return String(value)
 }
 
 
-
-/* ================================
-   DEFAULT DATE / TIME
-================================ */
-
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-const date=
-document
-.getElementById("disbursementDate");
-
-const time=
-document
-.getElementById("disbursementTime");
-
-
-if(date)
-date.value=
-getTodayDate();
-
-
-if(time)
-time.value=
-getCurrentTime();
-
-}
-);
-
+/* =========================================
+   START
+========================================= */
 
 showLogin();
 
 </script>
 
 </body>
-  </html>
+   </html>
