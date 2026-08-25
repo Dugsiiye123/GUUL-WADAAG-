@@ -353,6 +353,7 @@ padding:8px
 .quick-grid{
 grid-template-columns:1fr 1fr
 }
+
 }
 </style>
 </head>
@@ -682,7 +683,7 @@ Xubnaha
 </div>
 
 <div
-class="quick-btn"
+class="quick-btn hidden"
 id="quickPayments"
 onclick="showPage('payments')">
 💰
@@ -1208,13 +1209,9 @@ function isAdmin(){
 
 if(!currentUser) return false;
 
-return (
-
-String(currentUser.email||"")
+return String(currentUser.email||"")
 .toLowerCase() ===
-ADMIN_EMAIL.toLowerCase()
-
-);
+ADMIN_EMAIL.toLowerCase();
 
 }
 
@@ -1223,13 +1220,9 @@ function isTreasurer(){
 
 if(!currentUser) return false;
 
-return (
-
-String(currentUser.email||"")
+return String(currentUser.email||"")
 .toLowerCase() ===
-TREASURER_EMAIL.toLowerCase()
-
-);
+TREASURER_EMAIL.toLowerCase();
 
 }
 
@@ -1245,13 +1238,11 @@ function showLogin(){
 
 document
 .getElementById("loginPage")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 document
 .getElementById("signupPage")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 }
 
@@ -1260,13 +1251,11 @@ function showSignup(){
 
 document
 .getElementById("loginPage")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 document
 .getElementById("signupPage")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 }
 
@@ -1274,31 +1263,23 @@ document
 async function signup(){
 
 const name=
-document
-.getElementById("signupName")
-.value
-.trim();
+document.getElementById("signupName")
+.value.trim();
 
 const email=
-document
-.getElementById("signupEmail")
-.value
-.trim();
+document.getElementById("signupEmail")
+.value.trim();
 
 const password=
-document
-.getElementById("signupPassword")
+document.getElementById("signupPassword")
 .value;
 
 const password2=
-document
-.getElementById("signupPassword2")
+document.getElementById("signupPassword2")
 .value;
 
 const msg=
-document
-.getElementById("signupMessage");
-
+document.getElementById("signupMessage");
 
 msg.textContent="";
 
@@ -1353,8 +1334,7 @@ method:"POST",
 
 headers:{
 "apikey":SUPABASE_KEY,
-"Content-Type":
-"application/json"
+"Content-Type":"application/json"
 },
 
 body:JSON.stringify({
@@ -1427,20 +1407,15 @@ msg.textContent=
 async function login(){
 
 const email=
-document
-.getElementById("loginEmail")
-.value
-.trim();
+document.getElementById("loginEmail")
+.value.trim();
 
 const password=
-document
-.getElementById("loginPassword")
+document.getElementById("loginPassword")
 .value;
 
 const msg=
-document
-.getElementById("loginMessage");
-
+document.getElementById("loginMessage");
 
 msg.textContent="";
 
@@ -1469,8 +1444,7 @@ method:"POST",
 
 headers:{
 "apikey":SUPABASE_KEY,
-"Content-Type":
-"application/json"
+"Content-Type":"application/json"
 },
 
 body:JSON.stringify({
@@ -1505,7 +1479,6 @@ data.access_token;
 currentUser=
 data.user;
 
-
 await openApp();
 
 }catch(error){
@@ -1524,23 +1497,19 @@ async function openApp(){
 
 document
 .getElementById("loginPage")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 document
 .getElementById("signupPage")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 document
 .getElementById("mainHeader")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 document
 .getElementById("app")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 
 document
@@ -1575,26 +1544,22 @@ document
 
 document
 .getElementById("adminBadge")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 document
 .getElementById("treasurerBadge")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 document
 .getElementById("memberBadge")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 
 if(isAdmin()){
 
 document
 .getElementById("adminBadge")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 document
 .getElementById("profileRole")
@@ -1605,8 +1570,7 @@ document
 
 document
 .getElementById("treasurerBadge")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 document
 .getElementById("profileRole")
@@ -1617,8 +1581,7 @@ document
 
 document
 .getElementById("memberBadge")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 document
 .getElementById("profileRole")
@@ -1632,35 +1595,29 @@ if(canSeePayments()){
 
 document
 .getElementById("paymentsNavBtn")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 document
 .getElementById("quickPayments")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 document
 .getElementById("moneyStat")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 }else{
 
 document
 .getElementById("paymentsNavBtn")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 document
 .getElementById("quickPayments")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 document
 .getElementById("moneyStat")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 }
 
@@ -1725,11 +1682,9 @@ return;
 "members",
 "payments",
 "projects"
-]
-.forEach(page=>{
+].forEach(page=>{
 
-const el=
-document.getElementById(page);
+const el=document.getElementById(page);
 
 if(el)
 el.classList.add("hidden");
@@ -1739,8 +1694,7 @@ el.classList.add("hidden");
 
 document
 .getElementById(id)
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 
 if(id==="members")
@@ -1805,7 +1759,9 @@ async function saveMember(){
 
 if(!isAdmin()){
 
-alert("👑 Admin kaliya ayaa xubno maamuli kara.");
+alert(
+"👑 Admin kaliya ayaa xubno maamuli kara."
+);
 
 return;
 
@@ -1813,20 +1769,15 @@ return;
 
 
 const name=
-document
-.getElementById("mname")
-.value
-.trim();
+document.getElementById("mname")
+.value.trim();
 
 const phone=
-document
-.getElementById("mphone")
-.value
-.trim();
+document.getElementById("mphone")
+.value.trim();
 
 const type=
-document
-.getElementById("mtype")
+document.getElementById("mtype")
 .value;
 
 
@@ -1976,7 +1927,9 @@ headers:apiHeaders()
 
 if(!response.ok){
 
-alert("Xubinta lama tirtiri karin.");
+alert(
+"Xubinta lama tirtiri karin."
+);
 
 return;
 
@@ -2026,8 +1979,7 @@ document
 function renderMembers(){
 
 const table=
-document
-.getElementById("memberTable");
+document.getElementById("memberTable");
 
 if(!table)
 return;
@@ -2035,11 +1987,8 @@ return;
 
 const search=
 (
-document
-.getElementById("memberSearch")
-?.value||""
-)
-.toLowerCase();
+document.getElementById("memberSearch")?.value||""
+).toLowerCase();
 
 
 const filtered=
@@ -2137,7 +2086,9 @@ async function savePayment(){
 
 if(!canSeePayments()){
 
-alert("Lacagaha ma geli kartid.");
+alert(
+"Lacagaha ma geli kartid."
+);
 
 return;
 
@@ -2145,33 +2096,23 @@ return;
 
 
 const memberName=
-document
-.getElementById("payer")
-.value;
+document.getElementById("payer").value;
 
 const amount=
 Number(
-document
-.getElementById("amount")
-.value
+document.getElementById("amount").value
 );
 
 const method=
-document
-.getElementById("method")
-.value;
+document.getElementById("method").value;
 
 const number=
-document
-.getElementById("paymentNumber")
-.value
-.trim();
+document.getElementById("paymentNumber")
+.value.trim();
 
 const month=
-document
-.getElementById("month")
-.value
-.trim();
+document.getElementById("month")
+.value.trim();
 
 
 if(!memberName || !amount || !number){
@@ -2254,7 +2195,9 @@ return;
 }
 
 
-alert("Lacagta waa la kaydiyey. ✅");
+alert(
+"Lacagta waa la kaydiyey. ✅"
+);
 
 cancelPaymentEdit();
 
@@ -2405,8 +2348,7 @@ return;
 
 
 const table=
-document
-.getElementById("paymentTable");
+document.getElementById("paymentTable");
 
 if(!table)
 return;
@@ -2414,11 +2356,8 @@ return;
 
 const search=
 (
-document
-.getElementById("paymentSearch")
-?.value||""
-)
-.toLowerCase();
+document.getElementById("paymentSearch")?.value||""
+).toLowerCase();
 
 
 const filtered=
@@ -2536,7 +2475,9 @@ async function saveProject(){
 
 if(!isAdmin()){
 
-alert("Admin kaliya.");
+alert(
+"Admin kaliya."
+);
 
 return;
 
@@ -2544,34 +2485,24 @@ return;
 
 
 const name=
-document
-.getElementById("pname")
-.value
-.trim();
+document.getElementById("pname")
+.value.trim();
 
 const description=
-document
-.getElementById("pdesc")
-.value
-.trim();
+document.getElementById("pdesc")
+.value.trim();
 
 const budget=
 Number(
-document
-.getElementById("pbudget")
-.value
+document.getElementById("pbudget").value
 )||0;
 
 const status=
-document
-.getElementById("pstatus")
-.value;
+document.getElementById("pstatus").value;
 
 const image=
-document
-.getElementById("pimage")
-.value
-.trim();
+document.getElementById("pimage")
+.value.trim();
 
 
 if(!name){
@@ -2795,8 +2726,7 @@ document
 function renderProjects(){
 
 const list=
-document
-.getElementById("projectList");
+document.getElementById("projectList");
 
 if(!list)
 return;
@@ -2804,11 +2734,8 @@ return;
 
 const search=
 (
-document
-.getElementById("projectSearch")
-?.value||""
-)
-.toLowerCase();
+document.getElementById("projectSearch")?.value||""
+).toLowerCase();
 
 
 const filtered=
@@ -2936,8 +2863,7 @@ renderDashboardProjects();
 function renderDashboardProjects(){
 
 const box=
-document
-.getElementById("dashboardProjects");
+document.getElementById("dashboardProjects");
 
 if(!box)
 return;
@@ -3112,8 +3038,7 @@ document
 
 
 const payer=
-document
-.getElementById("payer");
+document.getElementById("payer");
 
 if(
 payer &&
@@ -3135,13 +3060,7 @@ ${escapeHTML(member.Name||"")}
 }
 
 
-/* =====================================================
-ROLE UI
-===================================================== */
-
 if(isAdmin()){
-
-/* ADMIN: XUBNAHA + MASHRIIQYADA + LACAGAHA */
 
 document
 .getElementById("memberAdminForm")
@@ -3170,8 +3089,6 @@ document
 
 }else if(isTreasurer()){
 
-/* QASNAJI: LACAGAHA KALIYA */
-
 document
 .getElementById("memberAdminForm")
 .classList
@@ -3198,8 +3115,6 @@ document
 .remove("hidden");
 
 }else{
-
-/* XUBIN CAADI AH */
 
 document
 .getElementById("memberAdminForm")
@@ -3228,8 +3143,6 @@ document
 
 }
 
-
-/* RENDER */
 
 renderMembers();
 
