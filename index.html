@@ -7,651 +7,535 @@
 <title>Guul-Wadaag | Official Portal</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7f5;
-  color:#17221d;
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f7f5;
+color:#17221d
 }
 
-.hidden{
-  display:none!important;
-}
+.hidden{display:none!important}
 
 button{
-  border:0;
-  border-radius:9px;
-  padding:11px 16px;
-  background:#075b3a;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
+border:0;
+border-radius:9px;
+padding:11px 16px;
+background:#075b3a;
+color:#fff;
+font-weight:700;
+cursor:pointer
 }
 
-button:hover{
-  opacity:.9;
+button:hover{opacity:.9}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin:6px 0 14px;
+border:1px solid #ccd6d0;
+border-radius:9px;
+font-size:15px;
+outline:none
 }
 
-input,
-select,
-textarea{
-  width:100%;
-  padding:12px;
-  margin:6px 0 14px;
-  border:1px solid #ccd6d0;
-  border-radius:9px;
-  font-size:15px;
-  outline:none;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#075b3a;
+input:focus,select:focus,textarea:focus{
+border-color:#075b3a
 }
 
 textarea{
-  min-height:110px;
-  resize:vertical;
+min-height:110px;
+resize:vertical
 }
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:linear-gradient(135deg,#075b3a,#0b7a4d);
-  color:#fff;
-  padding:13px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  box-shadow:0 3px 18px #0003;
+position:sticky;
+top:0;
+z-index:1000;
+background:linear-gradient(135deg,#075b3a,#0b7a4d);
+color:#fff;
+padding:13px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+box-shadow:0 3px 18px #0003
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
+display:flex;
+align-items:center;
+gap:10px
 }
 
 .logo-icon{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:#fff;
-  color:#075b3a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:21px;
-  font-weight:900;
+width:42px;
+height:42px;
+border-radius:50%;
+background:#fff;
+color:#075b3a;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:21px;
+font-weight:900
 }
 
 .logo-text{
-  font-size:20px;
-  font-weight:900;
+font-size:20px;
+font-weight:900
 }
 
 .logo-small{
-  font-size:11px;
-  opacity:.85;
+font-size:11px;
+opacity:.85
 }
 
 nav{
-  display:flex;
-  gap:4px;
-  flex-wrap:wrap;
+display:flex;
+gap:4px;
+flex-wrap:wrap
 }
 
 nav button{
-  background:transparent;
-  padding:9px 10px;
+background:transparent;
+padding:9px 10px
 }
 
 nav button:hover{
-  background:#ffffff1c;
+background:#ffffff1c
 }
 
 .wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:28px 5%;
+max-width:1200px;
+margin:auto;
+padding:28px 5%
 }
 
 .card{
-  background:#fff;
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:18px;
-  box-shadow:0 4px 18px #0000000d;
+background:#fff;
+border-radius:16px;
+padding:22px;
+margin-bottom:18px;
+box-shadow:0 4px 18px #0000000d
 }
 
 .login-card{
-  max-width:430px;
-  margin:60px auto;
+max-width:430px;
+margin:60px auto
 }
 
 .login-card h1{
-  color:#075b3a;
+color:#075b3a
 }
 
 .link-btn{
-  background:none;
-  color:#075b3a;
-  padding:5px;
+background:none;
+color:#075b3a;
+padding:5px
 }
 
-.error{
-  color:#b42318;
-}
-
-.success{
-  color:#087443;
-}
+.error{color:#b42318}
+.success{color:#087443}
 
 .hero{
-  background:
-    linear-gradient(135deg,#075b3aee,#0b7a4dee),
-    radial-gradient(circle at top right,#ffffff33,transparent 40%);
-  color:#fff;
-  border-radius:22px;
-  padding:48px 35px;
-  margin-bottom:25px;
-  box-shadow:0 8px 30px #075b3a30;
+background:linear-gradient(135deg,#075b3aee,#0b7a4dee);
+color:#fff;
+border-radius:22px;
+padding:48px 35px;
+margin-bottom:25px;
+box-shadow:0 8px 30px #075b3a30
 }
 
 .hero h1{
-  font-size:42px;
-  margin:0 0 12px;
+font-size:42px;
+margin:0 0 12px
 }
 
 .hero p{
-  max-width:720px;
-  line-height:1.7;
-  opacity:.93;
+max-width:720px;
+line-height:1.7;
+opacity:.93
 }
 
 .hero-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:22px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:22px
 }
 
 .hero .secondary{
-  background:#ffffff;
-  color:#075b3a;
+background:#fff;
+color:#075b3a
 }
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:22px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-bottom:22px
 }
 
 .stat{
-  background:#fff;
-  padding:20px;
-  border-radius:15px;
-  border-top:4px solid #075b3a;
-  box-shadow:0 4px 18px #0000000c;
+background:#fff;
+padding:20px;
+border-radius:15px;
+border-top:4px solid #075b3a;
+box-shadow:0 4px 18px #0000000c
 }
 
 .stat-title{
-  color:#68776f;
-  font-size:14px;
+color:#68776f;
+font-size:14px
 }
 
 .stat-number{
-  font-size:30px;
-  font-weight:900;
-  color:#075b3a;
-  margin-top:8px;
+font-size:30px;
+font-weight:900;
+color:#075b3a;
+margin-top:8px
 }
 
 .section-title{
-  margin:30px 0 15px;
+margin:30px 0 15px
 }
 
-.section-title h2{
-  margin-bottom:5px;
-}
+.section-title h2{margin-bottom:5px}
 
 .section-title p{
-  color:#66756d;
+color:#66756d
 }
 
 .features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
 }
 
 .feature{
-  background:#fff;
-  padding:22px;
-  border-radius:15px;
-  box-shadow:0 4px 18px #0000000c;
+background:#fff;
+padding:22px;
+border-radius:15px;
+box-shadow:0 4px 18px #0000000c
 }
 
-.feature-icon{
-  font-size:30px;
-}
-
-.feature h3{
-  margin-bottom:8px;
-}
+.feature-icon{font-size:30px}
 
 .feature p{
-  color:#66756d;
-  line-height:1.6;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:20px;
+color:#66756d;
+line-height:1.6
 }
 
 .dashboard-title{
-  background:linear-gradient(135deg,#075b3a,#0b7a4d);
-  color:#fff;
-  border-radius:20px;
-  padding:28px;
-  margin-bottom:20px;
+background:linear-gradient(135deg,#075b3a,#0b7a4d);
+color:#fff;
+border-radius:20px;
+padding:28px;
+margin-bottom:20px
 }
 
-.dashboard-title h1{
-  margin-top:0;
-}
+.dashboard-title h1{margin-top:0}
 
 .user-box{
-  background:#e9f5ef;
-  padding:16px;
-  border-radius:12px;
-  margin-bottom:20px;
+background:#e9f5ef;
+padding:16px;
+border-radius:12px;
+margin-bottom:20px
 }
 
 .badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:#dff2e7;
-  color:#075b3a;
-  font-size:12px;
-  font-weight:700;
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+background:#dff2e7;
+color:#075b3a;
+font-size:12px;
+font-weight:700
 }
 
 .admin-badge{
-  background:#fff0c2;
-  color:#8a5a00;
+background:#fff0c2;
+color:#8a5a00
 }
 
 .treasurer-badge{
-  background:#dceeff;
-  color:#075b3a;
+background:#dceeff;
+color:#075b3a
 }
 
 .private{
-  background:#fff4e5;
-  border-left:5px solid #e09b00;
-  padding:15px;
-  border-radius:9px;
-  margin-bottom:20px;
+background:#fff4e5;
+border-left:5px solid #e09b00;
+padding:15px;
+border-radius:9px;
+margin-bottom:20px
 }
 
 .quick-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
 }
 
 .quick-btn{
-  padding:18px 10px;
-  border-radius:12px;
-  background:#f1f7f3;
-  color:#075b3a;
-  font-weight:800;
-  cursor:pointer;
-  text-align:center;
+padding:18px 10px;
+border-radius:12px;
+background:#f1f7f3;
+color:#075b3a;
+font-weight:800;
+cursor:pointer;
+text-align:center
 }
 
 .quick-btn:hover{
-  background:#dff2e7;
+background:#dff2e7
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
+width:100%;
+border-collapse:collapse
 }
 
-th,
-td{
-  padding:11px;
-  text-align:left;
-  border-bottom:1px solid #e5e9e7;
+th,td{
+padding:11px;
+text-align:left;
+border-bottom:1px solid #e5e9e7
 }
 
-th{
-  background:#edf4ef;
-}
+th{background:#edf4ef}
 
-.table-wrap{
-  overflow-x:auto;
-}
+.table-wrap{overflow-x:auto}
 
-.search{
-  margin-bottom:15px;
-}
+.search{margin-bottom:15px}
 
 .project{
-  border:1px solid #e5e9e7;
-  border-radius:13px;
-  padding:18px;
-  margin-bottom:13px;
-  background:#fff;
+border:1px solid #e5e9e7;
+border-radius:13px;
+padding:18px;
+margin-bottom:13px;
+background:#fff
 }
 
 .project img{
-  width:100%;
-  max-height:280px;
-  object-fit:cover;
-  border-radius:10px;
-  margin-bottom:12px;
+width:100%;
+max-height:280px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:12px
 }
 
 .action{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
+display:flex;
+gap:6px;
+flex-wrap:wrap
 }
 
-.edit-btn{
-  background:#2563eb;
-}
-
-.delete-btn{
-  background:#dc2626;
-}
-
-.cancel-btn{
-  background:#6b7280;
-}
-
-.info-box{
-  padding:16px;
-  border-radius:12px;
-  background:#f5f8f6;
-  margin-top:15px;
-}
-
-.news-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.news-card{
-  background:#fff;
-  border-radius:15px;
-  padding:20px;
-  box-shadow:0 4px 18px #0000000d;
-}
-
-.news-date{
-  color:#075b3a;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.news-card p{
-  color:#66756d;
-  line-height:1.6;
-}
+.edit-btn{background:#2563eb}
+.delete-btn{background:#dc2626}
+.cancel-btn{background:#6b7280}
 
 .progress{
-  height:10px;
-  background:#e7ece9;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:8px;
+height:10px;
+background:#e7ece9;
+border-radius:20px;
+overflow:hidden;
+margin-top:8px
 }
 
 .progress-bar{
-  height:100%;
-  background:linear-gradient(90deg,#075b3a,#18a66a);
-  border-radius:20px;
+height:100%;
+background:linear-gradient(90deg,#075b3a,#18a66a);
+border-radius:20px
+}
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
+}
+
+.news-card{
+background:#fff;
+border-radius:15px;
+padding:20px;
+box-shadow:0 4px 18px #0000000d
+}
+
+.news-date{
+color:#075b3a;
+font-size:13px;
+font-weight:bold
+}
+
+.news-card p{
+color:#66756d;
+line-height:1.6
 }
 
 .contact-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
 }
 
 .contact-item{
-  background:#fff;
-  border-radius:14px;
-  padding:20px;
-  box-shadow:0 4px 18px #0000000d;
+background:#fff;
+border-radius:14px;
+padding:20px;
+box-shadow:0 4px 18px #0000000d
 }
 
 footer{
-  background:#12372a;
-  color:#fff;
-  margin-top:40px;
+background:#12372a;
+color:#fff;
+margin-top:40px
 }
 
 .footer-inner{
-  max-width:1200px;
-  margin:auto;
-  padding:35px 5%;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:30px;
+max-width:1200px;
+margin:auto;
+padding:35px 5%;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:30px
 }
 
 .footer-inner p{
-  color:#c9d8d1;
-  line-height:1.6;
+color:#c9d8d1;
+line-height:1.6
 }
 
 .footer-links button{
-  display:block;
-  background:none;
-  padding:6px 0;
-  color:#c9d8d1;
+display:block;
+background:none;
+padding:6px 0;
+color:#c9d8d1
 }
 
 .footer-bottom{
-  border-top:1px solid #ffffff18;
-  padding:15px 5%;
-  text-align:center;
-  color:#c9d8d1;
-  font-size:13px;
+border-top:1px solid #ffffff18;
+padding:15px 5%;
+text-align:center;
+color:#c9d8d1;
+font-size:13px
 }
 
 @media(max-width:900px){
 
-.stats{
-  grid-template-columns:repeat(2,1fr);
-}
+.stats{grid-template-columns:repeat(2,1fr)}
 
-.grid{
-  grid-template-columns:1fr;
-}
+.features{grid-template-columns:1fr 1fr}
 
-.features{
-  grid-template-columns:1fr 1fr;
-}
+.news-grid{grid-template-columns:1fr 1fr}
 
-.news-grid{
-  grid-template-columns:1fr 1fr;
-}
+.contact-grid{grid-template-columns:1fr 1fr}
 
-.contact-grid{
-  grid-template-columns:1fr 1fr;
-}
-
-.footer-inner{
-  grid-template-columns:1fr 1fr;
-}
-
+.footer-inner{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:600px){
 
 header{
-  padding:10px 4%;
+padding:10px 4%;
+align-items:flex-start;
+flex-direction:column
 }
 
-.logo-text{
-  font-size:17px;
-}
-
-.logo-icon{
-  width:36px;
-  height:36px;
-}
+nav{width:100%}
 
 nav button{
-  font-size:11px;
-  padding:7px 6px;
+font-size:11px;
+padding:7px 6px
 }
 
-.wrap{
-  padding:20px 4%;
-}
+.wrap{padding:20px 4%}
 
-.hero{
-  padding:32px 22px;
-}
+.hero{padding:32px 22px}
 
-.hero h1{
-  font-size:29px;
-}
+.hero h1{font-size:29px}
 
 .stats{
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+grid-template-columns:1fr 1fr;
+gap:10px
 }
 
-.stat{
-  padding:15px;
-}
+.stat{padding:15px}
 
-.stat-number{
-  font-size:23px;
-}
+.stat-number{font-size:23px}
 
 .features,
 .news-grid,
 .contact-grid{
-  grid-template-columns:1fr;
+grid-template-columns:1fr
 }
 
 .quick-grid{
-  grid-template-columns:1fr 1fr;
+grid-template-columns:1fr 1fr
 }
 
-table{
-  font-size:12px;
+table{font-size:12px}
+
+th,td{
+white-space:nowrap;
+padding:8px
 }
 
-th,
-td{
-  white-space:nowrap;
-  padding:8px;
-}
-
-.footer-inner{
-  grid-template-columns:1fr;
-}
-
+.footer-inner{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header id="mainHeader" class="hidden">
 
 <div class="logo">
 
-<div class="logo-icon">
-GW
-</div>
+<div class="logo-icon">GW</div>
 
 <div>
-<div class="logo-text">
-GUUL-WADAAG
-</div>
-
-<div class="logo-small">
-Official Community Portal
-</div>
+<div class="logo-text">GUUL-WADAAG</div>
+<div class="logo-small">Official Community Portal</div>
 </div>
 
 </div>
 
 <nav>
 
-<button onclick="showPage('home')">
-🏠 Home
-</button>
+<button onclick="showPage('home')">🏠 Home</button>
 
-<button onclick="showPage('dashboard')">
-📊 Dashboard
-</button>
+<button onclick="showPage('dashboard')">📊 Dashboard</button>
 
-<button onclick="showPage('members')">
-👥 Xubnaha
-</button>
+<button onclick="showPage('members')">👥 Xubnaha</button>
 
-<button onclick="showPage('projects')">
-🏗️ Mashaariic
-</button>
+<button onclick="showPage('projects')">🏗️ Mashaariic</button>
 
-<button
-id="paymentsNavBtn"
+<button id="paymentsNavBtn"
 class="hidden"
 onclick="showPage('payments')">
 💰 Lacagaha
 </button>
 
-<button
-id="disbursementNavBtn"
+<button id="disbursementNavBtn"
 class="hidden"
 onclick="showPage('disbursement')">
 💸 Lacag-bixin
 </button>
 
-<button onclick="showPage('news')">
-📰 Warar
-</button>
+<button onclick="showPage('news')">📰 Warar</button>
 
-<button onclick="logout()">
-🚪 Ka bax
-</button>
+<button onclick="logout()">🚪 Ka bax</button>
 
 </nav>
 
 </header>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
 <section id="loginPage">
 
@@ -659,25 +543,19 @@ onclick="showPage('disbursement')">
 
 <div class="card login-card">
 
-<h1>
-🔐 GUUL-WADAAG
-</h1>
+<h1>🔐 GUUL-WADAAG</h1>
 
-<p>
-Ku soo dhawoow nidaamka rasmiga ah ee Ururka Guul-Wadaag.
-</p>
+<p>Ku soo dhawoow nidaamka rasmiga ah ee Ururka Guul-Wadaag.</p>
 
 <label>Email</label>
 
-<input
-id="loginEmail"
+<input id="loginEmail"
 type="email"
 placeholder="Email-kaaga">
 
 <label>Password</label>
 
-<input
-id="loginPassword"
+<input id="loginPassword"
 type="password"
 placeholder="Password-kaaga">
 
@@ -687,10 +565,13 @@ onclick="login()">
 Gal
 </button>
 
-<p
-id="loginMessage"
-class="error">
-</p>
+<p id="loginMessage" class="error"></p>
+
+<button
+class="link-btn"
+onclick="showForgotPassword()">
+🔑 Password-ka waan illoobay
+</button>
 
 <hr>
 
@@ -702,7 +583,6 @@ class="link-btn"
 onclick="showSignup()">
 Is-diiwaangeli
 </button>
-
 </p>
 
 </div>
@@ -712,7 +592,7 @@ Is-diiwaangeli
 </section>
 
 
-<!-- ================= SIGNUP ================= -->
+<!-- SIGNUP -->
 
 <section id="signupPage" class="hidden">
 
@@ -720,38 +600,35 @@ Is-diiwaangeli
 
 <div class="card login-card">
 
-<h1>
-📝 Is-diiwaangeli
-</h1>
+<h1>📝 Is-diiwaangeli</h1>
 
-<p>
-Samee account-kaaga Guul-Wadaag.
-</p>
+<p>Samee account-kaaga Guul-Wadaag.</p>
 
 <label>Magaca oo buuxa</label>
 
-<input
-id="signupName"
+<input id="signupName"
 placeholder="Magacaaga">
+
+<label>Telefoon</label>
+
+<input id="signupPhone"
+placeholder="63xxxxxxx">
 
 <label>Email</label>
 
-<input
-id="signupEmail"
+<input id="signupEmail"
 type="email"
 placeholder="Email-kaaga">
 
 <label>Password</label>
 
-<input
-id="signupPassword"
+<input id="signupPassword"
 type="password"
 placeholder="Password-kaaga">
 
 <label>Xaqiiji Password</label>
 
-<input
-id="signupPassword2"
+<input id="signupPassword2"
 type="password"
 placeholder="Ku celi password-ka">
 
@@ -765,16 +642,11 @@ Samee Account
 
 <hr>
 
-<p>
-Account waad leedahay?
-
 <button
 class="link-btn"
 onclick="showLogin()">
-Gal
+← Ku noqo Login
 </button>
-
-</p>
 
 </div>
 
@@ -783,24 +655,105 @@ Gal
 </section>
 
 
-<!-- ================= APP ================= -->
+<!-- FORGOT PASSWORD -->
+
+<section id="forgotPasswordPage" class="hidden">
+
+<div class="wrap">
+
+<div class="card login-card">
+
+<h1>🔑 Forgot Password</h1>
+
+<p>
+Geli email-kaaga. Link password cusub ayaa laguu soo diri doonaa.
+</p>
+
+<label>Email</label>
+
+<input
+id="forgotEmail"
+type="email"
+placeholder="Email-kaaga">
+
+<button
+style="width:100%"
+onclick="sendResetEmail()">
+📩 Soo Dir Link
+</button>
+
+<p id="forgotMessage"></p>
+
+<hr>
+
+<button
+class="link-btn"
+onclick="showLogin()">
+← Ku noqo Login
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RESET PASSWORD -->
+
+<section id="resetPasswordPage" class="hidden">
+
+<div class="wrap">
+
+<div class="card login-card">
+
+<h1>🔐 Password Cusub</h1>
+
+<p>Geli password-ka cusub.</p>
+
+<label>Password Cusub</label>
+
+<input
+id="newPassword"
+type="password"
+placeholder="Password cusub">
+
+<label>Xaqiiji Password</label>
+
+<input
+id="newPassword2"
+type="password"
+placeholder="Ku celi password-ka">
+
+<button
+style="width:100%"
+onclick="updateNewPassword()">
+💾 Kaydi Password-ka
+</button>
+
+<p id="resetMessage"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- APP -->
 
 <main id="app" class="wrap hidden">
 
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <section id="home">
 
 <div class="hero">
 
-<h1>
-GUUL-WADAAG
-</h1>
+<h1>GUUL-WADAAG</h1>
 
-<h2>
-Official Community Portal
-</h2>
+<h2>Official Community Portal</h2>
 
 <p>
 Ururka Guul-Wadaag waa urur diiradda saaraya
@@ -829,62 +782,23 @@ onclick="showPage('members')">
 <div class="stats">
 
 <div class="stat">
-
-<div class="stat-title">
-👥 Wadarta Xubnaha
+<div class="stat-title">👥 Wadarta Xubnaha</div>
+<div id="homeMembersCount" class="stat-number">0</div>
 </div>
-
-<div
-id="homeMembersCount"
-class="stat-number">
-0
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div class="stat-title">
-🏗️ Mashaariicda
+<div class="stat-title">🏗️ Mashaariicda</div>
+<div id="homeProjectsCount" class="stat-number">0</div>
 </div>
-
-<div
-id="homeProjectsCount"
-class="stat-number">
-0
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div class="stat-title">
-✅ Mashaariic Dhammaystiran
+<div class="stat-title">✅ Mashaariic Dhammaystiran</div>
+<div id="homeCompletedCount" class="stat-number">0</div>
 </div>
-
-<div
-id="homeCompletedCount"
-class="stat-number">
-0
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div class="stat-title">
-💰 Lacag La Ururiyey
-</div>
-
-<div
-id="homeMoneyCount"
-class="stat-number">
-—
-</div>
-
+<div class="stat-title">💰 Lacag La Ururiyey</div>
+<div id="homeMoneyCount" class="stat-number">—</div>
 </div>
 
 </div>
@@ -892,9 +806,7 @@ class="stat-number">
 
 <div class="section-title">
 
-<h2>
-Maxaan Qabannaa?
-</h2>
+<h2>Maxaan Qabannaa?</h2>
 
 <p>
 Guul-Wadaag wuxuu xoogga saaraa adeegga bulshada iyo horumarinta deegaanka.
@@ -906,53 +818,21 @@ Guul-Wadaag wuxuu xoogga saaraa adeegga bulshada iyo horumarinta deegaanka.
 <div class="features">
 
 <div class="feature">
-
-<div class="feature-icon">
-👥
+<div class="feature-icon">👥</div>
+<h3>Midnimo & Bulsho</h3>
+<p>Dhisidda iskaashi iyo midnimo bulshada dhexdeeda.</p>
 </div>
-
-<h3>
-Midnimo & Bulsho
-</h3>
-
-<p>
-Dhisidda iskaashi iyo midnimo bulshada dhexdeeda.
-</p>
-
-</div>
-
 
 <div class="feature">
-
-<div class="feature-icon">
-📚
+<div class="feature-icon">📚</div>
+<h3>Waxbarasho</h3>
+<p>Taageeridda waxbarashada iyo fursadaha dhalinyarada.</p>
 </div>
-
-<h3>
-Waxbarasho
-</h3>
-
-<p>
-Taageeridda waxbarashada iyo fursadaha dhalinyarada.
-</p>
-
-</div>
-
 
 <div class="feature">
-
-<div class="feature-icon">
-🏗️
-</div>
-
-<h3>
-Horumar
-</h3>
-
-<p>
-Hirgelinta mashaariic wax-ku-ool ah oo bulshada anfaca.
-</p>
-
+<div class="feature-icon">🏗️</div>
+<h3>Horumar</h3>
+<p>Hirgelinta mashaariic wax-ku-ool ah oo bulshada anfaca.</p>
 </div>
 
 </div>
@@ -960,7 +840,7 @@ Hirgelinta mashaariic wax-ku-ool ah oo bulshada anfaca.
 </section>
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- DASHBOARD -->
 
 <section id="dashboard" class="hidden">
 
@@ -968,25 +848,17 @@ Hirgelinta mashaariic wax-ku-ool ah oo bulshada anfaca.
 
 <h1>
 Ku soo dhawoow,
-<span id="dashboardName">
-Xubin
-</span>
-👋
+<span id="dashboardName">Xubin</span> 👋
 </h1>
 
-<p>
-Dashboard-ka Guul-Wadaag
-</p>
+<p>Dashboard-ka Guul-Wadaag</p>
 
 </div>
 
 
 <div class="user-box">
 
-👤
-<strong id="currentUserName">
-Xubin
-</strong>
+👤 <strong id="currentUserName">Xubin</strong>
 
 <br>
 
@@ -994,20 +866,17 @@ Xubin
 
 <div style="margin-top:8px">
 
-<span
-id="adminBadge"
+<span id="adminBadge"
 class="badge admin-badge hidden">
 👑 ADMIN
 </span>
 
-<span
-id="treasurerBadge"
+<span id="treasurerBadge"
 class="badge treasurer-badge hidden">
 💰 QASNAJI
 </span>
 
-<span
-id="memberBadge"
+<span id="memberBadge"
 class="badge hidden">
 👤 XUBIN
 </span>
@@ -1020,64 +889,23 @@ class="badge hidden">
 <div class="stats">
 
 <div class="stat">
-
-<div class="stat-title">
-👥 Xubnaha
+<div class="stat-title">👥 Xubnaha</div>
+<div id="membersCount" class="stat-number">0</div>
 </div>
-
-<div
-id="membersCount"
-class="stat-number">
-0
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div class="stat-title">
-🏗️ Mashaariic
+<div class="stat-title">🏗️ Mashaariic</div>
+<div id="projectsCount" class="stat-number">0</div>
 </div>
-
-<div
-id="projectsCount"
-class="stat-number">
-0
-</div>
-
-</div>
-
 
 <div class="stat">
-
-<div class="stat-title">
-✅ Dhammaystiran
+<div class="stat-title">✅ Dhammaystiran</div>
+<div id="completedProjects" class="stat-number">0</div>
 </div>
 
-<div
-id="completedProjects"
-class="stat-number">
-0
-</div>
-
-</div>
-
-
-<div
-id="moneyStat"
-class="stat">
-
-<div class="stat-title">
-💰 Lacag La Ururiyey
-</div>
-
-<div
-id="totalPaid"
-class="stat-number">
-$0
-</div>
-
+<div id="moneyStat" class="stat">
+<div class="stat-title">💰 Lacag La Ururiyey</div>
+<div id="totalPaid" class="stat-number">$0</div>
 </div>
 
 </div>
@@ -1087,44 +915,30 @@ $0
 
 <div class="card">
 
-<h2>
-⚡ Hawlo Degdeg ah
-</h2>
+<h2>⚡ Hawlo Degdeg ah</h2>
 
 <div class="quick-grid">
 
-<div
-class="quick-btn"
+<div class="quick-btn"
 onclick="showPage('members')">
-👥
-<br>
-Xubnaha
+👥<br>Xubnaha
 </div>
 
-<div
-class="quick-btn"
+<div class="quick-btn"
 onclick="showPage('projects')">
-🏗️
-<br>
-Mashaariicda
+🏗️<br>Mashaariicda
 </div>
 
-<div
-id="quickPayments"
+<div id="quickPayments"
 class="quick-btn hidden"
 onclick="showPage('payments')">
-💰
-<br>
-Lacagaha
+💰<br>Lacagaha
 </div>
 
-<div
-id="quickDisbursement"
+<div id="quickDisbursement"
 class="quick-btn hidden"
 onclick="showPage('disbursement')">
-💸
-<br>
-Lacag-bixin
+💸<br>Lacag-bixin
 </div>
 
 </div>
@@ -1134,34 +948,20 @@ Lacag-bixin
 
 <div class="card">
 
-<h2>
-👤 Xogtayda
-</h2>
+<h2>👤 Xogtayda</h2>
 
-<p>
-<strong>Magac:</strong>
-<span id="profileName"></span>
-</p>
+<p><strong>Magac:</strong> <span id="profileName"></span></p>
 
-<p>
-<strong>Email:</strong>
-<span id="profileEmail"></span>
-</p>
+<p><strong>Email:</strong> <span id="profileEmail"></span></p>
 
 <p>
 <strong>Xilka:</strong>
-<span id="profileRole">
-Xubin Caadi ah
-</span>
+<span id="profileRole">Xubin Caadi ah</span>
 </p>
 
 <p>
 <strong>Xaaladda:</strong>
-
-<span class="badge">
-Firfircoon
-</span>
-
+<span class="badge">Firfircoon</span>
 </p>
 
 </div>
@@ -1171,9 +971,7 @@ Firfircoon
 
 <div class="card">
 
-<h2>
-📈 Horumarka Mashaariicda
-</h2>
+<h2>📈 Horumarka Mashaariicda</h2>
 
 <p>
 <strong>Qorshaysan:</strong>
@@ -1181,8 +979,7 @@ Firfircoon
 </p>
 
 <div class="progress">
-<div
-id="plannedProgress"
+<div id="plannedProgress"
 class="progress-bar"
 style="width:0%">
 </div>
@@ -1196,8 +993,7 @@ style="width:0%">
 </p>
 
 <div class="progress">
-<div
-id="ongoingProgress"
+<div id="ongoingProgress"
 class="progress-bar"
 style="width:0%">
 </div>
@@ -1211,8 +1007,7 @@ style="width:0%">
 </p>
 
 <div class="progress">
-<div
-id="doneProgress"
+<div id="doneProgress"
 class="progress-bar"
 style="width:0%">
 </div>
@@ -1220,79 +1015,52 @@ style="width:0%">
 
 </div>
 
-<!--
-Mashaariicda faahfaahsan si ula kac ah
-Dashboard-ka looguma darin.
-Waxaa laga geli karaa qaybta Mashaariicda.
--->
-
 </section>
 
 
-<!-- ================= MEMBERS ================= -->
+<!-- MEMBERS -->
 
 <section id="members" class="hidden">
 
-<h1>
-👥 Xubnaha Guul-Wadaag
-</h1>
+<h1>👥 Xubnaha Guul-Wadaag</h1>
 
-<div
-id="memberAdminForm"
+
+<div id="memberAdminForm"
 class="card hidden">
 
 <h3 id="memberFormTitle">
 ➕ Ku dar Xubin
 </h3>
 
-<input
-id="mname"
+<input id="mname"
 placeholder="Magaca oo buuxa">
 
-<input
-id="mphone"
+<input id="mphone"
 placeholder="Telefoon">
 
-<input
-id="memail"
+<input id="memail"
 type="email"
 placeholder="Email">
 
-<label>
-Xilka / Heerka
-</label>
+<label>Xilka / Heerka</label>
 
 <select id="mtype">
 
-<option value="Gudomiye">
-Gudomiye
-</option>
+<option value="Gudomiye">Gudomiye</option>
 
-<option value="Gud.kuxigeen">
-Gud.kuxigeen
-</option>
+<option value="Gud.kuxigeen">Gud.kuxigeen</option>
 
-<option value="Xeer-ilaaliye">
-Xeer-ilaaliye
-</option>
+<option value="Xeer-ilaaliye">Xeer-ilaaliye</option>
 
-<option value="Qasnaji">
-Qasnaji
-</option>
+<option value="Qasnaji">Qasnaji</option>
 
-<option value="Xoghaye">
-Xoghaye
-</option>
+<option value="Xoghaye">Xoghaye</option>
 
-<option value="Afhayeen">
-Afhayeen
-</option>
+<option value="Afhayeen">Afhayeen</option>
 
-<option value="Xubin Gudi">
-Xubin Gudi
-</option>
+<option value="Xubin Gudi">Xubin Gudi</option>
 
-<option value="Xubin Caadi ah">
+<option value="Xubin Caadi ah" selected>
 Xubin Caadi ah
 </option>
 
@@ -1300,20 +1068,16 @@ Xubin Caadi ah
 Xubin Firfircoon
 </option>
 
-<option value="Taageere">
-Taageere
-</option>
+<option value="Taageere">Taageere</option>
 
 </select>
 
-<button
-id="memberSaveBtn"
+<button id="memberSaveBtn"
 onclick="saveMember()">
 Diiwaangeli
 </button>
 
-<button
-id="memberCancelBtn"
+<button id="memberCancelBtn"
 class="cancel-btn hidden"
 onclick="cancelMemberEdit()">
 Jooji
@@ -1325,8 +1089,8 @@ Jooji
 <div class="card">
 
 <input
-class="search"
 id="memberSearch"
+class="search"
 placeholder="🔎 Raadi xubin..."
 oninput="renderMembers()">
 
@@ -1337,19 +1101,16 @@ oninput="renderMembers()">
 <thead>
 
 <tr>
-
 <th>Magaca</th>
 <th>Telefoon</th>
 <th>Email</th>
 <th>Xilka</th>
 <th>Ficil</th>
-
 </tr>
 
 </thead>
 
-<tbody id="memberTable">
-</tbody>
+<tbody id="memberTable"></tbody>
 
 </table>
 
@@ -1360,16 +1121,14 @@ oninput="renderMembers()">
 </section>
 
 
-<!-- ================= PAYMENTS ================= -->
+<!-- PAYMENTS -->
 
 <section id="payments" class="hidden">
 
-<h1>
-💰 Lacagaha Ururka
-</h1>
+<h1>💰 Lacagaha Ururka</h1>
 
-<div
-id="treasurerNotice"
+
+<div id="treasurerNotice"
 class="private hidden">
 
 💰 <strong>Qasnajiga</strong>
@@ -1386,8 +1145,7 @@ oo aad aragto diiwaanka lacagaha.
 </div>
 
 
-<div
-id="adminNotice"
+<div id="adminNotice"
 class="private hidden">
 
 👑 <strong>Admin</strong>
@@ -1400,24 +1158,15 @@ Ku dar, Edit, Delete iyo aragti guud.
 </div>
 
 
-<div
-id="paymentForm"
-class="card hidden">
+<div id="paymentForm" class="card hidden">
 
-<h3>
-➕ Diiwaangeli Lacag
-</h3>
+<h3>➕ Diiwaangeli Lacag</h3>
 
-<label>
-Xubinta
-</label>
+<label>Xubinta</label>
 
-<select id="payer">
-</select>
+<select id="payer"></select>
 
-<label>
-Lacagta ($)
-</label>
+<label>Lacagta ($)</label>
 
 <input
 id="amount"
@@ -1425,37 +1174,25 @@ type="number"
 step="0.01"
 placeholder="3">
 
-<label>
-Habka
-</label>
+<label>Habka</label>
 
 <select id="method">
 
-<option value="ZAAD">
-ZAAD
-</option>
+<option value="ZAAD">ZAAD</option>
 
-<option value="eDahab">
-eDahab
-</option>
+<option value="eDahab">eDahab</option>
 
-<option value="Cash">
-Cash
-</option>
+<option value="Cash">Cash</option>
 
 </select>
 
-<label>
-Number-ka lacagta
-</label>
+<label>Number-ka lacagta</label>
 
 <input
 id="paymentNumber"
 placeholder="63xxxxxxx">
 
-<label>
-Bisha
-</label>
+<label>Bisha</label>
 
 <input
 id="month"
@@ -1479,9 +1216,7 @@ Jooji
 
 <div class="card">
 
-<h3>
-📋 Diiwaanka Lacagaha
-</h3>
+<h3>📋 Diiwaanka Lacagaha</h3>
 
 <input
 id="paymentSearch"
@@ -1495,20 +1230,17 @@ oninput="renderPayments()">
 <thead>
 
 <tr>
-
 <th>Magaca</th>
 <th>Bisha</th>
 <th>Lacagta</th>
 <th>Habka</th>
 <th>Number</th>
 <th>Ficil</th>
-
 </tr>
 
 </thead>
 
-<tbody id="paymentTable">
-</tbody>
+<tbody id="paymentTable"></tbody>
 
 </table>
 
@@ -1519,41 +1251,31 @@ oninput="renderPayments()">
 </section>
 
 
-<!-- ================= DISBURSEMENT ================= -->
+<!-- DISBURSEMENT -->
 
 <section id="disbursement" class="hidden">
 
-<h1>
-💸 Lacag-bixinta Mashaariicda
-</h1>
+<h1>💸 Lacag-bixinta Mashaariicda</h1>
 
-<div
-id="disbursementNotice"
-class="private">
+<div class="private">
 
 Qaybtan waxaa loo isticmaalaa diiwaangelinta
-lacagaha laga bixiyo mashruucyada Guul-Wadaag.
+lacagaha laga bixiyo mashaariicda Guul-Wadaag.
+
 </div>
 
 
-<div
-id="disbursementForm"
-class="card hidden">
+<div id="disbursementForm" class="card hidden">
 
 <h3 id="disbursementFormTitle">
 ➕ Diiwaangeli Lacag-bixin
 </h3>
 
-<label>
-Mashruuca
-</label>
+<label>Mashruuca</label>
 
-<select id="dProject">
-</select>
+<select id="dProject"></select>
 
-<label>
-Lacagta ($)
-</label>
+<label>Lacagta ($)</label>
 
 <input
 id="dAmount"
@@ -1561,69 +1283,42 @@ type="number"
 step="0.01"
 placeholder="100">
 
-<label>
-Qofka / Hay'adda Lacagta Qaadatay
-</label>
+<label>Qofka / Hay'adda Lacagta Qaadatay</label>
 
 <input
 id="dRecipient"
 placeholder="Magaca qofka ama hay'adda">
 
-<label>
-Sababta
-</label>
+<label>Sababta</label>
 
 <textarea
 id="dReason"
 placeholder="Maxaa lacagta loogu bixiyey?"></textarea>
 
-<label>
-Habka Lacag-bixinta
-</label>
+<label>Habka Lacag-bixinta</label>
 
 <select id="dMethod">
 
-<option value="ZAAD">
-ZAAD
-</option>
-
-<option value="eDahab">
-eDahab
-</option>
-
-<option value="Cash">
-Cash
-</option>
-
-<option value="Bank">
-Bank
-</option>
+<option value="ZAAD">ZAAD</option>
+<option value="eDahab">eDahab</option>
+<option value="Cash">Cash</option>
+<option value="Bank">Bank</option>
 
 </select>
 
-<label>
-Payment Number
-</label>
+<label>Payment Number</label>
 
 <input
 id="dPaymentNumber"
 placeholder="Number-ka lacagta">
 
-<label>
-Taariikh
-</label>
+<label>Taariikh</label>
 
-<input
-id="dDate"
-type="date">
+<input id="dDate" type="date">
 
-<label>
-Waqti
-</label>
+<label>Waqti</label>
 
-<input
-id="dTime"
-type="time">
+<input id="dTime" type="time">
 
 <button
 id="disbursementSaveBtn"
@@ -1643,9 +1338,7 @@ Jooji
 
 <div class="card">
 
-<h3>
-📋 Diiwaanka Lacag-bixinta
-</h3>
+<h3>📋 Diiwaanka Lacag-bixinta</h3>
 
 <input
 id="disbursementSearch"
@@ -1659,7 +1352,6 @@ oninput="renderDisbursements()">
 <thead>
 
 <tr>
-
 <th>Mashruuc</th>
 <th>Qof/Hay'ad</th>
 <th>Lacag</th>
@@ -1667,13 +1359,11 @@ oninput="renderDisbursements()">
 <th>Hab</th>
 <th>Taariikh</th>
 <th>Ficil</th>
-
 </tr>
 
 </thead>
 
-<tbody id="disbursementTable">
-</tbody>
+<tbody id="disbursementTable"></tbody>
 
 </table>
 
@@ -1684,16 +1374,14 @@ oninput="renderDisbursements()">
 </section>
 
 
-<!-- ================= PROJECTS ================= -->
+<!-- PROJECTS -->
 
 <section id="projects" class="hidden">
 
-<h1>
-🏗️ Mashaariicda Guul-Wadaag
-</h1>
+<h1>🏗️ Mashaariicda Guul-Wadaag</h1>
 
-<div
-id="projectAdminForm"
+
+<div id="projectAdminForm"
 class="card hidden">
 
 <h3 id="projectFormTitle">
@@ -1716,13 +1404,9 @@ placeholder="Miisaaniyadda">
 
 <select id="pstatus">
 
-<option value="Qorshaysan">
-Qorshaysan
-</option>
+<option value="Qorshaysan">Qorshaysan</option>
 
-<option value="Socda">
-Socda
-</option>
+<option value="Socda">Socda</option>
 
 <option value="Dhammaystiran">
 Dhammaystiran
@@ -1757,29 +1441,24 @@ id="projectSearch"
 placeholder="🔎 Raadi mashruuc..."
 oninput="renderProjects()">
 
-<div id="projectList">
-</div>
+<div id="projectList"></div>
 
 </div>
 
 </section>
 
 
-<!-- ================= NEWS ================= -->
+<!-- NEWS -->
 
 <section id="news" class="hidden">
 
-<h1>
-📰 Wararka & Ogeysiisyada
-</h1>
+<h1>📰 Wararka & Ogeysiisyada</h1>
 
-<div
-id="newsAdminForm"
+
+<div id="newsAdminForm"
 class="card hidden">
 
-<h3>
-➕ Ku dar War
-</h3>
+<h3>➕ Ku dar War</h3>
 
 <input
 id="newsTitle"
@@ -1795,58 +1474,35 @@ placeholder="Qoraalka wararka"></textarea>
 
 </div>
 
-<div
-id="newsList"
+
+<div id="newsList"
 class="news-grid">
 </div>
 
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 
 <section id="contact" class="hidden">
 
-<h1>
-📞 Nala Soo Xiriir
-</h1>
+<h1>📞 Nala Soo Xiriir</h1>
 
 <div class="contact-grid">
 
 <div class="contact-item">
-
-<h3>
-📍 Goobta
-</h3>
-
-<p>
-Bali-Abane, Hawd
-</p>
-
+<h3>📍 Goobta</h3>
+<p>Bali-Abane, Hawd</p>
 </div>
 
 <div class="contact-item">
-
-<h3>
-📱 Telefoon
-</h3>
-
-<p>
-+252
-</p>
-
+<h3>📱 Telefoon</h3>
+<p>+252</p>
 </div>
 
 <div class="contact-item">
-
-<h3>
-✉️ Email
-</h3>
-
-<p>
-Guul-Wadaag
-</p>
-
+<h3>✉️ Email</h3>
+<p>Guul-Wadaag</p>
 </div>
 
 </div>
@@ -1856,17 +1512,13 @@ Guul-Wadaag
 </main>
 
 
-<!-- ================= FOOTER ================= -->
-
 <footer id="footer" class="hidden">
 
 <div class="footer-inner">
 
 <div>
 
-<h2>
-GUUL-WADAAG
-</h2>
+<h2>GUUL-WADAAG</h2>
 
 <p>
 Urur u taagan midnimo, horumarinta dhalinyarada,
@@ -1878,27 +1530,17 @@ waxbarashada iyo adeegga bulshada.
 
 <div>
 
-<h3>
-Quick Links
-</h3>
+<h3>Quick Links</h3>
 
 <div class="footer-links">
 
-<button onclick="showPage('home')">
-Home
-</button>
+<button onclick="showPage('home')">Home</button>
 
-<button onclick="showPage('members')">
-Xubnaha
-</button>
+<button onclick="showPage('members')">Xubnaha</button>
 
-<button onclick="showPage('projects')">
-Mashaariic
-</button>
+<button onclick="showPage('projects')">Mashaariic</button>
 
-<button onclick="showPage('news')">
-Warar
-</button>
+<button onclick="showPage('news')">Warar</button>
 
 </div>
 
@@ -1907,17 +1549,11 @@ Warar
 
 <div>
 
-<h3>
-Nala Soo Xiriir
-</h3>
+<h3>Nala Soo Xiriir</h3>
 
-<p>
-📍 Bali-Abane, Hawd
-</p>
+<p>📍 Bali-Abane, Hawd</p>
 
-<p>
-📱 +252
-</p>
+<p>📱 +252</p>
 
 </div>
 
@@ -1925,9 +1561,7 @@ Nala Soo Xiriir
 
 
 <div class="footer-bottom">
-
 © 2026 Guul-Wadaag. All Rights Reserved.
-
 </div>
 
 </footer>
@@ -1936,7 +1570,7 @@ Nala Soo Xiriir
 <script>
 
 /* =====================================================
-   SUPABASE
+SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
@@ -1947,7 +1581,7 @@ const SUPABASE_KEY =
 
 
 /* =====================================================
-   ROLES
+ROLES
 ===================================================== */
 
 const ADMIN_EMAIL =
@@ -1958,7 +1592,7 @@ const TREASURER_EMAIL =
 
 
 /* =====================================================
-   STATE
+STATE
 ===================================================== */
 
 let accessToken = "";
@@ -1977,14 +1611,14 @@ let editingDisbursementId = null;
 
 
 /* =====================================================
-   HEADERS
+HEADERS
 ===================================================== */
 
 function apiHeaders(){
 
 return {
 
-"apikey": SUPABASE_KEY,
+"apikey":SUPABASE_KEY,
 
 "Authorization":
 "Bearer " + accessToken,
@@ -2001,15 +1635,13 @@ return {
 
 
 /* =====================================================
-   ROLE CHECKS
+ROLE
 ===================================================== */
 
 function isAdmin(){
 
-if(!currentUser)
-return false;
-
-return String(currentUser.email || "")
+return currentUser &&
+String(currentUser.email || "")
 .toLowerCase() ===
 ADMIN_EMAIL.toLowerCase();
 
@@ -2018,10 +1650,8 @@ ADMIN_EMAIL.toLowerCase();
 
 function isTreasurer(){
 
-if(!currentUser)
-return false;
-
-return String(currentUser.email || "")
+return currentUser &&
+String(currentUser.email || "")
 .toLowerCase() ===
 TREASURER_EMAIL.toLowerCase();
 
@@ -2035,34 +1665,43 @@ return isAdmin() || isTreasurer();
 }
 
 
-function canManageDisbursement(){
+/* =====================================================
+SHOW LOGIN
+===================================================== */
 
-return isAdmin();
+function hideAllAuthPages(){
+
+[
+"loginPage",
+"signupPage",
+"forgotPasswordPage",
+"resetPasswordPage"
+].forEach(id=>{
+
+const el=document.getElementById(id);
+
+if(el)
+el.classList.add("hidden");
+
+});
+
 }
 
 
-/* =====================================================
-   LOGIN / SIGNUP
-===================================================== */
-
 function showLogin(){
+
+hideAllAuthPages();
 
 document
 .getElementById("loginPage")
 .classList.remove("hidden");
-
-document
-.getElementById("signupPage")
-.classList.add("hidden");
 
 }
 
 
 function showSignup(){
 
-document
-.getElementById("loginPage")
-.classList.add("hidden");
+hideAllAuthPages();
 
 document
 .getElementById("signupPage")
@@ -2070,6 +1709,32 @@ document
 
 }
 
+
+function showForgotPassword(){
+
+hideAllAuthPages();
+
+document
+.getElementById("forgotPasswordPage")
+.classList.remove("hidden");
+
+}
+
+
+function showResetPassword(){
+
+hideAllAuthPages();
+
+document
+.getElementById("resetPasswordPage")
+.classList.remove("hidden");
+
+}
+
+
+/* =====================================================
+SIGNUP
+===================================================== */
 
 async function signup(){
 
@@ -2077,9 +1742,14 @@ const name =
 document.getElementById("signupName")
 .value.trim();
 
+const phone =
+document.getElementById("signupPhone")
+.value.trim();
+
 const email =
 document.getElementById("signupEmail")
-.value.trim();
+.value.trim()
+.toLowerCase();
 
 const password =
 document.getElementById("signupPassword")
@@ -2092,14 +1762,15 @@ document.getElementById("signupPassword2")
 const msg =
 document.getElementById("signupMessage");
 
-msg.textContent = "";
+msg.textContent="";
+msg.className="";
 
 
-if(!name || !email || !password){
+if(!name || !email || !password || !password2){
 
-msg.className = "error";
+msg.className="error";
 
-msg.textContent =
+msg.textContent=
 "Fadlan dhammaan meelaha buuxi.";
 
 return;
@@ -2109,9 +1780,9 @@ return;
 
 if(password.length < 6){
 
-msg.className = "error";
+msg.className="error";
 
-msg.textContent =
+msg.textContent=
 "Password-ku waa inuu leeyahay ugu yaraan 6 xaraf.";
 
 return;
@@ -2121,9 +1792,9 @@ return;
 
 if(password !== password2){
 
-msg.className = "error";
+msg.className="error";
 
-msg.textContent =
+msg.textContent=
 "Labada password isku mid ma aha.";
 
 return;
@@ -2136,7 +1807,7 @@ try{
 const response =
 await fetch(
 
-SUPABASE_URL +
+SUPABASE_URL+
 "/auth/v1/signup",
 
 {
@@ -2150,11 +1821,13 @@ headers:{
 
 body:JSON.stringify({
 
-email,
-password,
+email:email,
+
+password:password,
 
 data:{
-full_name:name
+full_name:name,
+phone:phone
 }
 
 })
@@ -2170,12 +1843,102 @@ await response.json();
 
 if(!response.ok){
 
-msg.className = "error";
+msg.className="error";
 
-msg.textContent =
+msg.textContent=
 data.msg ||
 data.error_description ||
-"Is-diiwaangelintu way fashilantay.";
+data.message ||
+"Account-ka lama samayn.";
+
+return;
+
+}
+
+
+const user=data.user;
+
+
+if(!user){
+
+msg.className="error";
+
+msg.textContent=
+"Account-ka lama helin.";
+
+return;
+
+}
+
+
+/*
+CREATE MEMBERS RECORD
+
+Haddii email confirmation ON yahay,
+access_token ma jiri karo.
+Sidaas darteed waxaan isticmaalaynaa
+SUPABASE_KEY si request-ku u gaaro database-ka.
+RLS policy-ga Members waa inuu oggolaadaa.
+*/
+
+const memberResponse =
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/Members",
+
+{
+
+method:"POST",
+
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":
+"Bearer "+
+(
+data.access_token ||
+SUPABASE_KEY
+),
+"Content-Type":
+"application/json",
+"Prefer":
+"return=representation"
+},
+
+body:JSON.stringify({
+
+Name:name,
+
+Phone:phone,
+
+Email:email,
+
+Type:"Xubin Caadi ah",
+
+user_id:user.id
+
+})
+
+}
+
+);
+
+
+const memberData =
+await memberResponse.json();
+
+
+if(!memberResponse.ok){
+
+console.error(
+"MEMBER ERROR:",
+memberData
+);
+
+msg.className="error";
+
+msg.textContent=
+"Account-ka waa la sameeyey, laakiin Members laguma darin. Hubi RLS policy-ga Members.";
 
 return;
 
@@ -2192,34 +1955,40 @@ data.user;
 
 await openApp();
 
-}else{
-
-msg.className = "success";
-
-msg.textContent =
-"Account-ka waa la sameeyey. Email-ka xaqiiji kadibna gal.";
+return;
 
 }
+
+
+msg.className="success";
+
+msg.textContent=
+"✅ Xubinimada waa la diiwaangeliyey. Email-ka xaqiiji kadibna gal.";
 
 }catch(error){
 
 console.error(error);
 
-msg.className = "error";
+msg.className="error";
 
-msg.textContent =
-"Cilad Internet ayaa dhacday.";
-
-}
+msg.textContent=
+"Cilad ayaa dhacday. Hubi Internet-ka.";
 
 }
 
+}
+
+
+/* =====================================================
+LOGIN
+===================================================== */
 
 async function login(){
 
 const email =
 document.getElementById("loginEmail")
-.value.trim();
+.value.trim()
+.toLowerCase();
 
 const password =
 document.getElementById("loginPassword")
@@ -2228,12 +1997,12 @@ document.getElementById("loginPassword")
 const msg =
 document.getElementById("loginMessage");
 
-msg.textContent = "";
+msg.textContent="";
 
 
 if(!email || !password){
 
-msg.textContent =
+msg.textContent=
 "Fadlan geli email iyo password.";
 
 return;
@@ -2246,7 +2015,7 @@ try{
 const response =
 await fetch(
 
-SUPABASE_URL +
+SUPABASE_URL+
 "/auth/v1/token?grant_type=password",
 
 {
@@ -2259,8 +2028,8 @@ headers:{
 },
 
 body:JSON.stringify({
-email,
-password
+email:email,
+password:password
 })
 
 }
@@ -2276,7 +2045,7 @@ if(!response.ok){
 
 console.error(data);
 
-msg.textContent =
+msg.textContent=
 "Email ama password waa khalad. Hubi account-ka.";
 
 return;
@@ -2296,7 +2065,7 @@ await openApp();
 
 console.error(error);
 
-msg.textContent =
+msg.textContent=
 "Cilad ayaa dhacday. Hubi Internet-ka.";
 
 }
@@ -2305,18 +2074,256 @@ msg.textContent =
 
 
 /* =====================================================
-   OPEN APP
+FORGOT PASSWORD
+===================================================== */
+
+async function sendResetEmail(){
+
+const email =
+document.getElementById("forgotEmail")
+.value.trim()
+.toLowerCase();
+
+const msg =
+document.getElementById("forgotMessage");
+
+msg.textContent="";
+msg.className="";
+
+
+if(!email){
+
+msg.className="error";
+
+msg.textContent=
+"Fadlan geli email-kaaga.";
+
+return;
+
+}
+
+
+try{
+
+const redirectURL =
+window.location.origin +
+window.location.pathname;
+
+
+const response =
+await fetch(
+
+SUPABASE_URL+
+"/auth/v1/recover",
+
+{
+
+method:"POST",
+
+headers:{
+"apikey":SUPABASE_KEY,
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+email:email,
+
+redirect_to:redirectURL
+
+})
+
+}
+
+);
+
+
+const data =
+await response.json();
+
+
+console.log(
+"RESET:",
+data
+);
+
+
+if(!response.ok){
+
+msg.className="error";
+
+msg.textContent=
+data.msg ||
+data.error_description ||
+data.message ||
+"Email-ka lama dirin.";
+
+return;
+
+}
+
+
+msg.className="success";
+
+msg.textContent=
+"✅ Link-ga password-ka waxaa loo diray email-kaaga. Hubi Inbox iyo Spam.";
+
+}catch(error){
+
+console.error(error);
+
+msg.className="error";
+
+msg.textContent=
+"Cilad ayaa dhacday. Hubi Internet-ka.";
+
+}
+
+}
+
+
+/* =====================================================
+PASSWORD UPDATE
+===================================================== */
+
+async function updateNewPassword(){
+
+const password =
+document.getElementById("newPassword")
+.value;
+
+const password2 =
+document.getElementById("newPassword2")
+.value;
+
+const msg =
+document.getElementById("resetMessage");
+
+msg.textContent="";
+msg.className="";
+
+
+if(!password || !password2){
+
+msg.className="error";
+
+msg.textContent=
+"Fadlan labada meelood buuxi.";
+
+return;
+
+}
+
+
+if(password.length < 6){
+
+msg.className="error";
+
+msg.textContent=
+"Password-ku waa inuu leeyahay ugu yaraan 6 xaraf.";
+
+return;
+
+}
+
+
+if(password !== password2){
+
+msg.className="error";
+
+msg.textContent=
+"Labada password isku mid ma aha.";
+
+return;
+
+}
+
+
+try{
+
+const response =
+await fetch(
+
+SUPABASE_URL+
+"/auth/v1/user",
+
+{
+
+method:"PUT",
+
+headers:{
+"apikey":SUPABASE_KEY,
+
+"Authorization":
+"Bearer "+accessToken,
+
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+password:password
+
+})
+
+}
+
+);
+
+
+const data =
+await response.json();
+
+
+if(!response.ok){
+
+msg.className="error";
+
+msg.textContent=
+data.msg ||
+data.error_description ||
+data.message ||
+"Password-ka lama beddelin.";
+
+return;
+
+}
+
+
+msg.className="success";
+
+msg.textContent=
+"✅ Password-ka waa la beddelay.";
+
+setTimeout(()=>{
+
+showLogin();
+
+},1500);
+
+
+}catch(error){
+
+console.error(error);
+
+msg.className="error";
+
+msg.textContent=
+"Cilad ayaa dhacday.";
+
+}
+
+}
+
+
+/* =====================================================
+OPEN APP
 ===================================================== */
 
 async function openApp(){
 
-document
-.getElementById("loginPage")
-.classList.add("hidden");
-
-document
-.getElementById("signupPage")
-.classList.add("hidden");
+hideAllAuthPages();
 
 document
 .getElementById("mainHeader")
@@ -2340,121 +2347,95 @@ currentUser?.email ||
 "Xubin";
 
 
-document
-.getElementById("currentUserEmail")
-.textContent = email;
+document.getElementById("currentUserEmail")
+.textContent=email;
 
-document
-.getElementById("profileEmail")
-.textContent = email;
+document.getElementById("profileEmail")
+.textContent=email;
 
-document
-.getElementById("currentUserName")
-.textContent = name;
+document.getElementById("currentUserName")
+.textContent=name;
 
-document
-.getElementById("dashboardName")
-.textContent = name;
+document.getElementById("dashboardName")
+.textContent=name;
 
-document
-.getElementById("profileName")
-.textContent = name;
+document.getElementById("profileName")
+.textContent=name;
 
 
-document
-.getElementById("adminBadge")
-.classList.add("hidden");
-
-document
-.getElementById("treasurerBadge")
-.classList.add("hidden");
-
-document
-.getElementById("memberBadge")
-.classList.add("hidden");
+[
+"adminBadge",
+"treasurerBadge",
+"memberBadge"
+].forEach(id=>
+document.getElementById(id)
+.classList.add("hidden")
+);
 
 
 if(isAdmin()){
 
-document
-.getElementById("adminBadge")
+document.getElementById("adminBadge")
 .classList.remove("hidden");
 
-document
-.getElementById("profileRole")
-.textContent =
+document.getElementById("profileRole")
+.textContent=
 "Gudomiye / Admin";
 
 }else if(isTreasurer()){
 
-document
-.getElementById("treasurerBadge")
+document.getElementById("treasurerBadge")
 .classList.remove("hidden");
 
-document
-.getElementById("profileRole")
-.textContent =
+document.getElementById("profileRole")
+.textContent=
 "Qasnaji";
 
 }else{
 
-document
-.getElementById("memberBadge")
+document.getElementById("memberBadge")
 .classList.remove("hidden");
 
-document
-.getElementById("profileRole")
-.textContent =
+document.getElementById("profileRole")
+.textContent=
 "Xubin Caadi ah";
 
 }
 
 
-/* Payments */
-
 if(canSeePayments()){
 
-document
-.getElementById("paymentsNavBtn")
+document.getElementById("paymentsNavBtn")
 .classList.remove("hidden");
 
-document
-.getElementById("quickPayments")
+document.getElementById("quickPayments")
 .classList.remove("hidden");
 
 }else{
 
-document
-.getElementById("paymentsNavBtn")
+document.getElementById("paymentsNavBtn")
 .classList.add("hidden");
 
-document
-.getElementById("quickPayments")
+document.getElementById("quickPayments")
 .classList.add("hidden");
 
 }
 
 
-/* Disbursement */
-
 if(isAdmin()){
 
-document
-.getElementById("disbursementNavBtn")
+document.getElementById("disbursementNavBtn")
 .classList.remove("hidden");
 
-document
-.getElementById("quickDisbursement")
+document.getElementById("quickDisbursement")
 .classList.remove("hidden");
 
 }else{
 
-document
-.getElementById("disbursementNavBtn")
+document.getElementById("disbursementNavBtn")
 .classList.add("hidden");
 
-document
-.getElementById("quickDisbursement")
+document.getElementById("quickDisbursement")
 .classList.add("hidden");
 
 }
@@ -2468,7 +2449,7 @@ showPage("home");
 
 
 /* =====================================================
-   LOGOUT
+LOGOUT
 ===================================================== */
 
 async function logout(){
@@ -2477,7 +2458,7 @@ try{
 
 await fetch(
 
-SUPABASE_URL +
+SUPABASE_URL+
 "/auth/v1/logout",
 
 {
@@ -2487,7 +2468,7 @@ method:"POST",
 headers:{
 "apikey":SUPABASE_KEY,
 "Authorization":
-"Bearer " + accessToken
+"Bearer "+accessToken
 }
 
 }
@@ -2500,8 +2481,8 @@ console.error(e);
 
 }
 
-accessToken = "";
-currentUser = null;
+accessToken="";
+currentUser=null;
 
 location.reload();
 
@@ -2509,12 +2490,12 @@ location.reload();
 
 
 /* =====================================================
-   PAGE NAVIGATION
+NAVIGATION
 ===================================================== */
 
 function showPage(id){
 
-if(id === "payments" && !canSeePayments()){
+if(id==="payments" && !canSeePayments()){
 
 alert(
 "🔒 Qaybtan waxaa heli kara Admin iyo Qasnajiga kaliya."
@@ -2525,7 +2506,7 @@ return;
 }
 
 
-if(id === "disbursement" && !isAdmin()){
+if(id==="disbursement" && !isAdmin()){
 
 alert(
 "🔒 Qaybtan waxaa heli kara Admin kaliya."
@@ -2547,8 +2528,7 @@ return;
 "contact"
 ].forEach(page=>{
 
-const el =
-document.getElementById(page);
+const el=document.getElementById(page);
 
 if(el)
 el.classList.add("hidden");
@@ -2563,19 +2543,19 @@ if(target)
 target.classList.remove("hidden");
 
 
-if(id === "members")
+if(id==="members")
 renderMembers();
 
-if(id === "payments")
+if(id==="payments")
 renderPayments();
 
-if(id === "disbursement")
+if(id==="disbursement")
 renderDisbursements();
 
-if(id === "projects")
+if(id==="projects")
 renderProjects();
 
-if(id === "news")
+if(id==="news")
 renderNews();
 
 window.scrollTo({
@@ -2587,7 +2567,7 @@ behavior:"smooth"
 
 
 /* =====================================================
-   GET DATA
+GET DATA
 ===================================================== */
 
 async function getData(table){
@@ -2597,9 +2577,9 @@ try{
 const response =
 await fetch(
 
-SUPABASE_URL +
-"/rest/v1/" +
-table +
+SUPABASE_URL+
+"/rest/v1/"+
+table+
 "?select=*",
 
 {
@@ -2637,7 +2617,7 @@ return [];
 
 
 /* =====================================================
-   MEMBERS
+MEMBERS
 ===================================================== */
 
 async function saveMember(){
@@ -2680,19 +2660,17 @@ return;
 
 
 let url =
-SUPABASE_URL +
+SUPABASE_URL+
 "/rest/v1/Members";
 
-let method = "POST";
+let method="POST";
 
 
 if(editingMemberId){
 
-url +=
-"?id=eq." +
-editingMemberId;
+url += "?id=eq."+editingMemberId;
 
-method = "PATCH";
+method="PATCH";
 
 }
 
@@ -2704,7 +2682,7 @@ url,
 
 {
 
-method,
+method:method,
 
 headers:apiHeaders(),
 
@@ -2729,7 +2707,7 @@ await response.text()
 );
 
 alert(
-"Xogta lama kaydin."
+"Xubinta lama kaydin. Hubi RLS."
 );
 
 return;
@@ -2750,47 +2728,33 @@ await render();
 
 function editMember(member){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
-editingMemberId =
-member.id;
+editingMemberId=member.id;
 
-document
-.getElementById("mname")
-.value =
-member.Name || "";
+document.getElementById("mname").value=
+member.Name||"";
 
-document
-.getElementById("mphone")
-.value =
-member.Phone || "";
+document.getElementById("mphone").value=
+member.Phone||"";
 
-document
-.getElementById("memail")
-.value =
-member.Email || "";
+document.getElementById("memail").value=
+member.Email||"";
 
-document
-.getElementById("mtype")
-.value =
-member.Type ||
+document.getElementById("mtype").value=
+member.Type||
 "Xubin Caadi ah";
 
-document
-.getElementById("memberFormTitle")
-.textContent =
+document.getElementById("memberFormTitle")
+.textContent=
 "✏️ Wax ka beddel Xubin";
 
-document
-.getElementById("memberSaveBtn")
-.textContent =
+document.getElementById("memberSaveBtn")
+.textContent=
 "💾 Kaydi";
 
-document
-.getElementById("memberCancelBtn")
-.classList
-.remove("hidden");
+document.getElementById("memberCancelBtn")
+.classList.remove("hidden");
 
 window.scrollTo({
 top:0,
@@ -2802,8 +2766,7 @@ behavior:"smooth"
 
 async function deleteMember(id){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso xubintan?"
@@ -2814,9 +2777,8 @@ return;
 const response =
 await fetch(
 
-SUPABASE_URL +
-"/rest/v1/Members?id=eq." +
-id,
+SUPABASE_URL+
+"/rest/v1/Members?id=eq."+id,
 
 {
 
@@ -2847,39 +2809,25 @@ await render();
 
 function cancelMemberEdit(){
 
-editingMemberId = null;
+editingMemberId=null;
 
-document
-.getElementById("mname")
-.value = "";
+document.getElementById("mname").value="";
+document.getElementById("mphone").value="";
+document.getElementById("memail").value="";
 
-document
-.getElementById("mphone")
-.value = "";
-
-document
-.getElementById("memail")
-.value = "";
-
-document
-.getElementById("mtype")
-.value =
+document.getElementById("mtype").value=
 "Xubin Caadi ah";
 
-document
-.getElementById("memberFormTitle")
-.textContent =
+document.getElementById("memberFormTitle")
+.textContent=
 "➕ Ku dar Xubin";
 
-document
-.getElementById("memberSaveBtn")
-.textContent =
+document.getElementById("memberSaveBtn")
+.textContent=
 "Diiwaangeli";
 
-document
-.getElementById("memberCancelBtn")
-.classList
-.add("hidden");
+document.getElementById("memberCancelBtn")
+.classList.add("hidden");
 
 }
 
@@ -2889,82 +2837,66 @@ function renderMembers(){
 const table =
 document.getElementById("memberTable");
 
-if(!table)
-return;
+if(!table) return;
 
 
 const search =
 (
-document
-.getElementById("memberSearch")
-?.value || ""
+document.getElementById("memberSearch")
+?.value||""
 ).toLowerCase();
 
 
 const filtered =
-allMembers.filter(member=>{
+allMembers.filter(member=>
 
-return (
-
-String(member.Name || "")
+String(member.Name||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(member.Phone || "")
+String(member.Phone||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(member.Email || "")
+String(member.Email||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(member.Type || "")
+String(member.Type||"")
 .toLowerCase()
 .includes(search)
 
 );
 
-});
 
-
-table.innerHTML =
+table.innerHTML=
 filtered.map(member=>`
 
 <tr>
 
-<td>
-${escapeHTML(member.Name || "")}
-</td>
+<td>${escapeHTML(member.Name||"")}</td>
+
+<td>${escapeHTML(member.Phone||"")}</td>
+
+<td>${escapeHTML(member.Email||"")}</td>
 
 <td>
-${escapeHTML(member.Phone || "")}
-</td>
-
-<td>
-${escapeHTML(member.Email || "")}
-</td>
-
-<td>
-
 <span class="badge">
-${escapeHTML(member.Type || "")}
+${escapeHTML(member.Type||"")}
 </span>
-
 </td>
 
 <td>
 
 ${
 isAdmin()
-
 ?
-
 `
 
 <div class="action">
@@ -2984,13 +2916,10 @@ onclick="deleteMember(${member.id})">
 </div>
 
 `
-
 :
-
-`<span class="badge">
-👁️ Arag
-</span>`
-
+`
+<span class="badge">👁️ Arag</span>
+`
 }
 
 </td>
@@ -3003,7 +2932,7 @@ onclick="deleteMember(${member.id})">
 
 
 /* =====================================================
-   PAYMENTS
+PAYMENTS
 ===================================================== */
 
 async function savePayment(){
@@ -3020,30 +2949,22 @@ return;
 
 
 const memberName =
-document
-.getElementById("payer")
-.value;
+document.getElementById("payer").value;
 
 const amount =
 Number(
-document
-.getElementById("amount")
-.value
+document.getElementById("amount").value
 );
 
 const method =
-document
-.getElementById("method")
-.value;
+document.getElementById("method").value;
 
 const number =
-document
-.getElementById("paymentNumber")
+document.getElementById("paymentNumber")
 .value.trim();
 
 const month =
-document
-.getElementById("month")
+document.getElementById("month")
 .value.trim();
 
 
@@ -3069,20 +2990,18 @@ return;
 }
 
 
-let url =
-SUPABASE_URL +
+let url=
+SUPABASE_URL+
 "/rest/v1/Payment";
 
-let requestMethod = "POST";
+let requestMethod="POST";
 
 
 if(isAdmin() && editingPaymentId){
 
-url +=
-"?id=eq." +
-editingPaymentId;
+url+="?id=eq."+editingPaymentId;
 
-requestMethod = "PATCH";
+requestMethod="PATCH";
 
 }
 
@@ -3115,12 +3034,10 @@ Month:month
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
 alert(
-"Lacagta lama kaydin. Hubi RLS policies-ka Supabase."
+"Lacagta lama kaydin. Hubi RLS."
 );
 
 return;
@@ -3152,59 +3069,36 @@ return;
 }
 
 
-editingPaymentId =
-payment.id;
+editingPaymentId=payment.id;
 
-document
-.getElementById("payer")
-.value =
-payment.Member_Name || "";
+document.getElementById("payer").value=
+payment.Member_Name||"";
 
-document
-.getElementById("amount")
-.value =
-payment.Amount || "";
+document.getElementById("amount").value=
+payment.Amount||"";
 
-document
-.getElementById("method")
-.value =
-payment.Method || "ZAAD";
+document.getElementById("method").value=
+payment.Method||"ZAAD";
 
-document
-.getElementById("paymentNumber")
-.value =
-payment.Payment_Number || "";
+document.getElementById("paymentNumber").value=
+payment.Payment_Number||"";
 
-document
-.getElementById("month")
-.value =
-payment.Month || "";
+document.getElementById("month").value=
+payment.Month||"";
 
-document
-.getElementById("paymentSaveBtn")
-.textContent =
+document.getElementById("paymentSaveBtn")
+.textContent=
 "💾 Kaydi Isbeddelka";
 
-document
-.getElementById("paymentCancelBtn")
-.classList
-.remove("hidden");
+document.getElementById("paymentCancelBtn")
+.classList.remove("hidden");
 
 }
 
 
 async function deletePayment(id){
 
-if(!isAdmin()){
-
-alert(
-"🚫 Qasnajigu ma tirtiri karo lacagaha."
-);
-
-return;
-
-}
-
+if(!isAdmin()) return;
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso lacag-bixintan?"
@@ -3215,14 +3109,12 @@ return;
 const response =
 await fetch(
 
-SUPABASE_URL +
-"/rest/v1/Payment?id=eq." +
-id,
+SUPABASE_URL+
+"/rest/v1/Payment?id=eq."+id,
 
 {
 
 method:"DELETE",
-
 headers:apiHeaders()
 
 }
@@ -3248,124 +3140,94 @@ await render();
 
 function cancelPaymentEdit(){
 
-editingPaymentId = null;
+editingPaymentId=null;
 
-document
-.getElementById("amount")
-.value = "";
+document.getElementById("amount").value="";
+document.getElementById("paymentNumber").value="";
+document.getElementById("month").value="";
 
-document
-.getElementById("paymentNumber")
-.value = "";
-
-document
-.getElementById("month")
-.value = "";
-
-document
-.getElementById("paymentSaveBtn")
-.textContent =
+document.getElementById("paymentSaveBtn")
+.textContent=
 "💳 Kaydi Lacagta";
 
-document
-.getElementById("paymentCancelBtn")
-.classList
-.add("hidden");
+document.getElementById("paymentCancelBtn")
+.classList.add("hidden");
 
 }
 
 
 function renderPayments(){
 
-if(!canSeePayments())
-return;
+if(!canSeePayments()) return;
 
-
-const table =
+const table=
 document.getElementById("paymentTable");
 
-if(!table)
-return;
+if(!table) return;
 
-
-const search =
+const search=
 (
-document
-.getElementById("paymentSearch")
-?.value || ""
+document.getElementById("paymentSearch")
+?.value||""
 ).toLowerCase();
 
 
-const filtered =
-allPayments.filter(payment=>{
+const filtered=
+allPayments.filter(payment=>
 
-return (
-
-String(payment.Member_Name || "")
+String(payment.Member_Name||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(payment.Month || "")
+String(payment.Month||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(payment.Method || "")
+String(payment.Method||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(payment.Payment_Number || "")
+String(payment.Payment_Number||"")
 .toLowerCase()
 .includes(search)
 
 );
 
-});
 
-
-table.innerHTML =
+table.innerHTML=
 filtered.map(payment=>`
 
 <tr>
 
-<td>
-${escapeHTML(payment.Member_Name || "")}
-</td>
+<td>${escapeHTML(payment.Member_Name||"")}</td>
 
-<td>
-${escapeHTML(payment.Month || "")}
-</td>
+<td>${escapeHTML(payment.Month||"")}</td>
 
 <td>
 <strong>
-$${Number(payment.Amount || 0).toFixed(2)}
+$${Number(payment.Amount||0).toFixed(2)}
 </strong>
 </td>
 
 <td>
-
 <span class="badge">
-${escapeHTML(payment.Method || "")}
+${escapeHTML(payment.Method||"")}
 </span>
-
 </td>
 
-<td>
-${escapeHTML(payment.Payment_Number || "")}
-</td>
+<td>${escapeHTML(payment.Payment_Number||"")}</td>
 
 <td>
 
 ${
 isAdmin()
-
 ?
-
 `
 
 <div class="action">
@@ -3385,17 +3247,8 @@ onclick="deletePayment(${payment.id})">
 </div>
 
 `
-
 :
-
-`
-
-<span class="badge">
-👁️ Arag
-</span>
-
-`
-
+`<span class="badge">👁️ Arag</span>`
 }
 
 </td>
@@ -3408,48 +3261,34 @@ onclick="deletePayment(${payment.id})">
 
 
 /* =====================================================
-   PROJECTS
+PROJECTS
 ===================================================== */
 
 async function saveProject(){
 
 if(!isAdmin()){
 
-alert(
-"Admin kaliya."
-);
+alert("Admin kaliya.");
 
 return;
 
 }
 
 
-const name =
-document
-.getElementById("pname")
-.value.trim();
+const name=
+document.getElementById("pname").value.trim();
 
-const description =
-document
-.getElementById("pdesc")
-.value.trim();
+const description=
+document.getElementById("pdesc").value.trim();
 
-const budget =
-Number(
-document
-.getElementById("pbudget")
-.value
-) || 0;
+const budget=
+Number(document.getElementById("pbudget").value)||0;
 
-const status =
-document
-.getElementById("pstatus")
-.value;
+const status=
+document.getElementById("pstatus").value;
 
-const image =
-document
-.getElementById("pimage")
-.value.trim();
+const image=
+document.getElementById("pimage").value.trim();
 
 
 if(!name){
@@ -3463,25 +3302,23 @@ return;
 }
 
 
-let url =
-SUPABASE_URL +
+let url=
+SUPABASE_URL+
 "/rest/v1/Project";
 
-let requestMethod = "POST";
+let requestMethod="POST";
 
 
 if(editingProjectId){
 
-url +=
-"?id=eq." +
-editingProjectId;
+url+="?id=eq."+editingProjectId;
 
-requestMethod = "PATCH";
+requestMethod="PATCH";
 
 }
 
 
-const response =
+const response=
 await fetch(
 
 url,
@@ -3489,7 +3326,6 @@ url,
 {
 
 method:requestMethod,
-
 headers:apiHeaders(),
 
 body:JSON.stringify({
@@ -3498,14 +3334,6 @@ Name:name,
 Description:description,
 Budget:budget,
 Status:status,
-
-/*
-Project table-kaaga hore
-waxaa lagu sheegay pimage.
-Sidaas darteed labada field
-lama isku qasin.
-*/
-
 pimage:image
 
 })
@@ -3517,9 +3345,7 @@ pimage:image
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
 alert(
 "Mashruuca lama kaydin."
@@ -3543,64 +3369,42 @@ await render();
 
 function editProject(project){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
-editingProjectId =
-project.id;
+editingProjectId=project.id;
 
-document
-.getElementById("pname")
-.value =
-project.Name || "";
+document.getElementById("pname").value=
+project.Name||"";
 
-document
-.getElementById("pdesc")
-.value =
-project.Description || "";
+document.getElementById("pdesc").value=
+project.Description||"";
 
-document
-.getElementById("pbudget")
-.value =
-project.Budget || 0;
+document.getElementById("pbudget").value=
+project.Budget||0;
 
-document
-.getElementById("pstatus")
-.value =
-project.Status || "Qorshaysan";
+document.getElementById("pstatus").value=
+project.Status||"Qorshaysan";
 
-document
-.getElementById("pimage")
-.value =
-project.pimage || "";
+document.getElementById("pimage").value=
+project.pimage||"";
 
-document
-.getElementById("projectFormTitle")
-.textContent =
+document.getElementById("projectFormTitle")
+.textContent=
 "✏️ Wax ka beddel Mashruuc";
 
-document
-.getElementById("projectSaveBtn")
-.textContent =
+document.getElementById("projectSaveBtn")
+.textContent=
 "💾 Kaydi";
 
-document
-.getElementById("projectCancelBtn")
-.classList
-.remove("hidden");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+document.getElementById("projectCancelBtn")
+.classList.remove("hidden");
 
 }
 
 
 async function deleteProject(id){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso mashruucan?"
@@ -3608,17 +3412,15 @@ if(!confirm(
 return;
 
 
-const response =
+const response=
 await fetch(
 
-SUPABASE_URL +
-"/rest/v1/Project?id=eq." +
-id,
+SUPABASE_URL+
+"/rest/v1/Project?id=eq."+id,
 
 {
 
 method:"DELETE",
-
 headers:apiHeaders()
 
 }
@@ -3644,145 +3446,107 @@ await render();
 
 function cancelProjectEdit(){
 
-editingProjectId = null;
+editingProjectId=null;
 
-document
-.getElementById("pname")
-.value = "";
+document.getElementById("pname").value="";
+document.getElementById("pdesc").value="";
+document.getElementById("pbudget").value="";
+document.getElementById("pimage").value="";
 
-document
-.getElementById("pdesc")
-.value = "";
+document.getElementById("pstatus").value=
+"Qorshaysan";
 
-document
-.getElementById("pbudget")
-.value = "";
-
-document
-.getElementById("pimage")
-.value = "";
-
-document
-.getElementById("projectFormTitle")
-.textContent =
+document.getElementById("projectFormTitle")
+.textContent=
 "➕ Ku dar Mashruuc";
 
-document
-.getElementById("projectSaveBtn")
-.textContent =
+document.getElementById("projectSaveBtn")
+.textContent=
 "➕ Ku dar";
 
-document
-.getElementById("projectCancelBtn")
-.classList
-.add("hidden");
+document.getElementById("projectCancelBtn")
+.classList.add("hidden");
 
 }
 
 
 function renderProjects(){
 
-const list =
+const list=
 document.getElementById("projectList");
 
-if(!list)
-return;
+if(!list) return;
 
-
-const search =
+const search=
 (
-document
-.getElementById("projectSearch")
-?.value || ""
+document.getElementById("projectSearch")
+?.value||""
 ).toLowerCase();
 
 
-const filtered =
-allProjects.filter(project=>{
+const filtered=
+allProjects.filter(project=>
 
-return (
-
-String(project.Name || "")
+String(project.Name||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(project.Description || "")
+String(project.Description||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(project.Status || "")
+String(project.Status||"")
 .toLowerCase()
 .includes(search)
 
 );
 
-});
 
-
-list.innerHTML =
+list.innerHTML=
 filtered.map(project=>`
 
 <div class="project">
 
 ${
 project.pimage
-
 ?
-
 `
-
 <img
 src="${escapeHTML(project.pimage)}"
 alt="Mashruuc">
-
 `
-
 :
-
 ""
-
 }
 
 <h3>
-🏗️ ${escapeHTML(project.Name || "")}
+🏗️ ${escapeHTML(project.Name||"")}
 </h3>
 
 <p>
-${escapeHTML(project.Description || "")}
+${escapeHTML(project.Description||"")}
 </p>
 
 <p>
-
-<strong>
-Xaalad:
-</strong>
+<strong>Xaalad:</strong>
 
 <span class="badge">
-${escapeHTML(project.Status || "")}
+${escapeHTML(project.Status||"")}
 </span>
-
 </p>
-
 
 ${
 isAdmin()
-
 ?
-
 `
 
 <p>
-
-<strong>
-Miisaaniyad:
-</strong>
-
-$${Number(project.Budget || 0).toFixed(2)}
-
+<strong>Miisaaniyad:</strong>
+$${Number(project.Budget||0).toFixed(2)}
 </p>
 
 <div class="action">
@@ -3800,25 +3564,20 @@ onclick="deleteProject(${project.id})">
 </button>
 
 </div>
-
 `
-
 :
-
 ""
-
 }
 
 </div>
 
 `).join("");
 
-
 }
 
 
 /* =====================================================
-   DISBURSEMENT
+DISBURSEMENT
 ===================================================== */
 
 async function saveDisbursement(){
@@ -3826,7 +3585,7 @@ async function saveDisbursement(){
 if(!isAdmin()){
 
 alert(
-"👑 Admin kaliya ayaa maamuli kara lacag-bixinta."
+"👑 Admin kaliya."
 );
 
 return;
@@ -3834,47 +3593,34 @@ return;
 }
 
 
-const project =
-document
-.getElementById("dProject")
-.value;
+const project=
+document.getElementById("dProject").value;
 
-const amount =
+const amount=
 Number(
-document
-.getElementById("dAmount")
-.value
+document.getElementById("dAmount").value
 );
 
-const recipient =
-document
-.getElementById("dRecipient")
+const recipient=
+document.getElementById("dRecipient")
 .value.trim();
 
-const reason =
-document
-.getElementById("dReason")
+const reason=
+document.getElementById("dReason")
 .value.trim();
 
-const method =
-document
-.getElementById("dMethod")
-.value;
+const method=
+document.getElementById("dMethod").value;
 
-const number =
-document
-.getElementById("dPaymentNumber")
+const number=
+document.getElementById("dPaymentNumber")
 .value.trim();
 
-const date =
-document
-.getElementById("dDate")
-.value;
+const date=
+document.getElementById("dDate").value;
 
-const time =
-document
-.getElementById("dTime")
-.value;
+const time=
+document.getElementById("dTime").value;
 
 
 if(!project || !amount || !recipient || !reason){
@@ -3888,25 +3634,23 @@ return;
 }
 
 
-let url =
-SUPABASE_URL +
+let url=
+SUPABASE_URL+
 "/rest/v1/Disbursement";
 
-let requestMethod = "POST";
+let requestMethod="POST";
 
 
 if(editingDisbursementId){
 
-url +=
-"?id=eq." +
-editingDisbursementId;
+url+="?id=eq."+editingDisbursementId;
 
-requestMethod = "PATCH";
+requestMethod="PATCH";
 
 }
 
 
-const response =
+const response=
 await fetch(
 
 url,
@@ -3914,7 +3658,6 @@ url,
 {
 
 method:requestMethod,
-
 headers:apiHeaders(),
 
 body:JSON.stringify({
@@ -3925,8 +3668,8 @@ Recipient:recipient,
 Reason:reason,
 Method:method,
 Payment_Number:number,
-Payment_Date:date || null,
-Payment_Time:time || null
+Payment_Date:date||null,
+Payment_Time:time||null
 
 })
 
@@ -3937,12 +3680,10 @@ Payment_Time:time || null
 
 if(!response.ok){
 
-console.error(
-await response.text()
-);
+console.error(await response.text());
 
 alert(
-"Lacag-bixinta lama kaydin. Hubi RLS policies-ka."
+"Lacag-bixinta lama kaydin. Hubi RLS."
 );
 
 return;
@@ -3963,79 +3704,51 @@ await render();
 
 function editDisbursement(item){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
-editingDisbursementId =
-item.id;
+editingDisbursementId=item.id;
 
-document
-.getElementById("dProject")
-.value =
-item.Project || "";
+document.getElementById("dProject").value=
+item.Project||"";
 
-document
-.getElementById("dAmount")
-.value =
-item.Amount || "";
+document.getElementById("dAmount").value=
+item.Amount||"";
 
-document
-.getElementById("dRecipient")
-.value =
-item.Recipient || "";
+document.getElementById("dRecipient").value=
+item.Recipient||"";
 
-document
-.getElementById("dReason")
-.value =
-item.Reason || "";
+document.getElementById("dReason").value=
+item.Reason||"";
 
-document
-.getElementById("dMethod")
-.value =
-item.Method || "ZAAD";
+document.getElementById("dMethod").value=
+item.Method||"ZAAD";
 
-document
-.getElementById("dPaymentNumber")
-.value =
-item.Payment_Number || "";
+document.getElementById("dPaymentNumber").value=
+item.Payment_Number||"";
 
-document
-.getElementById("dDate")
-.value =
-item.Payment_Date || "";
+document.getElementById("dDate").value=
+item.Payment_Date||"";
 
-document
-.getElementById("dTime")
-.value =
-item.Payment_Time || "";
+document.getElementById("dTime").value=
+item.Payment_Time||"";
 
-document
-.getElementById("disbursementFormTitle")
-.textContent =
+document.getElementById("disbursementFormTitle")
+.textContent=
 "✏️ Wax ka beddel Lacag-bixin";
 
-document
-.getElementById("disbursementSaveBtn")
-.textContent =
+document.getElementById("disbursementSaveBtn")
+.textContent=
 "💾 Kaydi Isbeddelka";
 
-document
-.getElementById("disbursementCancelBtn")
-.classList
-.remove("hidden");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+document.getElementById("disbursementCancelBtn")
+.classList.remove("hidden");
 
 }
 
 
 async function deleteDisbursement(id){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso lacag-bixintan?"
@@ -4043,17 +3756,15 @@ if(!confirm(
 return;
 
 
-const response =
+const response=
 await fetch(
 
-SUPABASE_URL +
-"/rest/v1/Disbursement?id=eq." +
-id,
+SUPABASE_URL+
+"/rest/v1/Disbursement?id=eq."+id,
 
 {
 
 method:"DELETE",
-
 headers:apiHeaders()
 
 }
@@ -4079,136 +3790,97 @@ await render();
 
 function cancelDisbursementEdit(){
 
-editingDisbursementId = null;
+editingDisbursementId=null;
 
-document
-.getElementById("dAmount")
-.value = "";
+document.getElementById("dAmount").value="";
+document.getElementById("dRecipient").value="";
+document.getElementById("dReason").value="";
+document.getElementById("dPaymentNumber").value="";
+document.getElementById("dDate").value="";
+document.getElementById("dTime").value="";
 
-document
-.getElementById("dRecipient")
-.value = "";
-
-document
-.getElementById("dReason")
-.value = "";
-
-document
-.getElementById("dPaymentNumber")
-.value = "";
-
-document
-.getElementById("dDate")
-.value = "";
-
-document
-.getElementById("dTime")
-.value = "";
-
-document
-.getElementById("disbursementFormTitle")
-.textContent =
+document.getElementById("disbursementFormTitle")
+.textContent=
 "➕ Diiwaangeli Lacag-bixin";
 
-document
-.getElementById("disbursementSaveBtn")
-.textContent =
+document.getElementById("disbursementSaveBtn")
+.textContent=
 "💸 Kaydi Lacag-bixinta";
 
-document
-.getElementById("disbursementCancelBtn")
-.classList
-.add("hidden");
+document.getElementById("disbursementCancelBtn")
+.classList.add("hidden");
 
 }
 
 
 function renderDisbursements(){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
+const table=
+document.getElementById("disbursementTable");
 
-const table =
-document
-.getElementById("disbursementTable");
+if(!table) return;
 
-if(!table)
-return;
-
-
-const search =
+const search=
 (
-document
-.getElementById("disbursementSearch")
-?.value || ""
+document.getElementById("disbursementSearch")
+?.value||""
 ).toLowerCase();
 
 
-const filtered =
-allDisbursements.filter(item=>{
+const filtered=
+allDisbursements.filter(item=>
 
-return (
-
-String(item.Project || "")
+String(item.Project||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(item.Recipient || "")
+String(item.Recipient||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(item.Reason || "")
+String(item.Reason||"")
 .toLowerCase()
 .includes(search)
 
 ||
 
-String(item.Method || "")
+String(item.Method||"")
 .toLowerCase()
 .includes(search)
 
 );
 
-});
 
-
-table.innerHTML =
+table.innerHTML=
 filtered.map(item=>`
 
 <tr>
 
-<td>
-${escapeHTML(item.Project || "")}
-</td>
+<td>${escapeHTML(item.Project||"")}</td>
 
-<td>
-${escapeHTML(item.Recipient || "")}
-</td>
+<td>${escapeHTML(item.Recipient||"")}</td>
 
 <td>
 <strong>
-$${Number(item.Amount || 0).toFixed(2)}
+$${Number(item.Amount||0).toFixed(2)}
 </strong>
 </td>
 
-<td>
-${escapeHTML(item.Reason || "")}
-</td>
+<td>${escapeHTML(item.Reason||"")}</td>
 
 <td>
 <span class="badge">
-${escapeHTML(item.Method || "")}
+${escapeHTML(item.Method||"")}
 </span>
 </td>
 
-<td>
-${escapeHTML(item.Payment_Date || "")}
-</td>
+<td>${escapeHTML(item.Payment_Date||"")}</td>
 
 <td>
 
@@ -4238,7 +3910,7 @@ onclick="deleteDisbursement(${item.id})">
 
 
 /* =====================================================
-   NEWS
+NEWS
 ===================================================== */
 
 function defaultNews(){
@@ -4273,56 +3945,48 @@ body:
 
 function renderNews(){
 
-const list =
+const list=
 document.getElementById("newsList");
 
-if(!list)
-return;
+if(!list) return;
 
 
 if(!allNews.length){
 
-allNews =
-defaultNews();
+allNews=defaultNews();
 
 }
 
 
-list.innerHTML =
+list.innerHTML=
 allNews.map((news,index)=>`
 
 <div class="news-card">
 
 <div class="news-date">
-${escapeHTML(news.date || "2026")}
+${escapeHTML(news.date||"2026")}
 </div>
 
 <h3>
-${escapeHTML(news.title || "")}
+${escapeHTML(news.title||"")}
 </h3>
 
 <p>
-${escapeHTML(news.body || "")}
+${escapeHTML(news.body||"")}
 </p>
 
 ${
 isAdmin()
 ?
-
 `
-
 <button
 class="delete-btn"
 onclick="deleteNews(${index})">
 🗑️ Delete
 </button>
-
 `
-
 :
-
 ""
-
 }
 
 </div>
@@ -4336,23 +4000,19 @@ function addNews(){
 
 if(!isAdmin()){
 
-alert(
-"Admin kaliya."
-);
+alert("Admin kaliya.");
 
 return;
 
 }
 
 
-const title =
-document
-.getElementById("newsTitle")
+const title=
+document.getElementById("newsTitle")
 .value.trim();
 
-const body =
-document
-.getElementById("newsBody")
+const body=
+document.getElementById("newsBody")
 .value.trim();
 
 
@@ -4369,9 +4029,11 @@ return;
 
 allNews.unshift({
 
-title,
-body,
-date:new Date()
+title:title,
+body:body,
+
+date:
+new Date()
 .toISOString()
 .slice(0,10)
 
@@ -4384,13 +4046,8 @@ JSON.stringify(allNews)
 );
 
 
-document
-.getElementById("newsTitle")
-.value = "";
-
-document
-.getElementById("newsBody")
-.value = "";
+document.getElementById("newsTitle").value="";
+document.getElementById("newsBody").value="";
 
 renderNews();
 
@@ -4403,8 +4060,7 @@ alert(
 
 function deleteNews(index){
 
-if(!isAdmin())
-return;
+if(!isAdmin()) return;
 
 if(!confirm(
 "Ma hubtaa inaad tirtirayso warkan?"
@@ -4425,155 +4081,140 @@ renderNews();
 
 
 /* =====================================================
-   PROJECT OPTIONS
+PROJECT OPTIONS
 ===================================================== */
 
 function populateProjects(){
 
-const select =
+const select=
 document.getElementById("dProject");
 
-if(!select)
-return;
+if(!select) return;
 
 
-select.innerHTML =
+select.innerHTML=
 allProjects.map(project=>`
 
 <option
-value="${escapeHTML(project.Name || "")}">
-${escapeHTML(project.Name || "")}
+value="${escapeHTML(project.Name||"")}">
+
+${escapeHTML(project.Name||"")}
+
 </option>
 
 `).join("");
-
 
 }
 
 
 /* =====================================================
-   DASHBOARD
+PROGRESS
 ===================================================== */
 
 function renderProgress(){
 
-const total =
-allProjects.length;
+const total=allProjects.length;
 
-const planned =
+const planned=
 allProjects.filter(
-p=>p.Status === "Qorshaysan"
+p=>p.Status==="Qorshaysan"
 ).length;
 
-const ongoing =
+const ongoing=
 allProjects.filter(
-p=>p.Status === "Socda"
+p=>p.Status==="Socda"
 ).length;
 
-const done =
+const done=
 allProjects.filter(
-p=>p.Status === "Dhammaystiran"
+p=>p.Status==="Dhammaystiran"
 ).length;
 
 
-document
-.getElementById("plannedCount")
-.textContent =
-planned;
+document.getElementById("plannedCount")
+.textContent=planned;
 
-document
-.getElementById("ongoingCount")
-.textContent =
-ongoing;
+document.getElementById("ongoingCount")
+.textContent=ongoing;
 
-document
-.getElementById("doneCount")
-.textContent =
-done;
+document.getElementById("doneCount")
+.textContent=done;
 
-document
-.getElementById("completedProjects")
-.textContent =
-done;
+document.getElementById("completedProjects")
+.textContent=done;
 
 
 function percent(number){
 
-if(!total)
-return 0;
+if(!total) return 0;
 
 return Math.round(
-(number / total) * 100
+(number/total)*100
 );
 
 }
 
 
-document
-.getElementById("plannedProgress")
-.style.width =
-percent(planned) + "%";
+document.getElementById("plannedProgress")
+.style.width=
+percent(planned)+"%";
 
-document
-.getElementById("ongoingProgress")
-.style.width =
-percent(ongoing) + "%";
+document.getElementById("ongoingProgress")
+.style.width=
+percent(ongoing)+"%";
 
-document
-.getElementById("doneProgress")
-.style.width =
-percent(done) + "%";
+document.getElementById("doneProgress")
+.style.width=
+percent(done)+"%";
 
 }
 
 
 /* =====================================================
-   MAIN RENDER
+MAIN RENDER
 ===================================================== */
 
 async function render(){
 
-allMembers =
+allMembers=
 await getData("Members");
 
-allProjects =
+allProjects=
 await getData("Project");
 
 
 if(canSeePayments()){
 
-allPayments =
+allPayments=
 await getData("Payment");
 
 }else{
 
-allPayments = [];
+allPayments=[];
 
 }
 
 
 if(isAdmin()){
 
-allDisbursements =
+allDisbursements=
 await getData("Disbursement");
 
 }else{
 
-allDisbursements = [];
+allDisbursements=[];
 
 }
 
 
-/* News from browser storage */
-
 try{
 
-const stored =
+const stored=
 localStorage.getItem(
 "guul_wadaag_news"
 );
 
-allNews =
+allNews=
 stored
 ?
 JSON.parse(stored)
@@ -4582,105 +4223,89 @@ defaultNews();
 
 }catch(e){
 
-allNews =
-defaultNews();
+allNews=defaultNews();
 
 }
 
 
-/* Statistics */
-
-const membersCount =
+const membersCount=
 allMembers.length;
 
-const projectsCount =
+const projectsCount=
 allProjects.length;
 
-const completed =
+const completed=
 allProjects.filter(
-p=>p.Status === "Dhammaystiran"
+p=>p.Status==="Dhammaystiran"
 ).length;
 
 
-document
-.getElementById("membersCount")
-.textContent =
-membersCount;
+document.getElementById("membersCount")
+.textContent=membersCount;
 
-document
-.getElementById("projectsCount")
-.textContent =
-projectsCount;
+document.getElementById("projectsCount")
+.textContent=projectsCount;
 
-document
-.getElementById("completedProjects")
-.textContent =
-completed;
+document.getElementById("completedProjects")
+.textContent=completed;
 
 
-/* Home statistics */
+document.getElementById("homeMembersCount")
+.textContent=membersCount;
 
-document
-.getElementById("homeMembersCount")
-.textContent =
-membersCount;
+document.getElementById("homeProjectsCount")
+.textContent=projectsCount;
 
-document
-.getElementById("homeProjectsCount")
-.textContent =
-projectsCount;
-
-document
-.getElementById("homeCompletedCount")
-.textContent =
-completed;
+document.getElementById("homeCompletedCount")
+.textContent=completed;
 
 
 if(canSeePayments()){
 
-const total =
+const total=
 allPayments.reduce(
+
 (sum,payment)=>
-sum + Number(payment.Amount || 0),
+sum+Number(payment.Amount||0),
+
 0
+
 );
 
-document
-.getElementById("totalPaid")
-.textContent =
-"$" + total.toFixed(2);
 
-document
-.getElementById("homeMoneyCount")
-.textContent =
-"$" + total.toFixed(2);
+document.getElementById("totalPaid")
+.textContent=
+"$"+total.toFixed(2);
+
+document.getElementById("homeMoneyCount")
+.textContent=
+"$"+total.toFixed(2);
 
 }else{
 
-document
-.getElementById("homeMoneyCount")
-.textContent =
-"—";
+document.getElementById("homeMoneyCount")
+.textContent="—";
 
 }
 
 
-/* Payer */
-
-const payer =
+const payer=
 document.getElementById("payer");
+
 
 if(
 payer &&
 canSeePayments()
 ){
 
-payer.innerHTML =
+payer.innerHTML=
 allMembers.map(member=>`
 
 <option
-value="${escapeHTML(member.Name || "")}">
-${escapeHTML(member.Name || "")}
+value="${escapeHTML(member.Name||"")}">
+
+${escapeHTML(member.Name||"")}
+
 </option>
 
 `).join("");
@@ -4688,123 +4313,77 @@ ${escapeHTML(member.Name || "")}
 }
 
 
-/* Admin forms */
-
 if(isAdmin()){
 
-document
-.getElementById("memberAdminForm")
-.classList
-.remove("hidden");
+document.getElementById("memberAdminForm")
+.classList.remove("hidden");
 
-document
-.getElementById("projectAdminForm")
-.classList
-.remove("hidden");
+document.getElementById("projectAdminForm")
+.classList.remove("hidden");
 
-document
-.getElementById("paymentForm")
-.classList
-.remove("hidden");
+document.getElementById("paymentForm")
+.classList.remove("hidden");
 
-document
-.getElementById("disbursementForm")
-.classList
-.remove("hidden");
+document.getElementById("disbursementForm")
+.classList.remove("hidden");
 
-document
-.getElementById("newsAdminForm")
-.classList
-.remove("hidden");
+document.getElementById("newsAdminForm")
+.classList.remove("hidden");
 
-document
-.getElementById("adminNotice")
-.classList
-.remove("hidden");
+document.getElementById("adminNotice")
+.classList.remove("hidden");
 
-document
-.getElementById("treasurerNotice")
-.classList
-.add("hidden");
+document.getElementById("treasurerNotice")
+.classList.add("hidden");
 
 }else if(isTreasurer()){
 
-document
-.getElementById("memberAdminForm")
-.classList
-.add("hidden");
+document.getElementById("memberAdminForm")
+.classList.add("hidden");
 
-document
-.getElementById("projectAdminForm")
-.classList
-.add("hidden");
+document.getElementById("projectAdminForm")
+.classList.add("hidden");
 
-document
-.getElementById("paymentForm")
-.classList
-.remove("hidden");
+document.getElementById("paymentForm")
+.classList.remove("hidden");
 
-document
-.getElementById("disbursementForm")
-.classList
-.add("hidden");
+document.getElementById("disbursementForm")
+.classList.add("hidden");
 
-document
-.getElementById("newsAdminForm")
-.classList
-.add("hidden");
+document.getElementById("newsAdminForm")
+.classList.add("hidden");
 
-document
-.getElementById("adminNotice")
-.classList
-.add("hidden");
+document.getElementById("adminNotice")
+.classList.add("hidden");
 
-document
-.getElementById("treasurerNotice")
-.classList
-.remove("hidden");
+document.getElementById("treasurerNotice")
+.classList.remove("hidden");
 
 }else{
 
-document
-.getElementById("memberAdminForm")
-.classList
-.add("hidden");
+document.getElementById("memberAdminForm")
+.classList.add("hidden");
 
-document
-.getElementById("projectAdminForm")
-.classList
-.add("hidden");
+document.getElementById("projectAdminForm")
+.classList.add("hidden");
 
-document
-.getElementById("paymentForm")
-.classList
-.add("hidden");
+document.getElementById("paymentForm")
+.classList.add("hidden");
 
-document
-.getElementById("disbursementForm")
-.classList
-.add("hidden");
+document.getElementById("disbursementForm")
+.classList.add("hidden");
 
-document
-.getElementById("newsAdminForm")
-.classList
-.add("hidden");
+document.getElementById("newsAdminForm")
+.classList.add("hidden");
 
-document
-.getElementById("adminNotice")
-.classList
-.add("hidden");
+document.getElementById("adminNotice")
+.classList.add("hidden");
 
-document
-.getElementById("treasurerNotice")
-.classList
-.add("hidden");
+document.getElementById("treasurerNotice")
+.classList.add("hidden");
 
 }
 
-
-/* Render */
 
 populateProjects();
 
@@ -4824,7 +4403,7 @@ renderNews();
 
 
 /* =====================================================
-   ESCAPE HTML
+ESCAPE
 ===================================================== */
 
 function escapeHTML(value){
@@ -4845,10 +4424,58 @@ return String(value)
 
 
 /* =====================================================
-   START
+PASSWORD RESET DETECTION
+===================================================== */
+
+async function checkPasswordRecovery(){
+
+/*
+Supabase password recovery link wuxuu keeni karaa
+access_token gudaha URL hash-ka.
+*/
+
+const hash =
+window.location.hash;
+
+
+if(!hash)
+return;
+
+
+const params =
+new URLSearchParams(
+hash.substring(1)
+);
+
+
+const type =
+params.get("type");
+
+const token =
+params.get("access_token");
+
+
+if(
+type==="recovery" &&
+token
+){
+
+accessToken=token;
+
+showResetPassword();
+
+}
+
+}
+
+
+/* =====================================================
+START
 ===================================================== */
 
 showLogin();
+
+checkPasswordRecovery();
 
 </script>
 
