@@ -266,6 +266,7 @@ xogta ururka, xubnaha, mashaariicda iyo wararka.
 <h3 id="memberFormTitle">➕ Ku dar Xubin</h3>
 <input id="mname" placeholder="Magaca oo buuxa">
 <input id="mphone" placeholder="Telefoon">
+
 <select id="mtype">
 <option value="Gudomiye">Gudomiye</option>
 <option value="Gud.kuxigeen">Gud.kuxigeen</option>
@@ -274,27 +275,17 @@ xogta ururka, xubnaha, mashaariicda iyo wararka.
 <option value="Xoghaye">Xoghaye</option>
 <option value="Afhayeen">Afhayeen</option>
 <option value="Xubin Gudi">Xubin Gudi</option>
+
+<!-- 3-da xil ee cusub -->
+<option value="Madaxa Barnaamijyada iyo Mashaariicda">Madaxa Barnaamijyada iyo Mashaariicda</option>
+<option value="Madaxa Xubinnimada iyo Arrimaha Bulshada">Madaxa Xubinnimada iyo Arrimaha Bulshada</option>
+<option value="Agaasimaha Waxbarashada iyo Horumarinta Aqoonta">Agaasimaha Waxbarashada iyo Horumarinta Aqoonta</option>
+
 <option value="Xubin Caadi ah">Xubin Caadi ah</option>
 <option value="Xubin Firfircoon">Xubin Firfircoon</option>
 <option value="Taageere">Taageere</option>
- <select id="mtype">
-
-<!-- 3-da xil ee cusub -->
-
-<option value="Madaxa Barnaamijyada iyo Mashaariicda">
-Madaxa Barnaamijyada iyo Mashaariicda
-</option>
-
-<option value="Madaxa Xubinnimada iyo Arrimaha Bulshada">
-Madaxa Xubinnimada iyo Arrimaha Bulshada
-</option>
-
-<option value="Madaxa Waxbarashada iyo Horumarinta Aqoonta">
-Madaxa Waxbarashada iyo Horumarinta Aqoonta
-</option>
-
- </select>
 </select>
+
 <button id="memberSaveBtn" onclick="saveMember()">Diiwaangeli</button>
 <button id="memberCancelBtn" class="cancel-btn hidden" onclick="cancelMemberEdit()">Jooji</button>
 </div>
@@ -870,7 +861,6 @@ document.getElementById("disbursementNavBtn").classList.add("hidden");
 document.getElementById("dashboardDisbursementCard").classList.add("hidden");
 }
 
-/* muhiim: Back/logout dhibaatada ayaa halkan laga saxayaa */
 history.replaceState({page:"dashboard"},"","#dashboard");
 
 await render();
