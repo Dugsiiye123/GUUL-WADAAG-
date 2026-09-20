@@ -52,8 +52,80 @@ th{background:#edf4ef}.action{display:flex;gap:5px;flex-wrap:wrap}
 .footer{background:#075b3a;color:#fff;padding:30px 5%;margin-top:30px}
 .footer-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
 .footer li{margin:7px 0}
-@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.section-grid{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.wrap{padding:18px 4%}header{padding:12px 4%}nav button{font-size:11px;padding:7px 6px}.stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:14px}.stat-number{font-size:22px}.section-grid{grid-template-columns:1fr}table{display:block;overflow-x:auto;font-size:12px}th,td{white-space:nowrap}.footer-inner{grid-template-columns:1fr}}
+
+/* =========================
+ADMIN VISITOR
+========================= */
+
+.visitor-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:14px;
+margin-top:10px;
+border:1px solid #e5e9e7;
+border-radius:12px;
+background:#f8faf9;
+}
+
+.visitor-email{
+font-weight:bold;
+color:#075b3a;
+}
+
+.visitor-page{
+font-size:12px;
+color:#777;
+margin-top:4px;
+}
+
+.visitor-online{
+color:#16a34a;
+font-weight:700;
+white-space:nowrap;
+}
+
+.visitor-offline{
+color:#777;
+font-weight:600;
+white-space:nowrap;
+}
+
+.visitor-time{
+font-size:12px;
+color:#777;
+white-space:nowrap;
+}
+
+@media(max-width:900px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.grid{grid-template-columns:1fr}
+.section-grid{grid-template-columns:repeat(2,1fr)}
+.footer-inner{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:600px){
+.wrap{padding:18px 4%}
+header{padding:12px 4%}
+nav button{font-size:11px;padding:7px 6px}
+.stats{grid-template-columns:1fr 1fr;gap:10px}
+.stat{padding:14px}
+.stat-number{font-size:22px}
+.section-grid{grid-template-columns:1fr}
+table{display:block;overflow-x:auto;font-size:12px}
+th,td{white-space:nowrap}
+.footer-inner{grid-template-columns:1fr}
+
+.visitor-row{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.visitor-time{
+white-space:normal;
+}
+}
 </style>
 </head>
 
@@ -172,6 +244,36 @@ ee bulshada Bali-Abane iyo guud ahaan deegaanka.
 <div class="stat"><div class="stat-icon">🧹</div><div class="stat-title">Nadaafad</div><div id="cleaningCount" class="stat-number">0</div></div>
 <div class="stat"><div class="stat-icon">✅</div><div class="stat-title">Mashaariic Dhammaystiran</div><div id="completedProjects" class="stat-number">0</div></div>
 <div id="moneyStat" class="stat"><div class="stat-icon">💰</div><div class="stat-title">Lacag La Ururiyey</div><div id="totalPaid" class="stat-number">$0</div></div>
+
+<!-- ADMIN ONLY VISITOR STATS -->
+<div id="adminOnlineStat" class="stat hidden">
+<div class="stat-icon">🟢</div>
+<div class="stat-title">Hadda Online</div>
+<div id="adminOnlineVisitors" class="stat-number">0</div>
+</div>
+
+<div id="adminTotalStat" class="stat hidden">
+<div class="stat-icon">👥</div>
+<div class="stat-title">Dadka Login-ka Galay</div>
+<div id="adminTotalVisitors" class="stat-number">0</div>
+</div>
+
+</div>
+
+<!-- ADMIN ONLY VISITOR LIST -->
+<div id="adminVisitorCard" class="card hidden">
+
+<h2>👑 Dadka Isticmaalaya Website-ka</h2>
+
+<p style="color:#66756d">
+Halkan Admin-ka oo keliya ayaa ka arki kara dadka login-ka galay,
+Gmail-kooda, xaaladdooda iyo waqtigii ugu dambeeyey ee ay isticmaalayeen.
+</p>
+
+<div id="adminVisitors">
+<p>Loading...</p>
+</div>
+
 </div>
 
 <div class="section-grid">
@@ -275,12 +377,9 @@ xogta ururka, xubnaha, mashaariicda iyo wararka.
 <option value="Xoghaye">Xoghaye</option>
 <option value="Afhayeen">Afhayeen</option>
 <option value="Xubin Gudi">Xubin Gudi</option>
-
-<!-- 3-da xil ee cusub -->
 <option value="Madaxa Barnaamijyada iyo Mashaariicda">Madaxa Barnaamijyada iyo Mashaariicda</option>
 <option value="Madaxa Xubinnimada iyo Arrimaha Bulshada">Madaxa Xubinnimada iyo Arrimaha Bulshada</option>
 <option value="Agaasimaha Waxbarashada iyo Horumarinta Aqoonta">Agaasimaha Waxbarashada iyo Horumarinta Aqoonta</option>
-
 <option value="Xubin Caadi ah">Xubin Caadi ah</option>
 <option value="Xubin Firfircoon">Xubin Firfircoon</option>
 <option value="Taageere">Taageere</option>
@@ -800,6 +899,195 @@ console.error(error);
 
 
 /* =========================
+ADMIN VISITOR TRACKING
+========================= */
+
+async function trackLoggedInVisitor(){
+
+if(!currentUser||!accessToken)return;
+
+try{
+
+const response=await fetch(
+SUPABASE_URL+"/rest/v1/rpc/track_logged_in_visitor",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+accessToken,
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+p_page:location.pathname
+})
+});
+
+if(!response.ok){
+console.log("Visitor tracking failed:",await response.text());
+}
+
+}catch(error){
+console.log("Visitor tracking error:",error);
+}
+
+}
+
+
+async function loadAdminVisitorStats(){
+
+if(!isAdmin())return;
+
+const onlineBox=document.getElementById("adminOnlineVisitors");
+const totalBox=document.getElementById("adminTotalVisitors");
+
+if(!onlineBox||!totalBox)return;
+
+try{
+
+const response=await fetch(
+SUPABASE_URL+"/rest/v1/rpc/get_logged_in_visitor_stats",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+accessToken,
+"Content-Type":"application/json"
+},
+body:"{}"
+});
+
+if(!response.ok){
+console.log("Visitor stats failed:",await response.text());
+return;
+}
+
+const data=await response.json();
+
+onlineBox.textContent=data.online_now||0;
+totalBox.textContent=data.total_users||0;
+
+}catch(error){
+console.log("Visitor stats error:",error);
+}
+
+}
+
+
+async function loadAdminVisitors(){
+
+if(!isAdmin())return;
+
+const box=document.getElementById("adminVisitors");
+
+if(!box)return;
+
+try{
+
+const response=await fetch(
+SUPABASE_URL+"/rest/v1/rpc/get_logged_in_visitors",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+accessToken,
+"Content-Type":"application/json"
+},
+body:"{}"
+});
+
+if(!response.ok){
+
+box.innerHTML=
+"<p class='error'>Xogta dadka isticmaalaya lama soo qaadi karin.</p>";
+
+console.log(await response.text());
+
+return;
+}
+
+const visitors=await response.json();
+
+if(!visitors.length){
+
+box.innerHTML=
+"<div class='info-box'>👥 Weli ma jiro qof kale oo login galay.</div>";
+
+return;
+}
+
+box.innerHTML=visitors.map(function(v){
+
+const online=v.online;
+
+return `
+<div class="visitor-row">
+
+<div>
+<div class="visitor-email">
+📧 ${escapeHTML(v.email)}
+</div>
+
+<div class="visitor-page">
+📄 ${escapeHTML(v.page||"/")}
+</div>
+</div>
+
+<div class="${online?"visitor-online":"visitor-offline"}">
+${online?"🟢 Online":"⚪ Offline"}
+</div>
+
+<div class="visitor-time">
+🕐 ${v.last_seen
+?new Date(v.last_seen).toLocaleString()
+:"-"}
+</div>
+
+</div>
+`;
+
+}).join("");
+
+}catch(error){
+
+console.log("Visitor list error:",error);
+
+box.innerHTML=
+"<p class='error'>Khalad ayaa dhacay markii xogta la soo qaaday.</p>";
+
+}
+
+}
+
+
+function startAdminVisitorTracking(){
+
+if(!isAdmin())return;
+
+trackLoggedInVisitor();
+loadAdminVisitorStats();
+loadAdminVisitors();
+
+setInterval(function(){
+
+if(currentUser&&isAdmin()){
+trackLoggedInVisitor();
+}
+
+},60000);
+
+setInterval(function(){
+
+if(currentUser&&isAdmin()){
+loadAdminVisitorStats();
+loadAdminVisitors();
+}
+
+},30000);
+
+}
+
+
+/* =========================
 OPEN APP
 ========================= */
 
@@ -823,22 +1111,50 @@ document.getElementById("treasurerBadge").classList.add("hidden");
 document.getElementById("memberBadge").classList.add("hidden");
 
 if(isAdmin()){
+
 document.getElementById("adminBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Gudomiye / Admin";
+
+document.getElementById("adminOnlineStat").classList.remove("hidden");
+document.getElementById("adminTotalStat").classList.remove("hidden");
+document.getElementById("adminVisitorCard").classList.remove("hidden");
+
 }else if(isTreasurer()){
+
 document.getElementById("treasurerBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Qasnaji";
+
+document.getElementById("adminOnlineStat").classList.add("hidden");
+document.getElementById("adminTotalStat").classList.add("hidden");
+document.getElementById("adminVisitorCard").classList.add("hidden");
+
 }else if(isMembersManager()){
+
 document.getElementById("memberBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Maamulka Xubnaha";
+
 }else if(isProjectManager()){
+
 document.getElementById("memberBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Maamulka Mashaariicda";
+
 }else if(isEducationManager()){
+
 document.getElementById("memberBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Waxbarashada & Horumarinta Aqoonta";
+
 }else{
+
 document.getElementById("memberBadge").classList.remove("hidden");
+
+}
+
+if(!isAdmin()){
+
+document.getElementById("adminOnlineStat").classList.add("hidden");
+document.getElementById("adminTotalStat").classList.add("hidden");
+document.getElementById("adminVisitorCard").classList.add("hidden");
+
 }
 
 if(canSeePayments()){
@@ -864,7 +1180,14 @@ document.getElementById("dashboardDisbursementCard").classList.add("hidden");
 history.replaceState({page:"dashboard"},"","#dashboard");
 
 await render();
+
 showPage("dashboard",false);
+
+/* ADMIN VISITOR TRACKING */
+if(isAdmin()){
+trackLoggedInVisitor();
+startAdminVisitorTracking();
+}
 
 }
 
@@ -2118,6 +2441,26 @@ document.getElementById("disbursementAdminForm").classList.add("hidden");
 document.getElementById("adminNotice").classList.add("hidden");
 document.getElementById("treasurerNotice").classList.add("hidden");
 }
+
+}
+
+
+/* ADMIN VISITOR DISPLAY */
+
+if(isAdmin()){
+
+document.getElementById("adminOnlineStat").classList.remove("hidden");
+document.getElementById("adminTotalStat").classList.remove("hidden");
+document.getElementById("adminVisitorCard").classList.remove("hidden");
+
+loadAdminVisitorStats();
+loadAdminVisitors();
+
+}else{
+
+document.getElementById("adminOnlineStat").classList.add("hidden");
+document.getElementById("adminTotalStat").classList.add("hidden");
+document.getElementById("adminVisitorCard").classList.add("hidden");
 
 }
 
