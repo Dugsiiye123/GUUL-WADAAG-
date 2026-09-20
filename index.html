@@ -58,9 +58,9 @@ ADMIN VISITOR
 ========================= */
 
 .visitor-row{
-display:flex;
+display:grid;
+grid-template-columns:2fr 1fr 1.4fr;
 align-items:center;
-justify-content:space-between;
 gap:15px;
 padding:14px;
 margin-top:10px;
@@ -96,6 +96,19 @@ white-space:nowrap;
 font-size:12px;
 color:#777;
 white-space:nowrap;
+line-height:1.7;
+}
+
+.visitor-login{
+font-size:12px;
+color:#075b3a;
+margin-top:4px;
+}
+
+.visitor-logout{
+font-size:12px;
+color:#777;
+margin-top:3px;
 }
 
 @media(max-width:900px){
@@ -103,6 +116,7 @@ white-space:nowrap;
 .grid{grid-template-columns:1fr}
 .section-grid{grid-template-columns:repeat(2,1fr)}
 .footer-inner{grid-template-columns:1fr 1fr}
+.visitor-row{grid-template-columns:1fr}
 }
 
 @media(max-width:600px){
@@ -118,7 +132,7 @@ th,td{white-space:nowrap}
 .footer-inner{grid-template-columns:1fr}
 
 .visitor-row{
-flex-direction:column;
+grid-template-columns:1fr;
 align-items:flex-start;
 }
 
@@ -147,6 +161,12 @@ GW - GUUL-WADAAG
 <button id="paymentsNavBtn" class="hidden" onclick="showPage('payments')">💰 Lacagaha</button>
 <button id="disbursementNavBtn" class="hidden" onclick="showPage('disbursement')">💸 Lacag-bixin</button>
 <button onclick="showPage('news')">📰 Warar</button>
+
+<!-- ADMIN ONLY -->
+<button id="adminVisitorsNavBtn" class="hidden" onclick="showPage('adminVisitorsPage')">
+👥 Dadka Isticmaalaya
+</button>
+
 <button onclick="logout()">🚪 Ka bax</button>
 </nav>
 </header>
@@ -208,7 +228,7 @@ GW - GUUL-WADAAG
 
 <p id="forgotMessage"></p>
 
-<button class="link-btn" onclick="showLogin()">
+<button class="link-btn" onclick="showLogin">
 ← Ku noqo Login
 </button>
 </div>
@@ -402,6 +422,39 @@ xogta ururka, xubnaha, mashaariicda iyo wararka.
 <p><strong>Email:</strong> <span id="profileEmail"></span></p>
 <p><strong>Xilka:</strong> <span id="profileRole">Xubin Caadi ah</span></p>
 <p><strong>Xaaladda:</strong> <span class="badge">Firfircoon</span></p>
+</div>
+
+</section>
+
+<!-- ADMIN VISITORS PAGE -->
+<section id="adminVisitorsPage" class="hidden">
+
+<h1>👥 Dadka Isticmaalaya Website-ka</h1>
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-icon">🟢</div>
+<div class="stat-title">Hadda Online</div>
+<div id="adminPageOnline" class="stat-number">0</div>
+</div>
+
+<div class="stat">
+<div class="stat-icon">👥</div>
+<div class="stat-title">Dhammaan Login-ka Galay</div>
+<div id="adminPageTotal" class="stat-number">0</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📋 Diiwaanka Isticmaalayaasha</h2>
+
+<div id="adminVisitorsPageList">
+<p>Loading...</p>
+</div>
+
 </div>
 
 </section>
@@ -1172,7 +1225,7 @@ console.error(error);
 
 
 /* =========================
-ADMIN VISITOR TRACKING
+VISITOR TRACKING
 ========================= */
 
 async function trackLoggedInVisitor(){
@@ -1206,14 +1259,13 @@ console.log("Visitor tracking error:",error);
 }
 
 
+/* =========================
+ADMIN VISITOR STATS
+========================= */
+
 async function loadAdminVisitorStats(){
 
 if(!isAdmin())return;
-
-const onlineBox=document.getElementById("adminOnlineVisitors");
-const totalBox=document.getElementById("adminTotalVisitors");
-
-if(!onlineBox||!totalBox)return;
 
 try{
 
@@ -1236,12 +1288,111 @@ return;
 
 const data=await response.json();
 
-onlineBox.textContent=data.online_now||0;
-totalBox.textContent=data.total_users||0;
+const online=Array.isArray(data)
+?data[0]?.online_now
+:data.online_now;
+
+const total=Array.isArray(data)
+?data[0]?.total_users
+:data.total_users;
+
+const onlineBox=document.getElementById("adminOnlineVisitors");
+const totalBox=document.getElementById("adminTotalVisitors");
+
+const pageOnline=document.getElementById("adminPageOnline");
+const pageTotal=document.getElementById("adminPageTotal");
+
+if(onlineBox)onlineBox.textContent=online||0;
+if(totalBox)totalBox.textContent=total||0;
+
+if(pageOnline)pageOnline.textContent=online||0;
+if(pageTotal)pageTotal.textContent=total||0;
 
 }catch(error){
 console.log("Visitor stats error:",error);
 }
+
+}
+
+
+/* =========================
+ADMIN VISITOR LIST
+========================= */
+
+function visitorDate(value){
+
+if(!value)return "-";
+
+try{
+return new Date(value).toLocaleString();
+}catch(e){
+return value;
+}
+
+}
+
+
+function buildVisitorList(visitors){
+
+if(!visitors||!visitors.length){
+
+return "<div class='info-box'>👥 Weli ma jiro qof login galay.</div>";
+
+}
+
+return visitors.map(function(v){
+
+const online=Boolean(v.online);
+
+const loginTime=
+v.login_at||
+v.login_time||
+v.created_at||
+null;
+
+const logoutTime=
+v.logout_at||
+v.logout_time||
+null;
+
+const lastSeen=
+v.last_seen||
+null;
+
+return `
+<div class="visitor-row">
+
+<div>
+<div class="visitor-email">
+📧 ${escapeHTML(v.email||"-")}
+</div>
+
+<div class="visitor-page">
+📄 Bogga: ${escapeHTML(v.page||"/")}
+</div>
+
+<div class="visitor-login">
+🔐 Login: ${escapeHTML(visitorDate(loginTime))}
+</div>
+
+<div class="visitor-logout">
+🚪 Logout: ${escapeHTML(visitorDate(logoutTime))}
+</div>
+</div>
+
+<div class="${online?"visitor-online":"visitor-offline"}">
+${online?"🟢 Online":"⚪ Offline"}
+</div>
+
+<div class="visitor-time">
+🕐 Last Seen:<br>
+${escapeHTML(visitorDate(lastSeen))}
+</div>
+
+</div>
+`;
+
+}).join("");
 
 }
 
@@ -1251,8 +1402,9 @@ async function loadAdminVisitors(){
 if(!isAdmin())return;
 
 const box=document.getElementById("adminVisitors");
+const pageBox=document.getElementById("adminVisitorsPageList");
 
-if(!box)return;
+if(!box&&!pageBox)return;
 
 try{
 
@@ -1270,8 +1422,11 @@ body:"{}"
 
 if(!response.ok){
 
-box.innerHTML=
+const errorHTML=
 "<p class='error'>Xogta dadka isticmaalaya lama soo qaadi karin.</p>";
+
+if(box)box.innerHTML=errorHTML;
+if(pageBox)pageBox.innerHTML=errorHTML;
 
 console.log(await response.text());
 
@@ -1280,82 +1435,60 @@ return;
 
 const visitors=await response.json();
 
-if(!visitors.length){
+const html=buildVisitorList(visitors);
 
-box.innerHTML=
-"<div class='info-box'>👥 Weli ma jiro qof kale oo login galay.</div>";
-
-return;
-}
-
-box.innerHTML=visitors.map(function(v){
-
-const online=v.online;
-
-return `
-<div class="visitor-row">
-
-<div>
-<div class="visitor-email">
-📧 ${escapeHTML(v.email)}
-</div>
-
-<div class="visitor-page">
-📄 ${escapeHTML(v.page||"/")}
-</div>
-</div>
-
-<div class="${online?"visitor-online":"visitor-offline"}">
-${online?"🟢 Online":"⚪ Offline"}
-</div>
-
-<div class="visitor-time">
-🕐 ${v.last_seen
-?new Date(v.last_seen).toLocaleString()
-:"-"}
-</div>
-
-</div>
-`;
-
-}).join("");
+if(box)box.innerHTML=html;
+if(pageBox)pageBox.innerHTML=html;
 
 }catch(error){
 
 console.log("Visitor list error:",error);
 
-box.innerHTML=
+const errorHTML=
 "<p class='error'>Khalad ayaa dhacay markii xogta la soo qaaday.</p>";
 
-}
+if(box)box.innerHTML=errorHTML;
+if(pageBox)pageBox.innerHTML=errorHTML;
 
 }
 
-
-function startAdminVisitorTracking(){
-
-if(!isAdmin())return;
-
-trackLoggedInVisitor();
-loadAdminVisitorStats();
-loadAdminVisitors();
-
-setInterval(function(){
-
-if(currentUser&&isAdmin()){
-trackLoggedInVisitor();
 }
 
-},60000);
 
-setInterval(function(){
+/* =========================
+LOGOUT VISITOR
+========================= */
 
-if(currentUser&&isAdmin()){
-loadAdminVisitorStats();
-loadAdminVisitors();
+async function markVisitorLogout(){
+
+if(!currentUser||!accessToken)return;
+
+try{
+
+const response=await fetch(
+SUPABASE_URL+"/rest/v1/rpc/logout_logged_in_visitor",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+accessToken,
+"Content-Type":"application/json"
+},
+body:"{}"
+});
+
+if(!response.ok){
+console.log(
+"Visitor logout tracking unavailable:",
+await response.text()
+);
 }
 
-},30000);
+}catch(error){
+
+console.log("Visitor logout tracking error:",error);
+
+}
 
 }
 
@@ -1394,6 +1527,9 @@ document.getElementById("adminOnlineStat").classList.remove("hidden");
 document.getElementById("adminTotalStat").classList.remove("hidden");
 document.getElementById("adminVisitorCard").classList.remove("hidden");
 
+/* ADMIN MENU */
+document.getElementById("adminVisitorsNavBtn").classList.remove("hidden");
+
 }else if(isTreasurer()){
 
 document.getElementById("treasurerBadge").classList.remove("hidden");
@@ -1403,24 +1539,33 @@ document.getElementById("adminOnlineStat").classList.add("hidden");
 document.getElementById("adminTotalStat").classList.add("hidden");
 document.getElementById("adminVisitorCard").classList.add("hidden");
 
+document.getElementById("adminVisitorsNavBtn").classList.add("hidden");
+
 }else if(isMembersManager()){
 
 document.getElementById("memberBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Maamulka Xubnaha";
+
+document.getElementById("adminVisitorsNavBtn").classList.add("hidden");
 
 }else if(isProjectManager()){
 
 document.getElementById("memberBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Maamulka Mashaariicda";
 
+document.getElementById("adminVisitorsNavBtn").classList.add("hidden");
+
 }else if(isEducationManager()){
 
 document.getElementById("memberBadge").classList.remove("hidden");
 document.getElementById("profileRole").textContent="Waxbarashada & Horumarinta Aqoonta";
 
+document.getElementById("adminVisitorsNavBtn").classList.add("hidden");
+
 }else{
 
 document.getElementById("memberBadge").classList.remove("hidden");
+document.getElementById("adminVisitorsNavBtn").classList.add("hidden");
 
 }
 
@@ -1458,10 +1603,40 @@ await render();
 
 showPage("dashboard",false);
 
-/* ADMIN VISITOR TRACKING */
-if(isAdmin()){
+
+/* =========================
+ALL USERS VISITOR TRACKING
+========================= */
+
 trackLoggedInVisitor();
-startAdminVisitorTracking();
+
+setInterval(function(){
+
+if(currentUser&&accessToken){
+trackLoggedInVisitor();
+}
+
+},60000);
+
+
+/* =========================
+ADMIN ONLY REFRESH
+========================= */
+
+if(isAdmin()){
+
+loadAdminVisitorStats();
+loadAdminVisitors();
+
+setInterval(function(){
+
+if(currentUser&&isAdmin()){
+loadAdminVisitorStats();
+loadAdminVisitors();
+}
+
+},30000);
+
 }
 
 }
@@ -1472,6 +1647,9 @@ LOGOUT
 ========================= */
 
 async function logout(){
+
+/* Marka hore diiwaangeli Logout time */
+await markVisitorLogout();
 
 try{
 await fetch(
@@ -1506,12 +1684,25 @@ const APP_PAGES=[
 "cleaning",
 "payments",
 "disbursement",
-"news"
+"news",
+"adminVisitorsPage"
 ];
 
 function showPage(id,pushHistory=true){
 
 if(!APP_PAGES.includes(id))id="dashboard";
+
+
+/* ADMIN ONLY PAGE SECURITY */
+
+if(id==="adminVisitorsPage"&&!isAdmin()){
+
+alert("🔒 Admin kaliya ayaa arki kara dadka isticmaalaya website-ka.");
+
+return;
+
+}
+
 
 if(id==="payments"&&!canSeePayments()){
 alert("🔒 Admin iyo Qasnajiga kaliya.");
@@ -1542,6 +1733,11 @@ if(id==="health")renderHealth();
 if(id==="cleaning")renderCleaning();
 if(id==="payments")renderPayments();
 if(id==="disbursement")renderDisbursements();
+
+if(id==="adminVisitorsPage"){
+loadAdminVisitorStats();
+loadAdminVisitors();
+}
 
 window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -2727,6 +2923,7 @@ if(isAdmin()){
 document.getElementById("adminOnlineStat").classList.remove("hidden");
 document.getElementById("adminTotalStat").classList.remove("hidden");
 document.getElementById("adminVisitorCard").classList.remove("hidden");
+document.getElementById("adminVisitorsNavBtn").classList.remove("hidden");
 
 loadAdminVisitorStats();
 loadAdminVisitors();
@@ -2736,6 +2933,7 @@ loadAdminVisitors();
 document.getElementById("adminOnlineStat").classList.add("hidden");
 document.getElementById("adminTotalStat").classList.add("hidden");
 document.getElementById("adminVisitorCard").classList.add("hidden");
+document.getElementById("adminVisitorsNavBtn").classList.add("hidden");
 
 }
 
