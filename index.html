@@ -199,10 +199,56 @@ GW - GUUL-WADAAG
 <div class="card login-card">
 <h1>🔑 Forgot Password</h1>
 <p>Geli email-ka account-kaaga si aad u hesho reset link.</p>
+
 <input id="forgotEmail" type="email" placeholder="Email-kaaga">
-<button style="width:100%" onclick="sendResetPassword()">📩 Soo Dir Reset Link</button>
+
+<button style="width:100%" onclick="sendResetPassword()">
+📩 Soo Dir Reset Link
+</button>
+
 <p id="forgotMessage"></p>
-<button class="link-btn" onclick="showLogin()">← Ku noqo Login</button>
+
+<button class="link-btn" onclick="showLogin()">
+← Ku noqo Login
+</button>
+</div>
+</div>
+</section>
+
+<!-- RESET PASSWORD -->
+<section id="resetPage" class="hidden">
+<div class="wrap">
+<div class="card login-card">
+
+<h1>🔐 Reset Password</h1>
+
+<p>
+Geli password-kaaga cusub.
+</p>
+
+<label>Password Cusub</label>
+<input
+id="newPassword"
+type="password"
+placeholder="Geli password cusub"
+>
+
+<label>Xaqiiji Password-ka</label>
+<input
+id="newPassword2"
+type="password"
+placeholder="Ku celi password-ka cusub"
+>
+
+<button
+style="width:100%"
+onclick="updateNewPassword()"
+>
+🔐 Kaydi Password-ka Cusub
+</button>
+
+<p id="resetMessage"></p>
+
 </div>
 </div>
 </section>
@@ -679,22 +725,45 @@ return isAdmin()||isTreasurer();
 LOGIN PAGES
 ========================= */
 
-function showLogin(){
-document.getElementById("loginPage").classList.remove("hidden");
+function hideAuthPages(){
+
+document.getElementById("loginPage").classList.add("hidden");
 document.getElementById("signupPage").classList.add("hidden");
 document.getElementById("forgotPage").classList.add("hidden");
+document.getElementById("resetPage").classList.add("hidden");
+
+}
+
+function showLogin(){
+
+hideAuthPages();
+
+document.getElementById("loginPage").classList.remove("hidden");
+
 }
 
 function showSignup(){
-document.getElementById("loginPage").classList.add("hidden");
+
+hideAuthPages();
+
 document.getElementById("signupPage").classList.remove("hidden");
-document.getElementById("forgotPage").classList.add("hidden");
+
 }
 
 function showForgotPassword(){
-document.getElementById("loginPage").classList.add("hidden");
-document.getElementById("signupPage").classList.add("hidden");
+
+hideAuthPages();
+
 document.getElementById("forgotPage").classList.remove("hidden");
+
+}
+
+function showResetPassword(){
+
+hideAuthPages();
+
+document.getElementById("resetPage").classList.remove("hidden");
+
 }
 
 
@@ -826,7 +895,7 @@ msg.textContent="Cilad Internet ayaa dhacday.";
 
 
 /* =========================
-FORGOT
+FORGOT PASSWORD
 ========================= */
 
 async function sendResetPassword(){
@@ -834,10 +903,16 @@ async function sendResetPassword(){
 const email=document.getElementById("forgotEmail").value.trim();
 const msg=document.getElementById("forgotMessage");
 
+msg.className="";
+msg.textContent="";
+
 if(!email){
+
 msg.className="error";
 msg.textContent="Fadlan geli email.";
+
 return;
+
 }
 
 try{
@@ -846,28 +921,226 @@ const response=await fetch(
 SUPABASE_URL+"/auth/v1/recover",
 {
 method:"POST",
+
 headers:{
 "apikey":SUPABASE_KEY,
 "Content-Type":"application/json"
 },
-body:JSON.stringify({email})
+
+body:JSON.stringify({
+
+email:email,
+
+redirect_to:"https://guulwadaagwebsite.com/"
+
+})
 });
 
+const data=await response.json().catch(()=>({}));
+
 if(!response.ok){
-const data=await response.json();
+
 msg.className="error";
-msg.textContent=data.msg||"Reset link lama dirin.";
+
+msg.textContent=
+data.msg||
+data.error_description||
+"Reset link lama dirin.";
+
 return;
+
 }
 
 msg.className="success";
-msg.textContent="✅ Reset link ayaa email-kaaga loo diray.";
+
+msg.textContent=
+"✅ Reset link ayaa email-kaaga loo diray. Fadlan email-kaaga ka fur oo riix Reset password.";
 
 }catch(error){
+
 console.error(error);
+
 msg.className="error";
-msg.textContent="Cilad ayaa dhacday.";
+
+msg.textContent=
+"Cilad ayaa dhacday. Hubi Internet-ka.";
+
 }
+
+}
+
+
+/* =========================
+PASSWORD RECOVERY
+========================= */
+
+function getRecoveryAccessToken(){
+
+const hash=window.location.hash;
+
+if(!hash)return null;
+
+const params=new URLSearchParams(
+hash.substring(1)
+);
+
+const type=params.get("type");
+const token=params.get("access_token");
+
+if(type==="recovery" && token){
+
+return token;
+
+}
+
+return null;
+
+}
+
+
+async function handlePasswordRecovery(){
+
+const recoveryToken=getRecoveryAccessToken();
+
+if(!recoveryToken)return;
+
+console.log("Password recovery session detected.");
+
+accessToken=recoveryToken;
+
+showResetPassword();
+
+}
+
+
+async function updateNewPassword(){
+
+const password=
+document.getElementById("newPassword").value;
+
+const password2=
+document.getElementById("newPassword2").value;
+
+const msg=
+document.getElementById("resetMessage");
+
+msg.className="";
+msg.textContent="";
+
+if(!password||!password2){
+
+msg.className="error";
+
+msg.textContent=
+"Fadlan geli password-ka cusub.";
+
+return;
+
+}
+
+if(password.length<6){
+
+msg.className="error";
+
+msg.textContent=
+"Password-ku waa inuu leeyahay ugu yaraan 6 xaraf.";
+
+return;
+
+}
+
+if(password!==password2){
+
+msg.className="error";
+
+msg.textContent=
+"Labada password isku mid ma aha.";
+
+return;
+
+}
+
+if(!accessToken){
+
+msg.className="error";
+
+msg.textContent=
+"Reset session-ka wuu dhacay. Fadlan codso reset link cusub.";
+
+return;
+
+}
+
+try{
+
+const response=await fetch(
+SUPABASE_URL+"/auth/v1/user",
+{
+method:"PUT",
+
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+accessToken,
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+password:password
+})
+});
+
+const data=await response.json().catch(()=>({}));
+
+if(!response.ok){
+
+console.error(data);
+
+msg.className="error";
+
+msg.textContent=
+data.msg||
+data.error_description||
+data.message||
+"Password-ka lama beddeli karin.";
+
+return;
+
+}
+
+msg.className="success";
+
+msg.textContent=
+"✅ Password-ka waa la beddelay. Hadda waxaad ku geli kartaa password-ka cusub.";
+
+document.getElementById("newPassword").value="";
+document.getElementById("newPassword2").value="";
+
+setTimeout(function(){
+
+window.history.replaceState(
+{},
+document.title,
+window.location.pathname
+);
+
+accessToken="";
+currentUser=null;
+
+showLogin();
+
+},2000);
+
+}catch(error){
+
+console.error(error);
+
+msg.className="error";
+
+msg.textContent=
+"Cilad ayaa dhacday markii password-ka la beddelay.";
+
+}
+
 }
 
 
@@ -1096,6 +1369,8 @@ async function openApp(){
 document.getElementById("loginPage").classList.add("hidden");
 document.getElementById("signupPage").classList.add("hidden");
 document.getElementById("forgotPage").classList.add("hidden");
+document.getElementById("resetPage").classList.add("hidden");
+
 document.getElementById("mainHeader").classList.remove("hidden");
 document.getElementById("app").classList.remove("hidden");
 
@@ -2498,9 +2773,25 @@ return String(value)
 START
 ========================= */
 
+(async function(){
+
+const recoveryToken=getRecoveryAccessToken();
+
+if(recoveryToken){
+
+accessToken=recoveryToken;
+
+showResetPassword();
+
+}else{
+
 showLogin();
+
+}
+
+})();
 
 </script>
 
 </body>
- </html>
+</html>
